@@ -1,0 +1,137 @@
+[
+  {
+    "DO_Piece": "IFV425391",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 338983,
+    "DO_TotalTTC": 400000,
+    "DL_Ligne": [
+      {
+        "AR_Ref": "CONELA63-EL63CF",
+        "DL_Design": "CONGELATEUR ELACTRON HORIZONTAL 750L SILVER EL63CFS",
+        "DL_PrixUnitaire": 338983,
+        "DL_Qte": 1,
+        "DL_MontantHT": 338983
+      },
+      {
+        "AR_Ref": "TVFOX43-43SMART",
+        "DL_Design": "TELEVISEUR FOX 43 SMART ANDROID 43UHD",
+        "DL_PrixUnitaire": 135593,
+        "DL_Qte": 1,
+        "DL_MontantHT": 135593
+      }
+    ]
+  },
+  {
+    "DO_Piece": "IFV425392",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 80508,
+    "DO_TotalTTC": 95000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425393",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 135593,
+    "DO_TotalTTC": 160000,
+    "DL_Ligne": [
+      {
+        "AR_Ref": "TVFOX43-43SMART",
+        "DL_Design": "TELEVISEUR FOX 43 SMART ANDROID 43UHD",
+        "DL_PrixUnitaire": 135593,
+        "DL_Qte": 1,
+        "DL_MontantHT": 135593
+      }
+    ]
+  },
+  {
+    "DO_Piece": "IFV425394",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 127118,
+    "DO_TotalTTC": 150000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425395",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 288136,
+    "DO_TotalTTC": 340000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425396",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 466102,
+    "DO_TotalTTC": 550000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425397",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 169492,
+    "DO_TotalTTC": 200000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425398",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 211864,
+    "DO_TotalTTC": 250000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425399",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 423729,
+    "DO_TotalTTC": 500000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425400",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_TotalHT": 169492,
+    "DO_TotalTTC": 200000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425488",
+    "DO_Date": "2024-09-23 00:00:00.000",
+    "DO_TotalHT": 10169,
+    "DO_TotalTTC": 12000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425489",
+    "DO_Date": "2024-09-23 00:00:00.000",
+    "DO_TotalHT": 50847,
+    "DO_TotalTTC": 60000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425490",
+    "DO_Date": "2024-09-23 00:00:00.000",
+    "DO_TotalHT": 12712,
+    "DO_TotalTTC": 15000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425491",
+    "DO_Date": "2024-09-23 00:00:00.000",
+    "DO_TotalHT": 12712,
+    "DO_TotalTTC": 15000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425492",
+    "DO_Date": "2024-09-23 00:00:00.000",
+    "DO_TotalHT": 4237,
+    "DO_TotalTTC": 5000,
+    "DL_Ligne": []
+  },
+  {
+    "DO_Piece": "IFV425493",
+    "DO_Date": "2024-09-23 00:00:00.000",
+    "DO_TotalHT": 10169,
+    "DO_TotalTTC": 12000,
+    "DL_Ligne": []
+  }
+]
