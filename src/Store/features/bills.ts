@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { EFilterBills } from "../../Hooks/UseFilterData";
 
 export interface IBillLigne {
   AR_Ref: string;
@@ -13,26 +14,45 @@ export interface IBill {
   DO_Date: string;
   DO_TotalHT: number;
   DO_TotalTTC: number;
-  DL_Ligne: IBillLigne[] | [];
+  DO_Ligne: IBillLigne[] | [];
+  status: boolean;
+}
+
+export interface IBillFilter {
+  status: EFilterBills;
+  date: string | null;
+  search: string | number | null;
 }
 
 export interface IBillState {
   billLists: IBill[] | [];
+  filter?: IBillFilter;
 }
 
 const initialState: IBillState = {
   billLists: [],
+  filter: { status: EFilterBills.ALL_BILLS, date: null, search: null },
 };
 
 const billSlice = createSlice({
   name: "bills",
   initialState,
   reducers: {
-    addBills: (state, action: PayloadAction<IBillState>) => {
+    addBills: (state, action: PayloadAction<IBill[]>) => {
       state.billLists = [...action.payload];
+    },
+    validateBill: (state, action: PayloadAction<string>) => {
+      state.billLists.forEach((bill) => {
+        if (bill.DO_Piece === action.payload) {
+          bill.status = true;
+        }
+      });
+    },
+    setFilters: (state, action: PayloadAction<IBillFilter>) => {
+      state.filter = { ...action.payload };
     },
   },
 });
 
 export default billSlice;
-export const { addBills } = billSlice.actions;
+export const { addBills, setFilters, validateBill } = billSlice.actions;

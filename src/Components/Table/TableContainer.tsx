@@ -3,13 +3,14 @@ import Table from "./Table";
 import { IoEye } from "react-icons/io5";
 import { HiCheckCircle } from "react-icons/hi";
 import { IoIosCloseCircle } from "react-icons/io";
-import { IBill } from "../../Store/features/bills";
-import { useDispatch, useSelector } from "react-redux";
+import { IBill, IBillFilter, IBillState } from "../../Store/features/bills";
+import { useSelector } from "react-redux";
 import { IRootState } from "../../Store/store";
-import { addBills } from "../../Store/features/bills";
 import { useLocation, useNavigate } from "react-router-dom";
 import MyPortal from "../Modals/Overlay";
 import { ConfirmFactModal, CancelFactModal } from "../Modals/FactureModal";
+import { EFilterBills, useFilterData } from "../../Hooks/UseFilterData";
+import { formatDate } from "../../Utils/Functions";
 
 const Title: React.FC<{ name: string }> = ({ name }) => {
   return <h1 className="text-4xl font-extrabold">{name}</h1>;
@@ -33,7 +34,6 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
     }
   }, [location]);
 
-  console.log(data);
   return (
     <div
       className="fixed inset-0 h-screen w-screen bg-black/50"
@@ -76,8 +76,8 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
             </Table.Header>
             <Table.Body>
               {data &&
-                data?.DL_Ligne?.length > 0 &&
-                data.DL_Ligne.map((ligne, i) => {
+                data?.DO_Ligne?.length > 0 &&
+                data.DO_Ligne.map((ligne, i) => {
                   console.log(ligne);
                   return (
                     <Table.BodyRow key={i} pieceID={ligne.AR_Ref}>
@@ -124,25 +124,23 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
   );
 };
 
-export const TableContainer = () => {
+export const TableContainer: React.FC<{
+  raw_data: IBill[];
+  filter: IBillFilter;
+}> = ({ raw_data, filter }) => {
   const [enableModal, setEnableModal] = useState<{
     confirm: boolean;
     cancel: boolean;
-  }>({ confirm: false, cancel: false });
-  const [data, setData] = useState<IBill[]>([]);
-  const [viewBillDetails, setViewBillDetails] = useState<boolean>(false);
-  //const billSelector = useSelector((state: IRootState) => state.bills);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+    bill: string;
+  }>({ confirm: false, cancel: false, bill: "" });
 
-  useEffect(() => {
-    fetch("/data/data.json")
-      .then((res) => res.json())
-      .then((bills) => {
-        setData(bills);
-        dispatch(addBills(bills));
-      });
-  }, []);
+  const data = useFilterData({
+    data: raw_data,
+    filterType: filter,
+  });
+
+  const [viewBillDetails, setViewBillDetails] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   return (
     <div className="h-full w-full overflow-scroll p-5 sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
@@ -161,7 +159,7 @@ export const TableContainer = () => {
               return (
                 <Table.BodyRow key={i} pieceID={bill.DO_Piece}>
                   <Table.BodyValue value={bill.DO_Piece} />
-                  <Table.BodyValue value={bill.DO_Date} />
+                  <Table.BodyValue value={formatDate(bill.DO_Date)} />
                   <Table.BodyValue value={bill.DO_TotalHT} />
                   <Table.BodyValue value={bill.DO_TotalTTC} />
                   <Table.BodyValue value={"Non Validée"} />
@@ -176,15 +174,20 @@ export const TableContainer = () => {
                         >
                           <IoEye className="h-7 w-7" />
                         </button>
-
-                        <button
-                          onClick={() => {
-                            setEnableModal({ cancel: false, confirm: true });
-                            navigate(`/?bill=${bill.DO_Piece}`);
-                          }}
-                        >
-                          <HiCheckCircle className="h-7 w-7" />
-                        </button>
+                        {!bill.status && (
+                          <button
+                            onClick={() => {
+                              setEnableModal({
+                                cancel: false,
+                                confirm: true,
+                                bill: bill.DO_Piece,
+                              });
+                              navigate(`/?bill=${bill.DO_Piece}`);
+                            }}
+                          >
+                            <HiCheckCircle className="h-7 w-7" />
+                          </button>
+                        )}
                       </div>
                     }
                   />
@@ -199,21 +202,19 @@ export const TableContainer = () => {
       {enableModal.confirm && (
         <MyPortal
           onClose={() => {
-            setEnableModal({ cancel: false, confirm: false });
+            setEnableModal({ cancel: false, confirm: false, bill: "" });
             navigate("/");
           }}
           isOpen={enableModal.confirm}
-          modal={<ConfirmFactModal />}
-        />
-      )}
-      {enableModal.cancel && (
-        <MyPortal
-          onClose={() => {
-            setEnableModal({ cancel: false, confirm: false });
-            navigate("/");
-          }}
-          isOpen={enableModal.cancel}
-          modal={<CancelFactModal />}
+          modal={
+            <ConfirmFactModal
+              bill={enableModal.bill}
+              closeModal={() => {
+                setEnableModal({ cancel: false, confirm: false, bill: "" });
+                navigate("/");
+              }}
+            />
+          }
         />
       )}
     </div>
