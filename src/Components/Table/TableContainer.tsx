@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Table from "./Table";
 import { IoEye } from "react-icons/io5";
 import { HiCheckCircle } from "react-icons/hi";
-import { IoIosCloseCircle } from "react-icons/io";
 import { IBill, IBillFilter, IBillState } from "../../Store/features/bills";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../Store/store";
@@ -43,64 +42,66 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
       }}
     >
       <div className="relative h-screen w-screen bg-transparent">
-        <div className="custom-animation-fade-in custom-animation-fade-out absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
+        <div className="absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
           <div>
             <Title name={`Facture:  ${billQueryValue}`} />
           </div>
-          <Table>
-            <Table.Header>
-              <Table.HeaderValue
-                value={"Référence article"}
-                customClass="w-1/6 border-2 border-[#282B30] py-2 text-center text-md text-black"
-              />
-              <Table.HeaderValue
-                value={"Designation article"}
-                customClass="w-2/6 border-2 border-[#282B30] py-2 text-center text-md text-black"
-              />
-              <Table.HeaderValue
-                value={"Prix Unitaire HT"}
-                customClass="w-1/6 border-2 border-[#282B30] py-2 text-center text-md text-black"
-              />
-              <Table.HeaderValue
-                value={"Quantité"}
-                customClass="w-1/6 border-2 border-[#282B30] py-2 text-center text-md text-black"
-              />
-              <Table.HeaderValue
-                value={"Montant HT"}
-                customClass="w-1/6 border-2 border-[#282B30] py-2 text-center text-md text-black"
-              />
-            </Table.Header>
-            <Table.Body>
-              {data &&
-                data?.DO_Ligne?.length > 0 &&
-                data.DO_Ligne.map((ligne, i) => {
-                  return (
-                    <Table.BodyRow key={i} rowID={i}>
-                      <Table.BodyValue
-                        value={ligne.AR_Ref}
-                        customClass="border-b-2 border-black py-4 text-center text-xs font-semibold tracking-wider "
-                      />
-                      <Table.BodyValue
-                        value={ligne.DL_Design}
-                        customClass="border-b-2 border-black py-2 text-center text-xs font-semibold tracking-wider "
-                      />
-                      <Table.BodyValue
-                        value={ligne.DL_PrixUnitaire}
-                        customClass="border-b-2 border-black py-2 text-center text-xs font-semibold tracking-wider "
-                      />
-                      <Table.BodyValue
-                        value={ligne.DL_Qte}
-                        customClass="border-b-2 border-black py-2 text-center text-xs font-semibold tracking-wider "
-                      />
-                      <Table.BodyValue
-                        value={ligne.DL_MontantHT}
-                        customClass="border-b-2 border-black py-2 text-center text-xs font-semibold tracking-wider "
-                      />
-                    </Table.BodyRow>
-                  );
-                })}
-            </Table.Body>
-          </Table>
+          <div className="h-fit w-full overflow-scroll rounded-lg border-2 border-black sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+            <Table>
+              <Table.Header>
+                <Table.HeaderValue
+                  value={"Référence article"}
+                  customClass="w-1/6  border-r-2 border-gray-300/15  py-2 text-center text-md"
+                />
+                <Table.HeaderValue
+                  value={"Designation article"}
+                  customClass="w-2/6  border-r-2 border-gray-300/15  py-2 text-center text-md"
+                />
+                <Table.HeaderValue
+                  value={"Prix Unitaire HT"}
+                  customClass="w-1/6  border-r-2 border-gray-300/15  py-2 text-center text-md"
+                />
+                <Table.HeaderValue
+                  value={"Quantité"}
+                  customClass="w-1/6  border-r-2 border-gray-300/15  py-2 text-center text-md"
+                />
+                <Table.HeaderValue
+                  value={"Montant HT"}
+                  customClass="w-1/6   border-gray-300/15  py-2 text-center text-md"
+                />
+              </Table.Header>
+              <Table.Body>
+                {data &&
+                  data?.DO_Ligne?.length > 0 &&
+                  data.DO_Ligne.map((ligne, i) => {
+                    return (
+                      <Table.BodyRow key={i} rowID={i}>
+                        <Table.BodyValue
+                          value={ligne.AR_Ref}
+                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-semibold tracking-wider first:text-left last:text-right "
+                        />
+                        <Table.BodyValue
+                          value={ligne.DL_Design}
+                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-semibold tracking-wider first:text-left last:text-right "
+                        />
+                        <Table.BodyValue
+                          value={ligne.DL_PrixUnitaire}
+                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-semibold tracking-wider first:text-left last:text-right "
+                        />
+                        <Table.BodyValue
+                          value={ligne.DL_Qte}
+                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-semibold tracking-wider first:text-left last:text-right "
+                        />
+                        <Table.BodyValue
+                          value={ligne.DL_MontantHT}
+                          customClass="px-4 py-2 text-center text-xs font-semibold tracking-wider  "
+                        />
+                      </Table.BodyRow>
+                    );
+                  })}
+              </Table.Body>
+            </Table>
+          </div>
         </div>
       </div>
     </div>
@@ -126,7 +127,7 @@ export const TableContainer: React.FC<{
   const navigate = useNavigate();
 
   return (
-    <div className="h-full w-full overflow-scroll rounded-lg border-2 border-black sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+    <div className="h-fit w-full overflow-scroll rounded-lg border-2 border-black sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
       <Table>
         <Table.Header>
           <Table.HeaderValue value={"Piece"} />

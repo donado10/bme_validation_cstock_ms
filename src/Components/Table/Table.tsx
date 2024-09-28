@@ -19,8 +19,8 @@ interface ITable {
 
 const TableHeader: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <thead className="w-full bg-black text-white">
-      <tr>{children}</tr>
+    <thead className="w-full bg-black text-bme-600">
+      <tr className="w-full">{children}</tr>
     </thead>
   );
 };
@@ -49,7 +49,7 @@ const TableHeaderValue: React.FC<{ value: string; customClass?: string }> = ({
   }
 
   return (
-    <th className="w-1/ pl-26 border-r-2 border-gray-300/15 py-2 text-center text-xl">
+    <th className="w-1/6 border-r-2 border-gray-300/15 py-2 text-center text-xl">
       {value}
     </th>
   );
@@ -58,7 +58,6 @@ const TableHeaderValue: React.FC<{ value: string; customClass?: string }> = ({
 const TableBodyRow: React.FC<{
   children: ReactNode;
   rowID: number;
-  customClass: string;
 }> = ({ children, rowID }) => {
   return (
     <tr className={`h-fit ${rowID % 2 === 0 ? "bg-gray-200" : "bg-white"}`}>

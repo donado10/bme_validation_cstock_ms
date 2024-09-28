@@ -25,11 +25,11 @@
 
   .custom-animation-fade-out {
     animation: move-off-screen 2s ease-in forwards; /* 2 seconds duration with ease-in */
-    position: relative; /* Make sure the element can move within its container */
+    /* Make sure the element can move within its container */
   }
 
   .custom-animation-fade-in {
     animation: move-left 0.3s ease-in; /* 2 seconds duration with ease-in */
-    position: relative; /* Make sure the element can move within its container */
+    /* Make sure the element can move within its container */
   }
 }

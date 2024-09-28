@@ -36,7 +36,7 @@ const FilterFirstLevel: React.FC<IFilterFirstLevel> = React.forwardRef(
       "flex items-center justify-center font-bold px-4 py-1 text-bme-900 ";
     if (selected) {
       className =
-        "flex items-center justify-center  px-4 py-2 font-semibold text-bme-700 bg-black rounded-lg";
+        "flex items-center justify-center  px-4 py-2 font-semibold text-bme-600 bg-black rounded-lg";
     }
 
     return (
@@ -94,7 +94,7 @@ function App() {
   }, []);
 
   return (
-    <main className="m-8 rounded-xl bg-white">
+    <main className="m-14 rounded-xl bg-white">
       <div className="flex flex-col gap-6 p-8">
         <div>
           <Title name="Factures INTENDANCE" />
