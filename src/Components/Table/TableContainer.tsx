@@ -43,7 +43,7 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
       }}
     >
       <div className="relative h-screen w-screen bg-transparent">
-        <div className="absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
+        <div className="custom-animation-fade-in custom-animation-fade-out absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
           <div>
             <Title name={`Facture:  ${billQueryValue}`} />
           </div>
@@ -55,7 +55,7 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
               />
               <Table.HeaderValue
                 value={"Designation article"}
-                customClass="w-1/6 border-2 border-[#282B30] py-2 text-center text-md text-black"
+                customClass="w-2/6 border-2 border-[#282B30] py-2 text-center text-md text-black"
               />
               <Table.HeaderValue
                 value={"Prix Unitaire HT"}
@@ -69,21 +69,16 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
                 value={"Montant HT"}
                 customClass="w-1/6 border-2 border-[#282B30] py-2 text-center text-md text-black"
               />
-              <Table.HeaderValue
-                value={"Actions"}
-                customClass="w-1/6 border-2 border-[#282B30] py-2 text-center text-md text-black"
-              />
             </Table.Header>
             <Table.Body>
               {data &&
                 data?.DO_Ligne?.length > 0 &&
                 data.DO_Ligne.map((ligne, i) => {
-                  console.log(ligne);
                   return (
-                    <Table.BodyRow key={i} pieceID={ligne.AR_Ref}>
+                    <Table.BodyRow key={i} rowID={i}>
                       <Table.BodyValue
                         value={ligne.AR_Ref}
-                        customClass="border-b-2 border-black py-2 text-center text-xs font-semibold tracking-wider "
+                        customClass="border-b-2 border-black py-4 text-center text-xs font-semibold tracking-wider "
                       />
                       <Table.BodyValue
                         value={ligne.DL_Design}
@@ -100,18 +95,6 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
                       <Table.BodyValue
                         value={ligne.DL_MontantHT}
                         customClass="border-b-2 border-black py-2 text-center text-xs font-semibold tracking-wider "
-                      />
-                      <Table.BodyValue
-                        actions={
-                          <div className="flex items-center justify-end gap-6">
-                            <button className="">
-                              <IoIosCloseCircle className="h-7 w-7" />
-                            </button>
-                            <button className="">
-                              <HiCheckCircle className="h-7 w-7" />
-                            </button>
-                          </div>
-                        }
                       />
                     </Table.BodyRow>
                   );
@@ -143,7 +126,7 @@ export const TableContainer: React.FC<{
   const navigate = useNavigate();
 
   return (
-    <div className="h-full w-full overflow-scroll p-5 sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+    <div className="h-full w-full overflow-scroll rounded-lg border-2 border-black sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
       <Table>
         <Table.Header>
           <Table.HeaderValue value={"Piece"} />
@@ -157,7 +140,7 @@ export const TableContainer: React.FC<{
           {data.length > 0 &&
             data.map((bill, i) => {
               return (
-                <Table.BodyRow key={i} pieceID={bill.DO_Piece}>
+                <Table.BodyRow key={i} rowID={i}>
                   <Table.BodyValue value={bill.DO_Piece} />
                   <Table.BodyValue value={formatDate(bill.DO_Date)} />
                   <Table.BodyValue value={bill.DO_TotalHT} />

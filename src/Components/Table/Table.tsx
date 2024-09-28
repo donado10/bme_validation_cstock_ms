@@ -9,7 +9,7 @@ interface ITableComponents extends React.FC<ITable> {
     actions?: ReactElement;
     customClass?: string;
   }>;
-  BodyRow: React.FC<{ children: ReactNode; pieceID: string }>;
+  BodyRow: React.FC<{ children: ReactNode; rowID: number }>;
   Actions: React.FC<{ children: ReactNode }>;
 }
 
@@ -17,20 +17,28 @@ interface ITable {
   children: ReactNode;
 }
 
+const TableHeader: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return (
+    <thead className="w-full bg-black text-white">
+      <tr>{children}</tr>
+    </thead>
+  );
+};
+
 const TableHeaderValue: React.FC<{ value: string; customClass?: string }> = ({
   value,
   customClass,
 }) => {
   if (value === "Actions") {
     return (
-      <th className="w-1/6 border-2 border-[#282B30] py-2 text-right text-xl text-black">
+      <th className="w-1/6 border-l-2 border-gray-300/15 px-4 py-4 text-right text-xl">
         {value}
       </th>
     );
   }
   if (value === "Piece") {
     return (
-      <th className="w-1/6 border-2 border-[#282B30] py-2 text-left text-xl text-black">
+      <th className="w-1/6 border-r-2 border-gray-300/15 px-4 py-4 text-left text-xl">
         {value}
       </th>
     );
@@ -41,17 +49,22 @@ const TableHeaderValue: React.FC<{ value: string; customClass?: string }> = ({
   }
 
   return (
-    <th className="w-1/6 border-2 border-[#282B30] py-2 text-center text-xl text-black">
+    <th className="w-1/ pl-26 border-r-2 border-gray-300/15 py-2 text-center text-xl">
       {value}
     </th>
   );
 };
 
-const TableBodyRow: React.FC<{ children: ReactNode; pieceID: string }> = ({
-  children,
-  pieceID,
-}) => {
-  return <tr className="h-fit border-2 border-black">{children}</tr>;
+const TableBodyRow: React.FC<{
+  children: ReactNode;
+  rowID: number;
+  customClass: string;
+}> = ({ children, rowID }) => {
+  return (
+    <tr className={`h-fit ${rowID % 2 === 0 ? "bg-gray-200" : "bg-white"}`}>
+      {children}
+    </tr>
+  );
 };
 
 const TableBodyValue: React.FC<{
@@ -61,7 +74,7 @@ const TableBodyValue: React.FC<{
 }> = ({ value, actions, customClass }) => {
   if (actions) {
     return (
-      <td className="border-b-2 border-black py-2 text-center text-lg font-semibold tracking-wider first:text-left last:text-right">
+      <td className="px-4 py-2 text-center text-lg font-semibold tracking-wider first:text-left last:text-right">
         {actions}
       </td>
     );
@@ -76,17 +89,9 @@ const TableBodyValue: React.FC<{
   }
 
   return (
-    <td className="border-b-2 border-black py-2 text-center text-lg font-semibold tracking-wider first:text-left last:text-right">
+    <td className="border-r-2 border-gray-300 px-4 py-2 text-center text-lg font-semibold tracking-wider first:text-left last:text-right">
       <span> {value}</span>
     </td>
-  );
-};
-
-const TableHeader: React.FC<{ children: ReactNode }> = ({ children }) => {
-  return (
-    <thead className="w-full">
-      <tr>{children}</tr>
-    </thead>
   );
 };
 
@@ -95,7 +100,7 @@ const TableBody: React.FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 const Table: ITableComponents = ({ children }: ITable) => {
-  return <table className="h-fit w-full">{children}</table>;
+  return <table className="w-full overflow-hidden">{children}</table>;
 };
 
 const TableActions: React.FC<{ children: ReactNode }> = ({ children }) => {

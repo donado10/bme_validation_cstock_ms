@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  @keyframes move-left {
+    0% {
+      transform: translateX(100%); /* Start off-screen on the right */
+    }
+    100% {
+      transform: translateX(0); /* End at the original position */
+    }
+  }
+
+  @keyframes move-off-screen {
+    0% {
+      transform: translateX(0); /* Start at the original position */
+      opacity: 1; /* Fully visible */
+    }
+    100% {
+      transform: translateX(-100%); /* Move completely off-screen to the left */
+      opacity: 0; /* Fade out while moving */
+    }
+  }
+
+  .custom-animation-fade-out {
+    animation: move-off-screen 2s ease-in forwards; /* 2 seconds duration with ease-in */
+    position: relative; /* Make sure the element can move within its container */
+  }
+
+  .custom-animation-fade-in {
+    animation: move-left 0.3s ease-in; /* 2 seconds duration with ease-in */
+    position: relative; /* Make sure the element can move within its container */
+  }
+}

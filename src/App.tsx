@@ -19,13 +19,13 @@ interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 const Title: React.FC<{ name: string }> = ({ name }) => {
-  return <h1 className="text-4xl font-extrabold">{name}</h1>;
+  return <h1 className="text-4xl font-extrabold text-bme-900">{name}</h1>;
 };
 
 const FilterDate = () => {
   return (
-    <div className="flex w-fit items-center justify-center border-2 border-black bg-white px-8 py-1 text-black">
-      <input type="date" className="outline-none" />
+    <div className="flex w-fit items-center justify-center border-2 border-bme-600 px-8 py-1 font-bold text-bme-600">
+      <input type="date" className="bg-transparent outline-none" />
     </div>
   );
 };
@@ -33,10 +33,10 @@ const FilterDate = () => {
 const FilterFirstLevel: React.FC<IFilterFirstLevel> = React.forwardRef(
   ({ name, selected, ...props }) => {
     let className =
-      "flex items-center justify-center border-2 border-black px-4 py-1 text-black bg-white";
+      "flex items-center justify-center font-bold px-4 py-1 text-bme-900 ";
     if (selected) {
       className =
-        "flex items-center justify-center border-2 border-white px-4 py-1 text-white bg-black";
+        "flex items-center justify-center  px-4 py-2 font-semibold text-bme-700 bg-black rounded-lg";
     }
 
     return (
@@ -59,9 +59,13 @@ const FilterSecondLevel = () => {
 
 const FilterSearch = () => {
   return (
-    <div className="flex items-center gap-2 border-2 border-black px-2 py-1">
-      <IoSearch />
-      <input type="text" placeholder="Search..." className="outline-none" />
+    <div className="flex items-center gap-2 rounded-lg border-2 border-bme-900 px-2 py-1">
+      <IoSearch className="text-bme-900" />
+      <input
+        type="text"
+        placeholder="Search..."
+        className="bg-transparent text-bme-900 outline-none"
+      />
     </div>
   );
 };
@@ -90,7 +94,7 @@ function App() {
   }, []);
 
   return (
-    <main className="">
+    <main className="m-8 rounded-xl bg-white">
       <div className="flex flex-col gap-6 p-8">
         <div>
           <Title name="Factures INTENDANCE" />
@@ -162,9 +166,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div>
-            <FilterDate />
-          </div>
+          <div>{/* <FilterDate /> */}</div>
         </div>
         <div className="w-full">
           <TableContainer
