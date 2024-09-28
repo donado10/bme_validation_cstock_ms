@@ -7,15 +7,17 @@ import {
   IBillState,
   setFilters,
 } from "./Store/features/bills";
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { EFilterBills } from "./Hooks/UseFilterData";
 import React from "react";
 import { IRootState } from "./Store/store";
+import { RiBillLine } from "react-icons/ri";
 
 interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
   name: string;
   selected: boolean;
+  logo: ReactElement<any>;
 }
 
 const Title: React.FC<{ name: string }> = ({ name }) => {
@@ -23,24 +25,47 @@ const Title: React.FC<{ name: string }> = ({ name }) => {
 };
 
 const FilterDate = () => {
+  const dispatch = useDispatch();
+  const billState = useSelector<IRootState>(
+    (state) => state.bills,
+  ) as IBillState;
+  const dateRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   return (
-    <div className="flex w-fit items-center justify-center border-2 border-bme-600 px-8 py-1 font-bold text-bme-600">
-      <input type="date" className="bg-transparent outline-none" />
+    <div className="flex w-fit items-center gap-8 rounded-lg border-2 border-bme-900 px-2 py-1 font-bold text-bme-900">
+      <div>
+        <input
+          type="date"
+          className="bg-transparent outline-none"
+          ref={dateRef}
+          defaultValue={"2024-09-28"}
+        />
+      </div>
+      <button
+        onClick={() => {
+          console.log(dateRef.current.value);
+          dispatch(
+            setFilters({ ...billState.filter!, date: dateRef.current.value }),
+          );
+        }}
+      >
+        <IoSearch className="h-6 w-6 text-bme-900" />
+      </button>
     </div>
   );
 };
 
 const FilterFirstLevel: React.FC<IFilterFirstLevel> = React.forwardRef(
-  ({ name, selected, ...props }) => {
+  ({ name, selected, logo, ...props }) => {
     let className =
-      "flex items-center justify-center font-bold px-4 py-1 text-bme-900 ";
+      "flex items-center gap-4 font-bold px-4 py-1 text-bme-900 border-2 border-bme-900 rounded-lg";
     if (selected) {
       className =
-        "flex items-center justify-center  px-4 py-2 font-semibold text-bme-600 bg-black rounded-lg";
+        "flex items-center gap-4  px-4 py-1 font-semibold text-bme-600 bg-black rounded-lg";
     }
 
     return (
       <button className={className} {...props}>
+        <span>{logo}</span>
         <span>{name}</span>
       </button>
     );
@@ -58,6 +83,11 @@ const FilterSecondLevel = () => {
 };
 
 const FilterSearch = () => {
+  const dispatch = useDispatch();
+  const billState = useSelector<IRootState>(
+    (state) => state.bills,
+  ) as IBillState;
+
   return (
     <div className="flex items-center gap-2 rounded-lg border-2 border-bme-900 px-2 py-1">
       <IoSearch className="text-bme-900" />
@@ -65,13 +95,16 @@ const FilterSearch = () => {
         type="text"
         placeholder="Search..."
         className="bg-transparent text-bme-900 outline-none"
+        onChange={(e) => {
+          const value = e.currentTarget.value;
+          dispatch(setFilters({ ...billState.filter!, search: value }));
+        }}
       />
     </div>
   );
 };
 
 function App() {
-  const [data, setData] = useState<IBill[]>([]);
   const [filter, setFilter] = useState<{
     status: EFilterBills;
     buttons: { all: boolean; valid: boolean; non_valid: boolean };
@@ -88,7 +121,6 @@ function App() {
     fetch("/data/data.json")
       .then((res) => res.json())
       .then((bills: IBill[]) => {
-        setData(bills);
         dispatch(addBills(bills));
       });
   }, []);
@@ -99,11 +131,12 @@ function App() {
         <div>
           <Title name="Factures INTENDANCE" />
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col justify-center gap-4 rounded-lg border-2 border-bme-900 p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div>
                 <FilterFirstLevel
+                  logo={<RiBillLine />}
                   name="Toutes les factures"
                   selected={filter.buttons.all}
                   onClick={() => {
@@ -123,6 +156,7 @@ function App() {
               </div>
               <div>
                 <FilterFirstLevel
+                  logo={<RiBillLine />}
                   name="Factures validées"
                   selected={filter.buttons.valid}
                   onClick={() => {
@@ -142,6 +176,7 @@ function App() {
               </div>
               <div>
                 <FilterFirstLevel
+                  logo={<RiBillLine />}
                   name="Factures non validées"
                   selected={filter.buttons.non_valid}
                   onClick={() => {
@@ -166,7 +201,9 @@ function App() {
               </div>
             </div>
           </div>
-          <div>{/* <FilterDate /> */}</div>
+          <div>
+            <FilterDate />
+          </div>
         </div>
         <div className="w-full">
           <TableContainer

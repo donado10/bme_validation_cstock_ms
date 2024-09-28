@@ -29,7 +29,7 @@
   }
 
   .custom-animation-fade-in {
-    animation: move-left 0.3s ease-in; /* 2 seconds duration with ease-in */
+    animation: move-left 0.2s ease-in; /* 2 seconds duration with ease-in */
     /* Make sure the element can move within its container */
   }
 }

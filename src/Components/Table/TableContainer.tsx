@@ -42,7 +42,7 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
       }}
     >
       <div className="relative h-screen w-screen bg-transparent">
-        <div className="absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
+        <div className="custom-animation-fade-in absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
           <div>
             <Title name={`Facture:  ${billQueryValue}`} />
           </div>
