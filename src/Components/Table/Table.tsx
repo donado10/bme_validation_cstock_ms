@@ -2,11 +2,15 @@ import React, { memo, ReactElement, ReactNode } from "react";
 
 interface ITableComponents extends React.FC<ITable> {
   Header: React.FC<{ children: ReactNode }>;
-  HeaderValue: React.FC<{ value: string; customClass?: string }>;
+  HeaderValue: React.FC<{
+    value?: string;
+    customClass?: string;
+    element?: ReactElement;
+  }>;
   Body: React.FC<{ children: ReactNode }>;
   BodyValue: React.FC<{
     value?: string | number;
-    actions?: ReactElement;
+    element?: ReactElement;
     customClass?: string;
   }>;
   BodyRow: React.FC<{ children: ReactNode; rowID: number }>;
@@ -25,10 +29,11 @@ const TableHeader: React.FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-const TableHeaderValue: React.FC<{ value: string; customClass?: string }> = ({
-  value,
-  customClass,
-}) => {
+const TableHeaderValue: React.FC<{
+  value?: string;
+  customClass?: string;
+  element?: ReactElement;
+}> = ({ value, customClass, element }) => {
   if (value === "Actions") {
     return (
       <th className="text-md w-1/6 border-l-2 border-gray-300/15 px-4 py-4 text-right font-semibold">
@@ -40,6 +45,14 @@ const TableHeaderValue: React.FC<{ value: string; customClass?: string }> = ({
     return (
       <th className="text-md w-1/6 border-r-2 border-gray-300/15 px-4 py-4 text-left font-semibold">
         {value}
+      </th>
+    );
+  }
+
+  if (element) {
+    return (
+      <th className="text-md w-1/6 border-r-2 border-gray-300/15 px-4 py-4 font-semibold">
+        {element}
       </th>
     );
   }
@@ -68,13 +81,13 @@ const TableBodyRow: React.FC<{
 
 const TableBodyValue: React.FC<{
   value?: string | number;
-  actions?: ReactElement;
+  element?: ReactElement;
   customClass?: string;
-}> = ({ value, actions, customClass }) => {
-  if (actions) {
+}> = ({ value, element, customClass }) => {
+  if (element) {
     return (
-      <td className="px-4 py-2 text-center text-lg font-thin tracking-wider first:text-left last:text-right">
-        {actions}
+      <td className="border-r-2 border-gray-300 px-4 py-2 text-center text-lg font-thin tracking-wider first:text-left last:border-none last:text-right">
+        {element}
       </td>
     );
   }
@@ -88,7 +101,7 @@ const TableBodyValue: React.FC<{
   }
 
   return (
-    <td className="border-r-2 border-gray-300 px-4 py-2 text-center text-lg font-normal tracking-wider first:text-left last:text-right">
+    <td className="border-r-2 border-gray-300 px-4 py-2 text-center text-lg font-normal tracking-wider text-bme-800 first:text-left last:text-right">
       <span> {value}</span>
     </td>
   );

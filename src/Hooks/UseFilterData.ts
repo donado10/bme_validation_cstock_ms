@@ -70,5 +70,5 @@ export const useFilterData = (filter: IFilterData) => {
     }
   }, [billFilter.status, billFilter.search, billFilter.date, filter.data]);
 
-  return data;
+  return { data, setData };
 };
