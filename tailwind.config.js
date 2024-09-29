@@ -4,11 +4,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        "bme-900": "#003C43",
-        "bme-800": "#135D66",
-        "bme-700": "#77B0AA",
-        "bme-600": "#E3FEF7",
+        "bme-900": "#111111",
+        "bme-800": "#333333",
+        "bme-700": "#555555",
+        "bme-600": "#999999",
+        "bme-bg": "	#6699CC",
       },
+    },
+    fontFamily: {
+      "bme-fontFamily": ["Fredoka", "sans-serif"],
     },
   },
   plugins: [require("tailwindcss-animated")],

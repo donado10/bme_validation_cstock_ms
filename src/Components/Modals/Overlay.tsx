@@ -19,10 +19,6 @@ const MyPortal: React.FC<{
     return;
   });
 
-  el.addEventListener("keydown", (event: Event) => {
-    console.log();
-  });
-
   useEffect(() => {
     document.body.appendChild(el);
     return () => {

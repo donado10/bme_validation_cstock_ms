@@ -21,7 +21,7 @@ interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 const Title: React.FC<{ name: string }> = ({ name }) => {
-  return <h1 className="text-4xl font-extrabold text-bme-900">{name}</h1>;
+  return <h1 className="text-4xl font-semibold text-black">{name}</h1>;
 };
 
 const FilterDate = () => {
@@ -31,7 +31,7 @@ const FilterDate = () => {
   ) as IBillState;
   const dateRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   return (
-    <div className="flex w-fit items-center gap-8 rounded-lg border-2 border-bme-900 px-2 py-1 font-bold text-bme-900">
+    <div className="flex w-fit items-center gap-8 rounded-lg border-2 border-black px-2 py-1 font-bold text-black">
       <div>
         <input
           type="date"
@@ -48,7 +48,7 @@ const FilterDate = () => {
           );
         }}
       >
-        <IoSearch className="h-6 w-6 text-bme-900" />
+        <IoSearch className="h-6 w-6 text-black" />
       </button>
     </div>
   );
@@ -57,10 +57,10 @@ const FilterDate = () => {
 const FilterFirstLevel: React.FC<IFilterFirstLevel> = React.forwardRef(
   ({ name, selected, logo, ...props }) => {
     let className =
-      "flex items-center gap-4 font-bold px-4 py-1 text-bme-900 border-2 border-bme-900 rounded-lg";
+      "flex items-center gap-4 font-semibold px-4 py-1 text-bblack border-2 border-black rounded-lg";
     if (selected) {
       className =
-        "flex items-center gap-4  px-4 py-1 font-semibold text-bme-600 bg-black rounded-lg";
+        "flex items-center gap-4  px-4 py-1 font-semibold text-white bg-bme-bg rounded-lg";
     }
 
     return (
@@ -89,12 +89,12 @@ const FilterSearch = () => {
   ) as IBillState;
 
   return (
-    <div className="flex items-center gap-2 rounded-lg border-2 border-bme-900 px-2 py-1">
-      <IoSearch className="text-bme-900" />
+    <div className="flex items-center gap-2 rounded-lg border-2 border-black px-2 py-1">
+      <IoSearch className="text-black" />
       <input
         type="text"
         placeholder="Search..."
-        className="bg-transparent text-bme-900 outline-none"
+        className="bg-transparent font-medium text-black outline-none"
         onChange={(e) => {
           const value = e.currentTarget.value;
           dispatch(setFilters({ ...billState.filter!, search: value }));
@@ -126,12 +126,12 @@ function App() {
   }, []);
 
   return (
-    <main className="m-14 rounded-xl bg-white">
+    <main className="shadow-main m-14 rounded-xl bg-white">
       <div className="flex flex-col gap-6 p-8">
         <div>
           <Title name="Factures INTENDANCE" />
         </div>
-        <div className="flex flex-col justify-center gap-4 rounded-lg border-2 border-bme-900 p-4">
+        <div className="shadow-filter flex flex-col justify-center gap-4 rounded-lg p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div>

@@ -127,7 +127,7 @@ export const TableContainer: React.FC<{
   const navigate = useNavigate();
 
   return (
-    <div className="h-fit w-full overflow-scroll rounded-lg border-2 border-black sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+    <div className="border-bme-bg h-fit w-full overflow-scroll rounded-lg border-2 sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
       <Table>
         <Table.Header>
           <Table.HeaderValue value={"Piece"} />
@@ -156,7 +156,7 @@ export const TableContainer: React.FC<{
                             setViewBillDetails(true);
                           }}
                         >
-                          <IoEye className="h-7 w-7" />
+                          <IoEye className="text-bme-bg h-7 w-7" />
                         </button>
                         {!bill.status && (
                           <button
@@ -169,7 +169,7 @@ export const TableContainer: React.FC<{
                               navigate(`/?bill=${bill.DO_Piece}`);
                             }}
                           >
-                            <HiCheckCircle className="h-7 w-7" />
+                            <HiCheckCircle className="h-7 w-7 text-green-600" />
                           </button>
                         )}
                       </div>

@@ -19,7 +19,7 @@ interface ITable {
 
 const TableHeader: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <thead className="w-full bg-black text-bme-600">
+    <thead className="bg-bme-bg w-full font-thin text-white">
       <tr className="w-full">{children}</tr>
     </thead>
   );
@@ -31,14 +31,14 @@ const TableHeaderValue: React.FC<{ value: string; customClass?: string }> = ({
 }) => {
   if (value === "Actions") {
     return (
-      <th className="w-1/6 border-l-2 border-gray-300/15 px-4 py-4 text-right text-xl">
+      <th className="text-md w-1/6 border-l-2 border-gray-300/15 px-4 py-4 text-right font-semibold">
         {value}
       </th>
     );
   }
   if (value === "Piece") {
     return (
-      <th className="w-1/6 border-r-2 border-gray-300/15 px-4 py-4 text-left text-xl">
+      <th className="text-md w-1/6 border-r-2 border-gray-300/15 px-4 py-4 text-left font-semibold">
         {value}
       </th>
     );
@@ -49,7 +49,7 @@ const TableHeaderValue: React.FC<{ value: string; customClass?: string }> = ({
   }
 
   return (
-    <th className="w-1/6 border-r-2 border-gray-300/15 py-2 text-center text-xl">
+    <th className="text-md w-1/6 border-r-2 border-gray-300/15 py-2 text-center font-semibold">
       {value}
     </th>
   );
@@ -73,7 +73,7 @@ const TableBodyValue: React.FC<{
 }> = ({ value, actions, customClass }) => {
   if (actions) {
     return (
-      <td className="px-4 py-2 text-center text-lg font-semibold tracking-wider first:text-left last:text-right">
+      <td className="px-4 py-2 text-center text-lg font-thin tracking-wider first:text-left last:text-right">
         {actions}
       </td>
     );
@@ -88,7 +88,7 @@ const TableBodyValue: React.FC<{
   }
 
   return (
-    <td className="border-r-2 border-gray-300 px-4 py-2 text-center text-lg font-semibold tracking-wider first:text-left last:text-right">
+    <td className="border-r-2 border-gray-300 px-4 py-2 text-center text-lg font-normal tracking-wider first:text-left last:text-right">
       <span> {value}</span>
     </td>
   );
