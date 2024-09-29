@@ -178,7 +178,7 @@ export const TableContainer: React.FC<{
       setData([...sortedData]);
       return;
     }
-  }, [sort]);
+  }, [sort, JSON.stringify(data)]);
 
   const [viewBillDetails, setViewBillDetails] = useState<boolean>(false);
   const navigate = useNavigate();

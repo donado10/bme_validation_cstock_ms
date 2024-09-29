@@ -27,6 +27,7 @@ export interface IBillFilter {
 export interface IBillState {
   billLists: IBill[] | [];
   filter?: IBillFilter;
+  sort?: string;
 }
 
 const initialState: IBillState = {
@@ -50,6 +51,9 @@ const billSlice = createSlice({
     },
     setFilters: (state, action: PayloadAction<IBillFilter>) => {
       state.filter = { ...action.payload };
+    },
+    setSort: (state, action: PayloadAction<string>) => {
+      state.sort = action.payload;
     },
   },
 });
