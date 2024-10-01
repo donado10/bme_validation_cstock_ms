@@ -53,23 +53,23 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
               <Table.Header>
                 <Table.HeaderValue
                   value={"Référence article"}
-                  customClass="w-1/6  border-r-2 border-gray-300/15  py-2 text-center text-md"
+                  customClass="w-1/6  border-r-2 border-gray-300/15  py-2 text-center text-md font-semibold"
                 />
                 <Table.HeaderValue
                   value={"Designation article"}
-                  customClass="w-2/6  border-r-2 border-gray-300/15  py-2 text-center text-md"
+                  customClass="w-2/6  border-r-2 border-gray-300/15  py-2 text-center text-md font-semibold"
                 />
                 <Table.HeaderValue
                   value={"Prix Unitaire HT"}
-                  customClass="w-1/6  border-r-2 border-gray-300/15  py-2 text-center text-md"
+                  customClass="w-1/6  border-r-2 border-gray-300/15  py-2 text-center text-md font-semibold"
                 />
                 <Table.HeaderValue
                   value={"Quantité"}
-                  customClass="w-1/6  border-r-2 border-gray-300/15  py-2 text-center text-md"
+                  customClass="w-1/6  border-r-2 border-gray-300/15  py-2 text-center text-md font-semibold"
                 />
                 <Table.HeaderValue
                   value={"Montant HT"}
-                  customClass="w-1/6   border-gray-300/15  py-2 text-center text-md"
+                  customClass="w-1/6   border-gray-300/15  py-2 text-center text-md font-semibold"
                 />
               </Table.Header>
               <Table.Body>
@@ -80,23 +80,23 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
                       <Table.BodyRow key={i} rowID={i}>
                         <Table.BodyValue
                           value={ligne.AR_Ref}
-                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-semibold tracking-wider first:text-left last:text-right text-bme-800 "
+                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-normal tracking-wider first:text-left last:text-right text-bme-800 "
                         />
                         <Table.BodyValue
                           value={ligne.DL_Design}
-                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-semibold tracking-wider first:text-left last:text-right text-bme-800 "
+                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-normal tracking-wider first:text-left last:text-right text-bme-800 "
                         />
                         <Table.BodyValue
                           value={formatNumberWithSpace(ligne.DL_PrixUnitaire)}
-                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-semibold tracking-wider first:text-left last:text-right text-bme-800 "
+                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-normal tracking-wider first:text-left last:text-right text-bme-800 "
                         />
                         <Table.BodyValue
                           value={ligne.DL_Qte}
-                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-semibold tracking-wider first:text-left last:text-right text-bme-800 "
+                          customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-normal tracking-wider first:text-left last:text-right text-bme-800 "
                         />
                         <Table.BodyValue
                           value={formatNumberWithSpace(ligne.DL_MontantHT)}
-                          customClass="px-4 py-2 text-center text-xs font-semibold tracking-wider  text-bme-800 "
+                          customClass=" border-gray-300 px-4 py-2 text-center text-xs font-normal tracking-wider first:text-left last:text-right text-bme-800  "
                         />
                       </Table.BodyRow>
                     );
