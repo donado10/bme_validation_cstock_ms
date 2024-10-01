@@ -23,7 +23,7 @@ interface ITable {
 
 const TableHeader: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <thead className="bg-bme-bg w-full font-thin text-white">
+    <thead className="w-full bg-bme-bg font-thin text-white">
       <tr className="w-full">{children}</tr>
     </thead>
   );
@@ -121,9 +121,9 @@ const TableActions: React.FC<{ children: ReactNode }> = ({ children }) => {
 
 export default Table;
 
-Table.Header = TableHeader;
+Table.Header = memo(TableHeader);
 Table.HeaderValue = memo(TableHeaderValue);
-Table.Body = TableBody;
-Table.BodyValue = TableBodyValue;
-Table.BodyRow = TableBodyRow;
-Table.Actions = TableActions;
+Table.Body = memo(TableBody);
+Table.BodyValue = memo(TableBodyValue);
+Table.BodyRow = memo(TableBodyRow);
+Table.Actions = memo(TableActions);

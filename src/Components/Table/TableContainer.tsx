@@ -5,7 +5,6 @@ import { HiCheckCircle } from "react-icons/hi";
 import { IBill, IBillFilter } from "../../Store/features/bills";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../Store/store";
-import { useLocation, useNavigate } from "react-router-dom";
 import MyPortal from "../Modals/Overlay";
 import { ConfirmFactModal } from "../Modals/FactureModal";
 import { useFilterData } from "../../Hooks/UseFilterData";
@@ -17,18 +16,14 @@ const Title: React.FC<{ name: string }> = ({ name }) => {
   return <h1 className="text-4xl font-extrabold text-bme-800">{name}</h1>;
 };
 
-const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
-  onRemoveBillDetails,
-}) => {
+const BillDetails: React.FC<{
+  onRemoveBillDetails: React.Dispatch<{ status: boolean; piece: string }>;
+  piece: string;
+}> = ({ onRemoveBillDetails, piece }) => {
   const [data, setData] = useState<IBill | null>(null);
   const billSelector = useSelector((state: IRootState) => state.bills);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const billQueryValue = location.search.split("=")[1];
   useEffect(() => {
-    const bill = billSelector.billLists.find(
-      (bill) => bill.DO_Piece === billQueryValue,
-    );
+    const bill = billSelector.billLists.find((bill) => bill.DO_Piece === piece);
 
     if (bill) {
       setData(bill);
@@ -39,16 +34,15 @@ const BillDetails: React.FC<{ onRemoveBillDetails: React.Dispatch<any> }> = ({
     <div
       className="fixed inset-0 h-screen w-screen bg-black/50"
       onClick={() => {
-        onRemoveBillDetails(false);
-        navigate("/");
+        onRemoveBillDetails({ status: false, piece: "" });
       }}
     >
       <div className="relative h-screen w-screen bg-transparent">
         <div className="custom-animation-fade-in absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
           <div>
-            <Title name={`${billQueryValue}`} />
+            <Title name={piece} />
           </div>
-          <div className="border-bme-bg h-fit w-full overflow-scroll rounded-lg border-2 sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          <div className="h-fit w-full overflow-scroll rounded-lg border-2 border-bme-bg sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
             <Table>
               <Table.Header>
                 <Table.HeaderValue
@@ -117,8 +111,8 @@ export const TableContainer: React.FC<{
   const [enableModal, setEnableModal] = useState<{
     confirm: boolean;
     cancel: boolean;
-    bill: string;
-  }>({ confirm: false, cancel: false, bill: "" });
+    bill: { piece: string; date: string };
+  }>({ confirm: false, cancel: false, bill: { piece: "", date: "" } });
 
   const [sort, setSort] = useState<{ column: string; order: boolean }>({
     column: "piece",
@@ -180,11 +174,13 @@ export const TableContainer: React.FC<{
     }
   }, [sort, JSON.stringify(data)]);
 
-  const [viewBillDetails, setViewBillDetails] = useState<boolean>(false);
-  const navigate = useNavigate();
+  const [viewBillDetails, setViewBillDetails] = useState<{
+    status: boolean;
+    piece: string;
+  }>({ status: false, piece: "" });
 
   return (
-    <div className="border-bme-bg h-fit w-full overflow-scroll rounded-lg border-2 sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+    <div className="h-fit w-full overflow-scroll rounded-lg border-2 border-bme-bg sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
       <Table>
         <Table.Header>
           <Table.HeaderValue
@@ -274,11 +270,13 @@ export const TableContainer: React.FC<{
                       <div className="flex items-center justify-end gap-6">
                         <button
                           onClick={() => {
-                            navigate(`/?bill=${bill.DO_Piece}`);
-                            setViewBillDetails(true);
+                            setViewBillDetails({
+                              piece: bill.DO_Piece,
+                              status: true,
+                            });
                           }}
                         >
-                          <IoEye className="text-bme-bg h-7 w-7" />
+                          <IoEye className="h-7 w-7 text-bme-bg" />
                         </button>
                         {!bill.status && (
                           <button
@@ -286,9 +284,11 @@ export const TableContainer: React.FC<{
                               setEnableModal({
                                 cancel: false,
                                 confirm: true,
-                                bill: bill.DO_Piece,
+                                bill: {
+                                  piece: bill.DO_Piece,
+                                  date: bill.DO_Date,
+                                },
                               });
-                              navigate(`/?bill=${bill.DO_Piece}`);
                             }}
                           >
                             <HiCheckCircle className="h-7 w-7 text-green-600" />
@@ -302,22 +302,34 @@ export const TableContainer: React.FC<{
             })}
         </Table.Body>
       </Table>
-      {viewBillDetails && (
-        <BillDetails onRemoveBillDetails={setViewBillDetails} />
+      {viewBillDetails.status && (
+        <BillDetails
+          onRemoveBillDetails={setViewBillDetails}
+          piece={viewBillDetails.piece}
+        />
       )}
       {enableModal.confirm && (
         <MyPortal
           onClose={() => {
-            setEnableModal({ cancel: false, confirm: false, bill: "" });
-            navigate("/");
+            setEnableModal({
+              cancel: false,
+              confirm: false,
+              bill: { date: "", piece: "" },
+            });
           }}
           isOpen={enableModal.confirm}
           modal={
             <ConfirmFactModal
-              bill={enableModal.bill}
+              billDetail={{
+                piece: enableModal.bill.piece,
+                date: enableModal.bill.date,
+              }}
               closeModal={() => {
-                setEnableModal({ cancel: false, confirm: false, bill: "" });
-                navigate("/");
+                setEnableModal({
+                  cancel: false,
+                  confirm: false,
+                  bill: { date: "", piece: "" },
+                });
               }}
             />
           }

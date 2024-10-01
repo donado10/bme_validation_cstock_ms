@@ -6,24 +6,25 @@ import { GoAlertFill } from "react-icons/go";
 import { FiAlertTriangle } from "react-icons/fi";
 
 export const ConfirmFactModal: React.FC<{
-  bill: string;
+  billDetail: { piece: string; date: string };
   closeModal: () => void;
-}> = ({ bill, closeModal }) => {
-  const location = useLocation();
-  const billQueryValue = location.search.split("=")[1];
+}> = ({ billDetail, closeModal }) => {
   const dispatch = useDispatch();
 
   return (
     <div className="flex h-[15rem] w-[45rem] flex-col gap-4 overflow-hidden rounded-lg bg-white">
-      <div className="bg-bme-bg h-3 w-full"></div>
+      <div className="h-3 w-full bg-bme-bg"></div>
       <div className="flex w-full items-center gap-16 border-b-2 border-b-gray-500 p-8">
         <div>
-          <GoAlertFill className="text-bme-bg h-16 w-16" />
+          <GoAlertFill className="h-16 w-16 text-bme-bg" />
         </div>
         <div className="flex flex-col gap-1">
           <h1 className="text-xl font-medium text-black">
             Vouler vous confirmer la facture{" "}
-            <span className="text-md text-bme-bg font-bold">{bill}</span> ?
+            <span className="text-md font-bold text-bme-bg">
+              {billDetail.piece}
+            </span>{" "}
+            ?
           </h1>
           <h2 className="text-xs">
             La validation est définitive au niveau de cette application. Si vous
@@ -44,10 +45,42 @@ export const ConfirmFactModal: React.FC<{
 
         <button
           onClick={() => {
-            dispatch(validateBill(bill));
-            closeModal();
+            let ref = "";
+
+            if (billDetail.piece.search("LGFV")) {
+              console.log(billDetail.piece.includes("LGFV"));
+              console.log("L");
+              ref = "VENTES LP";
+            }
+            if (billDetail.piece.includes("RFV")) {
+              console.log("R");
+              ref = "VENTES RB";
+            }
+            if (billDetail.piece.includes("IFV")) {
+              console.log("I");
+              ref = "VENTES INTENDANCE";
+            }
+
+            fetch("http://bme_api.test:8080/api/execute-stock-procedure", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                ref: ref,
+                date: billDetail.date,
+                piece: billDetail.piece,
+              }), // Convert the request payload to JSON string
+            })
+              .then((response) => response.json()) // Parse the JSON response
+              .then((data) => {
+                dispatch(validateBill(billDetail.piece));
+                closeModal();
+                console.log(data);
+              }) // Handle the response
+              .catch((error) => console.error("Error:", error)); // Handle any errors
           }}
-          className="border-bme-bg text-bme-bg hover:bg-bme-bg rounded-lg border-2 px-4 py-1 hover:text-white"
+          className="rounded-lg border-2 border-bme-bg px-4 py-1 text-bme-bg hover:bg-bme-bg hover:text-white"
         >
           <span>Confirmer</span>
         </button>
