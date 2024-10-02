@@ -14,6 +14,11 @@ export default {
     fontFamily: {
       "bme-fontFamily": ["Fredoka", "sans-serif"],
     },
+    screens: {
+      xs: "0px",
+      md: "768px",
+      xl: "1060px",
+    },
   },
   plugins: [require("tailwindcss-animated")],
 };

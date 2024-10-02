@@ -48,9 +48,9 @@ const RBrun = () => {
         <Title name="Robert Brun" />
       </div>
       <FilterLayout>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div>
+        <div className="xs:flex-col xs:gap-8 flex justify-between xl:flex-row xl:items-center xl:gap-4">
+          <div className="xs:gap-8 xs:flex-col xs:items-start flex xl:flex-row xl:items-center xl:gap-8">
+            <div className="xs:w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
                 name="Toutes les factures"
@@ -70,7 +70,7 @@ const RBrun = () => {
                 }}
               />
             </div>
-            <div>
+            <div className="w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
                 name="Factures validées"
@@ -90,7 +90,7 @@ const RBrun = () => {
                 }}
               />
             </div>
-            <div>
+            <div className="w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
                 name="Factures non validées"
@@ -112,12 +112,12 @@ const RBrun = () => {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <div>
+            <div className="w-full">
               <FilterSearch />
             </div>
           </div>
         </div>
-        <div>
+        <div className="xs:mt-3 xl:mt-0">
           <FilterDate />
         </div>
       </FilterLayout>

@@ -19,8 +19,8 @@ export const FilterDate = () => {
   ) as IBillState;
   const dateRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   return (
-    <div className="flex w-fit items-center gap-8 rounded-lg border-2 border-bme-700 px-2 py-1 font-bold text-bme-700">
-      <div>
+    <div className="xs:w-full flex items-center gap-8 rounded-lg border-2 border-bme-700 px-2 py-1 font-bold text-bme-700 md:w-fit">
+      <div className="xs:justify-between xs:py-2 flex w-full items-center xl:py-0">
         <input
           type="date"
           className="bg-transparent font-semibold outline-none"
@@ -52,10 +52,10 @@ export const FilterDate = () => {
 export const FilterFirstLevel: React.FC<IFilterFirstLevel> = React.forwardRef(
   ({ name, selected, logo, ...props }) => {
     let className =
-      "flex items-center gap-4 font-semibold px-4 py-1 text-bme-700 border-2 border-bme-700 rounded-lg";
+      "xl:w-fit xs:w-full xs:py-3 flex items-center gap-4 font-semibold px-4 xl:py-1 text-bme-700 border-2 border-bme-700 rounded-lg";
     if (selected) {
       className =
-        "flex items-center gap-4  px-4 py-1 font-semibold text-white bg-bme-bg rounded-lg";
+        "xl:w-fit xs:w-full xs:py-3 flex items-center gap-4  px-4 xl:py-1 font-semibold text-white bg-bme-bg rounded-lg";
     }
 
     return (
@@ -73,7 +73,7 @@ export const FilterSearch = () => {
   ) as IBillState;
 
   return (
-    <div className="flex items-center gap-2 rounded-lg border-2 border-bme-700 px-2 py-1">
+    <div className="xs:w-full xs:py-3 flex items-center gap-2 rounded-lg border-2 border-bme-700 px-2 xl:w-fit xl:py-1">
       <IoSearch className="text-bme-700" />
       <input
         type="text"
@@ -84,6 +84,16 @@ export const FilterSearch = () => {
           dispatch(setFilters({ ...billState.filter!, search: value }));
         }}
       />
+    </div>
+  );
+};
+
+export const FilterLayoutRow: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  return (
+    <div className="shadow-filter flex flex-col justify-center gap-4 rounded-lg p-8">
+      {children}
     </div>
   );
 };
