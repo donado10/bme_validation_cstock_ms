@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   FilterDate,
   FilterFirstLevel,
@@ -39,6 +39,11 @@ const Intendance = () => {
   useEffect(() => {
     dispatch(addBills(data));
   }, []);
+
+  const memoizedBillData = useMemo(
+    () => billState.billLists,
+    [billState.billLists],
+  );
 
   return (
     <div className="flex flex-col gap-6 p-8">
@@ -121,7 +126,7 @@ const Intendance = () => {
       </FilterLayout>
       <div className="w-full">
         <TableContainer
-          raw_data={billState.billLists}
+          raw_data={memoizedBillData}
           filter={billState.filter!}
         />
       </div>

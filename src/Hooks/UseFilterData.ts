@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IBill, IBillFilter, addBills } from "../Store/features/bills";
-import {
-  formatDate,
-  formatDateToFull,
-  formatDateToSend,
-} from "../Utils/Functions";
+import { formatDateToFull, formatDateToSend } from "../Utils/Functions";
 import { useDispatch } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export enum EFilterBills {
   ALL_BILLS,
@@ -62,21 +58,29 @@ export const useFilterData = (filter: IFilterData) => {
   const location = useLocation();
   console.log(location.pathname.split("/")[1]);
 
+  const memoizedData = useMemo(() => filter.data, [filter.data]);
+
   useEffect(() => {
     let filteredData = filterByStatus(filter);
 
     if (billFilter.search) {
       filteredData = filterBySearch(filteredData, billFilter.search.toString());
-
+      const interval = setInterval(() => {
+        setData(filteredData);
+      }, 1000);
+      return () => {
+        clearInterval(interval);
+      };
+    }
+    if (!billFilter.search) {
       setData(filteredData);
     }
-    return;
-  }, [billFilter.search, filter.data]);
+  }, [billFilter.search, memoizedData]);
 
   useEffect(() => {
     let filteredData = filterByStatus(filter);
     setData(filteredData);
-  }, [billFilter.status, filter.data]);
+  }, [billFilter.status, memoizedData]);
 
   useEffect(() => {
     let filteredData = filterByStatus(filter);

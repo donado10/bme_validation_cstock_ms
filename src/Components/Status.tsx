@@ -1,5 +1,4 @@
 import React from "react";
-import { EFilterBills } from "../Hooks/UseFilterData";
 
 const Status: React.FC<{ status: boolean }> = ({ status }) => {
   if (!status) {

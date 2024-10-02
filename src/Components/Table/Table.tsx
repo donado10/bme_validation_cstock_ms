@@ -108,11 +108,13 @@ const TableBodyValue: React.FC<{
 };
 
 const TableBody: React.FC<{ children: ReactNode }> = ({ children }) => {
-  return <tbody className="">{children}</tbody>;
+  return <tbody className="max-h-[20rem]">{children}</tbody>;
 };
 
 const Table: ITableComponents = ({ children }: ITable) => {
-  return <table className="w-full overflow-hidden">{children}</table>;
+  return (
+    <table className="max-h-[40rem] w-full overflow-hidden">{children}</table>
+  );
 };
 
 const TableActions: React.FC<{ children: ReactNode }> = ({ children }) => {

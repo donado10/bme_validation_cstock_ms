@@ -32,12 +32,14 @@ const BillDetails: React.FC<{
 
   return (
     <div
-      className="fixed inset-0 h-screen w-screen bg-black/50"
-      onClick={() => {
-        onRemoveBillDetails({ status: false, piece: "" });
+      className="overlay fixed inset-0 h-screen w-screen bg-black/50"
+      onClick={(e) => {
+        if (e.currentTarget.classList.contains("overlay")) {
+          onRemoveBillDetails({ status: false, piece: "" });
+        }
       }}
     >
-      <div className="relative h-screen w-screen bg-transparent">
+      <div className="bill-detail relative h-screen w-screen bg-transparent">
         <div className="custom-animation-fade-in absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
           <div>
             <Title name={piece} />
@@ -180,7 +182,7 @@ export const TableContainer: React.FC<{
   }>({ status: false, piece: "" });
 
   return (
-    <div className="h-fit w-full overflow-scroll rounded-lg border-2 border-bme-bg sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+    <div className="max-h-[40rem] w-full overflow-scroll overflow-x-hidden rounded-lg border-2 border-bme-bg">
       <Table>
         <Table.Header>
           <Table.HeaderValue
