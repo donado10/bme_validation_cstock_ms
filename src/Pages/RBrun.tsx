@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   FilterDate,
   FilterFirstLevel,
@@ -36,7 +36,10 @@ const RBrun = () => {
     (state) => state.bills,
   ) as IBillState;
 
-  console.log(data);
+  const memoizedBillData = useMemo(
+    () => billState.billLists,
+    [billState.billLists],
+  );
 
   useEffect(() => {
     dispatch(addBills(data));
@@ -123,7 +126,7 @@ const RBrun = () => {
       </FilterLayout>
       <div className="w-full">
         <TableContainer
-          raw_data={billState.billLists}
+          raw_data={memoizedBillData}
           filter={billState.filter!}
         />
       </div>

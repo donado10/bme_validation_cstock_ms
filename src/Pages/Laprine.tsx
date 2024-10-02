@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   FilterDate,
   FilterFirstLevel,
@@ -36,11 +36,14 @@ const Laprine = () => {
     (state) => state.bills,
   ) as IBillState;
 
-  console.log(data);
-
   useEffect(() => {
     dispatch(addBills(data));
   }, []);
+
+  const memoizedBillData = useMemo(
+    () => billState.billLists,
+    [billState.billLists],
+  );
 
   return (
     <div className="flex flex-col gap-6 p-8">
@@ -123,7 +126,7 @@ const Laprine = () => {
       </FilterLayout>
       <div className="w-full">
         <TableContainer
-          raw_data={billState.billLists}
+          raw_data={memoizedBillData}
           filter={billState.filter!}
         />
       </div>
@@ -135,7 +138,7 @@ export async function laprineLoader() {
   const date = getPreviousDay();
 
   const response = await fetch(
-    `http://bme_api.test:8080/api/documents?date=${date}&souche=LGFV`,
+    `http://bme_api.test:8080/api/documents?date=${date}&souche=LGV`,
   );
 
   const data: IBill[] = await response.json();

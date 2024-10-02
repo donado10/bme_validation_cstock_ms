@@ -96,7 +96,7 @@ const LoaderPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
   useInterval(() => closeModal(), 1000);
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <PiSpinnerBold className="loader-custom h-[10rem] w-[10rem] text-bme-700" />
+      <PiSpinnerBold className="loader-custom h-[10rem] w-[10rem] text-bme-bg" />
     </div>
   );
 };
@@ -105,7 +105,7 @@ const ValidPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
   useInterval(() => closeModal(), 1000);
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <FaCheckCircle className="h-[10rem] w-[10rem] text-bme-700" />
+      <FaCheckCircle className="h-[10rem] w-[10rem] text-green-600" />
     </div>
   );
 };

@@ -87,7 +87,7 @@ export const TableContainer: React.FC<{
   }>({ status: false, piece: "" });
 
   return (
-    <div className="max-h-[40rem] w-full overflow-scroll overflow-x-hidden rounded-lg border-2 border-bme-bg">
+    <div className="max-h-[40rem] w-full overflow-scroll overflow-x-scroll rounded-lg border-2 border-bme-bg">
       <Table>
         <Table.Header>
           <Table.HeaderValue
