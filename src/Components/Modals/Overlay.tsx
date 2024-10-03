@@ -11,7 +11,7 @@ const MyPortal: React.FC<{
   el.classList.value =
     "fixed inset-0 w-screen h-100% bg-black/75 flex items-center justify-center";
   el.addEventListener("click", (e: Event) => {
-    const target = e.target as HTMLElement;
+    const target = e.currentTarget as HTMLElement;
     if (target.classList.contains("overlay")) {
       onClose();
     }

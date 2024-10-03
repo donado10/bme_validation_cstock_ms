@@ -23,18 +23,19 @@ export const BillDetails: React.FC<{
   return (
     <div
       className="overlay fixed inset-0 h-screen w-screen bg-black/50"
-      onClick={(e) => {
-        if (e.currentTarget.classList.contains("overlay")) {
+      onClick={(e: React.MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (target.classList.contains("wrapper")) {
           onRemoveBillDetails({ status: false, piece: "" });
         }
       }}
     >
-      <div className="bill-detail relative h-screen w-screen bg-transparent">
-        <div className="custom-animation-fade-in absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
+      <div className="wrapper relative h-screen w-screen bg-transparent">
+        <div className="bill-detail custom-animation-fade-in absolute right-0 top-0 flex h-full w-4/5 flex-col gap-8 bg-white p-4">
           <div>
             <Title name={piece} />
           </div>
-          <div className="h-fit w-full overflow-scroll rounded-lg border-2 border-bme-bg sm:overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          <div className="sm:overflow-x-scroll h-fit w-full overflow-scroll rounded-lg border-2 border-bme-bg [&::-webkit-scrollbar]:hidden">
             <Table>
               <Table.Header>
                 <Table.HeaderValue

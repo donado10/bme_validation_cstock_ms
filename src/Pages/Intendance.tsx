@@ -51,8 +51,8 @@ const Intendance = () => {
         <Title name="Intendance" />
       </div>
       <FilterLayout>
-        <div className="xs:flex-col xs:gap-8 flex justify-between xl:flex-row xl:items-center xl:gap-4">
-          <div className="xs:gap-8 xs:flex-col xs:items-start flex xl:flex-row xl:items-center xl:gap-8">
+        <div className="flex justify-between xs:flex-col xs:gap-8 xl:flex-row xl:items-center xl:gap-4">
+          <div className="flex xs:flex-col xs:items-start xs:gap-8 xl:flex-row xl:items-center xl:gap-8">
             <div className="xs:w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
@@ -137,9 +137,10 @@ const Intendance = () => {
 export async function intendanceLoader() {
   const date = getPreviousDay();
 
-  const response = await fetch(
+  /* const response = await fetch(
     `http://bme_api.test:8080/api/documents?date=${date}&souche=IFV`,
-  );
+  ); */
+  const response = await fetch(`/data/data.json`);
 
   const data: IBill[] = await response.json();
 
