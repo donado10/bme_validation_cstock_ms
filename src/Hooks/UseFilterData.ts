@@ -65,11 +65,11 @@ export const useFilterData = (filter: IFilterData) => {
 
     if (billFilter.search) {
       filteredData = filterBySearch(filteredData, billFilter.search.toString());
-      const interval = setInterval(() => {
+      const interval = setTimeout(() => {
         setData(filteredData);
       }, 1000);
       return () => {
-        clearInterval(interval);
+        clearTimeout(interval);
       };
     }
     if (!billFilter.search) {
@@ -89,13 +89,16 @@ export const useFilterData = (filter: IFilterData) => {
       let souche = location.pathname.split("/")[1].toLowerCase();
 
       if (souche === "intendance") {
+        console.log("I");
         souche = "IFV";
       }
       if (souche === "rbrun") {
+        console.log("R");
         souche = "RFV";
       }
       if (souche === "laprine") {
-        souche = "LGFV";
+        console.log("L");
+        souche = "LGV";
       }
 
       fetch(

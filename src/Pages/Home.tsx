@@ -4,11 +4,11 @@ import { RxExternalLink } from "react-icons/rx";
 const Home = () => {
   return (
     <div className="flex h-screen w-full items-center justify-center">
-      <main className="shadow-main m-14 flex w-2/5 flex-col items-center justify-center gap-4 rounded-xl bg-white p-10">
+      <main className="shadow-main xs:fit m-14 flex flex-col items-center justify-center gap-4 rounded-xl bg-white p-10 xl:w-2/5">
         <div className="w-96 rounded-lg border-2 border-bme-bg">
           <Link
             className="m-2 flex w-full items-center justify-between px-4"
-            to={"/Laprine"}
+            to={"/laprine"}
           >
             <span>Laprine</span>
             <span>
@@ -19,7 +19,7 @@ const Home = () => {
         <div className="w-96 rounded-lg border-2 border-bme-bg">
           <Link
             className="m-2 flex w-full items-center justify-between px-4"
-            to={"/Rbrun"}
+            to={"/rbrun"}
           >
             <span>Robert Brun</span>
             <span>
@@ -30,7 +30,7 @@ const Home = () => {
         <div className="w-96 rounded-lg border-2 border-bme-bg">
           <Link
             className="m-2 flex w-full items-center justify-between px-4"
-            to={"/Intendance"}
+            to={"/intendance"}
           >
             <span>Intendance</span>
             <span>

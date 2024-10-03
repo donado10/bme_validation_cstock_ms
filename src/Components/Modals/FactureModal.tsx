@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { IBill, IBillState, validateBill } from "../../Store/features/bills";
+import { IBillState, validateBill } from "../../Store/features/bills";
 import { GoAlertFill } from "react-icons/go";
 import { PiSpinnerBold } from "react-icons/pi";
 import { FaCheckCircle } from "react-icons/fa";
@@ -52,7 +51,7 @@ const BillAlert: React.FC<{
           onClick={() => {
             let ref = "";
 
-            if (billDetail.piece.search("LGV")) {
+            if (billDetail.piece.includes("LGV")) {
               ref = "VENTES LP";
             }
             if (billDetail.piece.includes("RFV")) {
@@ -75,7 +74,7 @@ const BillAlert: React.FC<{
               }), // Convert the request payload to JSON string
             })
               .then((response) => response.json()) // Parse the JSON response
-              .then((data) => {
+              .then(() => {
                 dispatch(validateBill(billDetail.piece));
 
                 setEnableLoader(false);
