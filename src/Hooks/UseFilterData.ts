@@ -56,7 +56,6 @@ export const useFilterData = (filter: IFilterData) => {
   const billFilter = filter.filterType;
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log(location.pathname.split("/")[1]);
 
   const memoizedData = useMemo(() => filter.data, [filter.data]);
 
@@ -86,7 +85,8 @@ export const useFilterData = (filter: IFilterData) => {
     let filteredData = filterByStatus(filter);
     if (billFilter.date) {
       filteredData = filterByDate(filteredData, billFilter.date);
-      let souche = location.pathname.split("/")[1].toLowerCase();
+      let souche = location.pathname.split("/")[3].toLowerCase();
+      console.log(souche);
 
       if (souche === "intendance") {
         console.log("I");

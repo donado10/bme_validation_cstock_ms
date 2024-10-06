@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-const MainLayout = () => {
+export const MainLayout = () => {
   return (
     <main className="shadow-main m-14 rounded-xl bg-white">
       <Outlet />
@@ -8,4 +8,10 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export const Layout = () => {
+  return (
+    <>
+      <Outlet />
+    </>
+  );
+};

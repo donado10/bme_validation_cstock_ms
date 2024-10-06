@@ -7,6 +7,7 @@ export interface IBillLigne {
   DL_PrixUnitaire: number;
   DL_Qte: number;
   DL_MontantHT: number;
+  status: boolean;
 }
 
 export interface IBill {

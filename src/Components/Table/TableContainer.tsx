@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "./Table";
 import { IoEye } from "react-icons/io5";
 import { HiCheckCircle } from "react-icons/hi";
@@ -10,6 +10,8 @@ import { formatDate, formatNumberWithSpace } from "../../Utils/Functions";
 import Status from "../Status";
 import { FaSort } from "react-icons/fa";
 import { BillDetails } from "./TableBillDetails";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const TableContainer: React.FC<{
   raw_data: IBill[];
@@ -86,6 +88,8 @@ export const TableContainer: React.FC<{
     piece: string;
   }>({ status: false, piece: "" });
 
+  const nagivate = useNavigate();
+
   return (
     <div className="max-h-[40rem] w-full overflow-scroll overflow-x-scroll rounded-lg border-2 border-bme-bg">
       <Table>
@@ -156,13 +160,16 @@ export const TableContainer: React.FC<{
               </div>
             }
           />
-          <Table.HeaderValue value={"Actions"} />
+          <Table.HeaderValue
+            value={"Actions"}
+            customClass="text-md w-1/6 border-l-2 border-gray-300/15 text-right font-semibold "
+          />
         </Table.Header>
         <Table.Body>
           {data.length > 0 &&
             data.map((bill, i) => {
               return (
-                <Table.BodyRow key={i} rowID={i}>
+                <Table.BodyRow key={bill.DO_Piece} rowID={i}>
                   <Table.BodyValue value={bill.DO_Piece} />
                   <Table.BodyValue value={formatDate(bill.DO_Date)} />
                   <Table.BodyValue
@@ -175,16 +182,17 @@ export const TableContainer: React.FC<{
                   <Table.BodyValue
                     element={
                       <div className="flex items-center justify-end gap-6">
-                        <button
-                          onClick={() => {
+                        <Link
+                          to={`${bill.DO_Piece}`}
+                          /* onClick={() => {
                             setViewBillDetails({
                               piece: bill.DO_Piece,
                               status: true,
-                            });
-                          }}
+                            }); 
+                          }} */
                         >
                           <IoEye className="h-7 w-7 text-bme-bg" />
-                        </button>
+                        </Link>
                         {!bill.status && (
                           <button
                             onClick={() => {
@@ -209,12 +217,6 @@ export const TableContainer: React.FC<{
             })}
         </Table.Body>
       </Table>
-      {viewBillDetails.status && (
-        <BillDetails
-          onRemoveBillDetails={setViewBillDetails}
-          piece={viewBillDetails.piece}
-        />
-      )}
       {enableModal.confirm && (
         <MyPortal
           onClose={() => {

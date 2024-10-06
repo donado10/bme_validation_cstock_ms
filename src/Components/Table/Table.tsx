@@ -34,38 +34,26 @@ const TableHeaderValue: React.FC<{
   customClass?: string;
   element?: ReactElement;
 }> = ({ value, customClass, element }) => {
-  if (value === "Actions") {
+  /* if (value === "Actions") {
     return (
       <th className="text-md w-1/6 border-l-2 border-gray-300/15 px-4 py-4 text-right font-semibold">
         {value}
       </th>
     );
-  }
-  if (value === "Piece") {
-    return (
-      <th className="text-md w-1/6 border-r-2 border-gray-300/15 px-4 py-4 text-left font-semibold">
-        {value}
-      </th>
-    );
+  } */
+
+  let className =
+    "text-md w-1/6 border-r-2 border-gray-300/15  px-4 py-4 text-center font-semibold ";
+
+  if (customClass) {
+    className = customClass;
   }
 
   if (element) {
-    return (
-      <th className="text-md w-1/6 border-r-2 border-gray-300/15 px-4 py-4 font-semibold">
-        {element}
-      </th>
-    );
+    return <th className={className}>{element}</th>;
   }
 
-  if (customClass) {
-    return <th className={customClass}>{value}</th>;
-  }
-
-  return (
-    <th className="text-md w-1/6 border-r-2 border-gray-300/15 py-2 text-center font-semibold">
-      {value}
-    </th>
-  );
+  return <th className={className}>{value}</th>;
 };
 
 const TableBodyRow: React.FC<{
@@ -84,24 +72,19 @@ const TableBodyValue: React.FC<{
   element?: ReactElement;
   customClass?: string;
 }> = ({ value, element, customClass }) => {
-  if (element) {
-    return (
-      <td className="border-r-2 border-gray-300 px-4 py-2 text-center text-lg font-thin tracking-wider first:text-left last:border-none last:text-right">
-        {element}
-      </td>
-    );
-  }
+  let className =
+    "border-r-2 border-gray-300 px-4 py-2 text-center text-lg font-normal tracking-wider text-bme-800 first:text-left last:text-right";
 
   if (customClass) {
-    return (
-      <td className={customClass}>
-        <span> {value}</span>
-      </td>
-    );
+    className = customClass;
+  }
+
+  if (element) {
+    return <td className={className}>{element}</td>;
   }
 
   return (
-    <td className="border-r-2 border-gray-300 px-4 py-2 text-center text-lg font-normal tracking-wider text-bme-800 first:text-left last:text-right">
+    <td className={className}>
       <span> {value}</span>
     </td>
   );

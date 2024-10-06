@@ -137,10 +137,10 @@ const Intendance = () => {
 export async function intendanceLoader() {
   const date = getPreviousDay();
 
-  /* const response = await fetch(
+  const response = await fetch(
     `http://bme_api.test:8080/api/documents?date=${date}&souche=IFV`,
-  ); */
-  const response = await fetch(`/data/data.json`);
+  );
+  //const response = await fetch(`/data/data.json`);
 
   const data: IBill[] = await response.json();
 
