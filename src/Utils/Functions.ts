@@ -41,6 +41,16 @@ export function getPreviousDay(): string {
 
   return `${year}-${month}-${day}`;
 }
+export function getDay(): string {
+  const today = new Date();
+  today.setDate(today.getDate());
+
+  const year: number = today.getFullYear();
+  const month: string = String(today.getMonth() + 1).padStart(2, "0");
+  const day: string = String(today.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
 
 export function formatDateToSend(dateString: string): string {
   const datePart: string = dateString.split(" ")[0];
@@ -51,5 +61,5 @@ export function getEarlierDate(date1: string, date2: string): string {
   const firstDate = new Date(date1);
   const secondDate = new Date(date2);
 
-  return firstDate < secondDate ? date1 : date2;
+  return firstDate <= secondDate ? date1 : date2;
 }

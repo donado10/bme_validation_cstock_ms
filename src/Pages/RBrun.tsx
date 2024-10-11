@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../Store/store";
 import { useRouteLoaderData } from "react-router-dom";
 import Title from "../Components/Title";
-import { getPreviousDay } from "../Utils/Functions";
+import { getDay } from "../Utils/Functions";
 
 const RBrun = () => {
   const data = useRouteLoaderData("rbrun-id") as IBill[];
@@ -145,7 +145,7 @@ const RBrun = () => {
 };
 
 export async function rbrunLoader() {
-  const date = getPreviousDay();
+  const date = getDay();
 
   const response = await fetch(
     `http://bme_api.test:8080/api/documents?date=${date}&souche=RFV`,

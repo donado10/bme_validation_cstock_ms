@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../Store/store";
 import { useRouteLoaderData } from "react-router-dom";
 import Title from "../Components/Title";
-import { getPreviousDay } from "../Utils/Functions";
+import { getDay } from "../Utils/Functions";
 
 const Laprine = () => {
   const data = useRouteLoaderData("laprine-id") as IBill[];
@@ -145,7 +145,7 @@ const Laprine = () => {
 };
 
 export async function laprineLoader() {
-  const date = getPreviousDay();
+  const date = getDay();
 
   const response = await fetch(
     `http://bme_api.test:8080/api/documents?date=${date}&souche=LGV`,

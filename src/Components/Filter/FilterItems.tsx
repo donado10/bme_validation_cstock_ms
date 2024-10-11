@@ -4,7 +4,7 @@ import { IRootState } from "../../Store/store";
 import { IBillState, setFilters } from "../../Store/features/bills";
 import { IoSearch } from "react-icons/io5";
 import React from "react";
-import { getEarlierDate, getPreviousDay } from "../../Utils/Functions";
+import { getDay, getEarlierDate } from "../../Utils/Functions";
 
 interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
   name: string;
@@ -25,12 +25,9 @@ export const FilterDate = () => {
           type="date"
           className="bg-transparent font-semibold outline-none"
           ref={dateRef}
-          defaultValue={getPreviousDay()}
+          defaultValue={getDay()}
           onChange={(e) => {
-            const date = getEarlierDate(
-              getPreviousDay(),
-              e.currentTarget.value,
-            );
+            const date = getEarlierDate(getDay(), e.currentTarget.value);
             e.currentTarget.value = date;
           }}
         />

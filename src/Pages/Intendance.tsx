@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../Store/store";
 import { useRouteLoaderData } from "react-router-dom";
 import Title from "../Components/Title";
-import { getPreviousDay } from "../Utils/Functions";
+import { getDay } from "../Utils/Functions";
 
 const Intendance = () => {
   const data = useRouteLoaderData("intendance-id") as IBill[];
@@ -145,7 +145,7 @@ const Intendance = () => {
 };
 
 export async function intendanceLoader() {
-  const date = getPreviousDay();
+  const date = getDay();
 
   const response = await fetch(
     `http://bme_api.test:8080/api/documents?date=${date}&souche=IFV`,
