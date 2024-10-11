@@ -44,7 +44,6 @@ const filterBySearch = (data: IBill[], billSearch: string) => {
 
 const filterByDate = (data: IBill[], billDate: string) => {
   const dateFormatted = formatDateToFull(billDate);
-  console.log(dateFormatted);
   if (data.length > 0) {
     return data.filter((bill) => bill.DO_Date.includes(dateFormatted));
   }
@@ -56,7 +55,6 @@ export const useFilterData = (filter: IFilterData) => {
   const billFilter = filter.filterType;
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log(location.pathname.split("/")[1]);
 
   const memoizedData = useMemo(() => filter.data, [filter.data]);
 
@@ -75,12 +73,12 @@ export const useFilterData = (filter: IFilterData) => {
     if (!billFilter.search) {
       setData(filteredData);
     }
-  }, [billFilter.search, memoizedData]);
+  }, [billFilter.search, billFilter.status, memoizedData]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     let filteredData = filterByStatus(filter);
     setData(filteredData);
-  }, [billFilter.status, memoizedData]);
+  }, [billFilter.status, memoizedData]); */
 
   useEffect(() => {
     let filteredData = filterByStatus(filter);
@@ -89,15 +87,12 @@ export const useFilterData = (filter: IFilterData) => {
       let souche = location.pathname.split("/")[1].toLowerCase();
 
       if (souche === "intendance") {
-        console.log("I");
         souche = "IFV";
       }
       if (souche === "rbrun") {
-        console.log("R");
         souche = "RFV";
       }
       if (souche === "laprine") {
-        console.log("L");
         souche = "LGV";
       }
 

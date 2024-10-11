@@ -27,12 +27,13 @@ export interface IBillFilter {
 export interface IBillState {
   billLists: IBill[] | [];
   filter?: IBillFilter;
-  sort?: string;
+  sort?: { column: string; order: boolean };
 }
 
 const initialState: IBillState = {
   billLists: [],
   filter: { status: EFilterBills.ALL_BILLS, date: null, search: null },
+  sort: { column: "piece", order: true },
 };
 
 const billSlice = createSlice({
@@ -52,11 +53,15 @@ const billSlice = createSlice({
     setFilters: (state, action: PayloadAction<IBillFilter>) => {
       state.filter = { ...action.payload };
     },
-    setSort: (state, action: PayloadAction<string>) => {
+    setSort: (
+      state,
+      action: PayloadAction<{ column: string; order: boolean }>,
+    ) => {
       state.sort = action.payload;
     },
   },
 });
 
 export default billSlice;
-export const { addBills, setFilters, validateBill } = billSlice.actions;
+export const { addBills, setFilters, validateBill, setSort } =
+  billSlice.actions;

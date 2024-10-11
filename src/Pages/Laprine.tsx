@@ -13,7 +13,7 @@ import {
 } from "../Store/features/bills";
 import { RiBillLine } from "react-icons/ri";
 import { TableContainer } from "../Components/Table/TableContainer";
-import { EFilterBills } from "../Hooks/UseFilterData";
+import { EFilterBills, useFilterData } from "../Hooks/UseFilterData";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../Store/store";
 import { useRouteLoaderData } from "react-router-dom";
@@ -45,14 +45,19 @@ const Laprine = () => {
     [billState.billLists],
   );
 
+  const { data: filteredData, setData: setFilteredData } = useFilterData({
+    data: memoizedBillData,
+    filterType: billState.filter!,
+  });
+
   return (
     <div className="flex flex-col gap-6 p-8">
       <div>
         <Title name="Laprine" />
       </div>
       <FilterLayout>
-        <div className="xs:flex-col xs:gap-8 flex justify-between xl:flex-row xl:items-center xl:gap-4">
-          <div className="xs:gap-8 xs:flex-col xs:items-start flex xl:flex-row xl:items-center xl:gap-8">
+        <div className="flex justify-between xs:flex-col xs:gap-8 xl:flex-row xl:items-center xl:gap-4">
+          <div className="flex xs:flex-col xs:items-start xs:gap-8 xl:flex-row xl:items-center xl:gap-8">
             <div className="xs:w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
@@ -125,10 +130,7 @@ const Laprine = () => {
         </div>
       </FilterLayout>
       <div className="w-full">
-        <TableContainer
-          raw_data={memoizedBillData}
-          filter={billState.filter!}
-        />
+        <TableContainer data={filteredData} />
       </div>
     </div>
   );

@@ -19,8 +19,8 @@ export const FilterDate = () => {
   ) as IBillState;
   const dateRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   return (
-    <div className="xs:w-full flex items-center gap-8 rounded-lg border-2 border-bme-700 px-2 py-1 font-bold text-bme-700 md:w-fit">
-      <div className="xs:justify-between xs:py-2 flex w-full items-center xl:py-0">
+    <div className="flex items-center gap-8 rounded-lg border-2 border-bme-700 px-2 py-1 font-bold text-bme-700 xs:w-full md:w-fit">
+      <div className="flex w-full items-center xs:justify-between xs:py-2 xl:py-0">
         <input
           type="date"
           className="bg-transparent font-semibold outline-none"
@@ -73,7 +73,7 @@ export const FilterSearch = () => {
   ) as IBillState;
 
   return (
-    <div className="xs:w-full xs:py-3 flex items-center gap-2 rounded-lg border-2 border-bme-700 px-2 xl:w-fit xl:py-1">
+    <div className="flex items-center gap-2 rounded-lg border-2 border-bme-700 px-2 xs:w-full xs:py-3 xl:w-fit xl:py-1">
       <IoSearch className="text-bme-700" />
       <input
         type="text"

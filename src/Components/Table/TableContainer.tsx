@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Table from "./Table";
 import { IoEye } from "react-icons/io5";
 import { HiCheckCircle } from "react-icons/hi";
-import { IBill, IBillFilter } from "../../Store/features/bills";
+import { IBill, IBillFilter, IBillState } from "../../Store/features/bills";
 import MyPortal from "../Modals/Overlay";
 import { ConfirmFactModal } from "../Modals/FactureModal";
 import { useFilterData } from "../../Hooks/UseFilterData";
@@ -10,28 +10,38 @@ import { formatDate, formatNumberWithSpace } from "../../Utils/Functions";
 import Status from "../Status";
 import { FaSort } from "react-icons/fa";
 import { BillDetails } from "./TableBillDetails";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from "../../Store/store";
+import { setSort } from "../../Store/features/bills";
 
 export const TableContainer: React.FC<{
-  raw_data: IBill[];
-  filter: IBillFilter;
-}> = ({ raw_data, filter }) => {
+  data: IBill[];
+}> = ({ data }) => {
   const [enableModal, setEnableModal] = useState<{
     confirm: boolean;
     cancel: boolean;
     bill: { piece: string; date: string };
   }>({ confirm: false, cancel: false, bill: { piece: "", date: "" } });
 
-  const [sort, setSort] = useState<{ column: string; order: boolean }>({
-    column: "piece",
-    order: true,
-  });
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const { data, setData } = useFilterData({
-    data: raw_data,
-    filterType: filter,
-  });
+  const [viewBillDetails, setViewBillDetails] = useState<{
+    status: boolean;
+    piece: string;
+  }>({ status: false, piece: "" });
+
+  const billState = useSelector<IRootState>(
+    (state) => state.bills,
+  ) as IBillState;
+
+  const [tableData, setTableData] = useState<IBill[]>([]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    const sort = billState.sort!;
+
     if (sort.column === "piece") {
       const sortedData = [...data];
       sortedData.sort((a, b) => {
@@ -40,7 +50,8 @@ export const TableContainer: React.FC<{
         }
         return b.DO_Piece.localeCompare(a.DO_Piece);
       });
-      setData([...sortedData]);
+      setTableData(sortedData);
+      setIsLoading(true);
       return;
     }
 
@@ -52,7 +63,8 @@ export const TableContainer: React.FC<{
         }
         return b.DO_TotalHT - a.DO_TotalHT;
       });
-      setData([...sortedData]);
+      setTableData(sortedData);
+      setIsLoading(true);
       return;
     }
 
@@ -64,7 +76,8 @@ export const TableContainer: React.FC<{
         }
         return b.DO_TotalTTC - a.DO_TotalTTC;
       });
-      setData([...sortedData]);
+      setTableData(sortedData);
+      setIsLoading(true);
       return;
     }
 
@@ -76,139 +89,152 @@ export const TableContainer: React.FC<{
         }
         return Number(b.status) - Number(a.status);
       });
-      setData([...sortedData]);
+      setTableData(sortedData);
+      setIsLoading(true);
       return;
     }
-  }, [sort, JSON.stringify(data)]);
-
-  const [viewBillDetails, setViewBillDetails] = useState<{
-    status: boolean;
-    piece: string;
-  }>({ status: false, piece: "" });
+  }, [JSON.stringify(billState.sort), JSON.stringify(data)]);
 
   return (
     <div className="max-h-[40rem] w-full overflow-scroll overflow-x-scroll rounded-lg border-2 border-bme-bg">
-      <Table>
-        <Table.Header>
-          <Table.HeaderValue
-            element={
-              <div className="flex items-center justify-between">
-                <span>Piece</span>
-                <button
-                  onClick={() => {
-                    setSort({ column: "piece", order: !sort.order });
-                  }}
-                >
-                  <FaSort />
-                </button>
-              </div>
-            }
-          />
-          <Table.HeaderValue
-            element={
-              <div className="flex items-center justify-between">
-                <span>Date</span>
-                <button>
-                  <FaSort />
-                </button>
-              </div>
-            }
-          />
-          <Table.HeaderValue
-            element={
-              <div className="flex items-center justify-between">
-                <span>Montant HT</span>
-                <button
-                  onClick={() => {
-                    setSort({ column: "ht", order: !sort.order });
-                  }}
-                >
-                  <FaSort />
-                </button>
-              </div>
-            }
-          />
-          <Table.HeaderValue
-            element={
-              <div className="flex items-center justify-between">
-                <span>Montant TTC</span>
-                <button
-                  onClick={() => {
-                    setSort({ column: "ttc", order: !sort.order });
-                  }}
-                >
-                  <FaSort />
-                </button>
-              </div>
-            }
-          />
-          <Table.HeaderValue
-            element={
-              <div className="flex items-center justify-between">
-                <span>Status</span>
-                <button
-                  onClick={() => {
-                    setSort({ column: "status", order: !sort.order });
-                  }}
-                >
-                  <FaSort />
-                </button>
-              </div>
-            }
-          />
-          <Table.HeaderValue value={"Actions"} />
-        </Table.Header>
-        <Table.Body>
-          {data.length > 0 &&
-            data.map((bill, i) => {
-              return (
-                <Table.BodyRow key={i} rowID={i}>
-                  <Table.BodyValue value={bill.DO_Piece} />
-                  <Table.BodyValue value={formatDate(bill.DO_Date)} />
-                  <Table.BodyValue
-                    value={formatNumberWithSpace(bill.DO_TotalHT)}
-                  />
-                  <Table.BodyValue
-                    value={formatNumberWithSpace(bill.DO_TotalTTC)}
-                  />
-                  <Table.BodyValue element={<Status status={bill.status} />} />
-                  <Table.BodyValue
-                    element={
-                      <div className="flex items-center justify-end gap-6">
+      {isLoading && (
+        <Table>
+          <Table.Header>
+            <Table.HeaderValue
+              element={
+                <div className="flex items-center justify-between">
+                  <span>Piece</span>
+                  <button
+                    onClick={() => {
+                      const sort = billState.sort!;
+                      dispatch(
+                        setSort({ column: "piece", order: !sort.order }),
+                      );
+                    }}
+                  >
+                    <FaSort />
+                  </button>
+                </div>
+              }
+            />
+            <Table.HeaderValue
+              element={
+                <div className="flex items-center justify-between">
+                  <span>Date</span>
+                  <button>
+                    <FaSort />
+                  </button>
+                </div>
+              }
+            />
+            <Table.HeaderValue
+              element={
+                <div className="flex items-center justify-between">
+                  <span>Montant HT</span>
+                  <button
+                    onClick={() => {
+                      const sort = billState.sort!;
+                      dispatch(setSort({ column: "ht", order: !sort.order }));
+                    }}
+                  >
+                    <FaSort />
+                  </button>
+                </div>
+              }
+            />
+            <Table.HeaderValue
+              element={
+                <div className="flex items-center justify-between">
+                  <span>Montant TTC</span>
+                  <button
+                    onClick={() => {
+                      const sort = billState.sort!;
+                      dispatch(setSort({ column: "ttc", order: !sort.order }));
+                    }}
+                  >
+                    <FaSort />
+                  </button>
+                </div>
+              }
+            />
+            <Table.HeaderValue
+              element={
+                <div className="flex items-center justify-between">
+                  <span>Status</span>
+                  <button
+                    onClick={() => {
+                      const sort = billState.sort!;
+                      dispatch(
+                        setSort({ column: "status", order: !sort.order }),
+                      );
+                    }}
+                  >
+                    <FaSort />
+                  </button>
+                </div>
+              }
+            />
+            <Table.HeaderValue value={"Actions"} />
+          </Table.Header>
+          <Table.Body>
+            {tableData.length > 0 &&
+              tableData.map((bill, i) => {
+                const MemoizedCta = React.memo(() => {
+                  return (
+                    <div
+                      key={bill.DO_Piece}
+                      className="flex items-center justify-end gap-6"
+                    >
+                      <button
+                        onClick={() => {
+                          setViewBillDetails({
+                            piece: bill.DO_Piece,
+                            status: true,
+                          });
+                        }}
+                      >
+                        <IoEye className="h-7 w-7 text-bme-bg" />
+                      </button>
+                      {!bill.status && (
                         <button
                           onClick={() => {
-                            setViewBillDetails({
-                              piece: bill.DO_Piece,
-                              status: true,
+                            setEnableModal({
+                              cancel: false,
+                              confirm: true,
+                              bill: {
+                                piece: bill.DO_Piece,
+                                date: bill.DO_Date,
+                              },
                             });
                           }}
                         >
-                          <IoEye className="h-7 w-7 text-bme-bg" />
+                          <HiCheckCircle className="h-7 w-7 text-green-600" />
                         </button>
-                        {!bill.status && (
-                          <button
-                            onClick={() => {
-                              setEnableModal({
-                                cancel: false,
-                                confirm: true,
-                                bill: {
-                                  piece: bill.DO_Piece,
-                                  date: bill.DO_Date,
-                                },
-                              });
-                            }}
-                          >
-                            <HiCheckCircle className="h-7 w-7 text-green-600" />
-                          </button>
-                        )}
-                      </div>
-                    }
-                  />
-                </Table.BodyRow>
-              );
-            })}
-        </Table.Body>
-      </Table>
+                      )}
+                    </div>
+                  );
+                });
+
+                return (
+                  <Table.BodyRow key={i} rowID={i}>
+                    <Table.BodyValue value={bill.DO_Piece} />
+                    <Table.BodyValue value={formatDate(bill.DO_Date)} />
+                    <Table.BodyValue
+                      value={formatNumberWithSpace(bill.DO_TotalHT)}
+                    />
+                    <Table.BodyValue
+                      value={formatNumberWithSpace(bill.DO_TotalTTC)}
+                    />
+                    <Table.BodyValue
+                      element={<Status status={bill.status} />}
+                    />
+                    <Table.BodyValue element={<MemoizedCta />} />
+                  </Table.BodyRow>
+                );
+              })}
+          </Table.Body>
+        </Table>
+      )}
       {viewBillDetails.status && (
         <BillDetails
           onRemoveBillDetails={setViewBillDetails}
