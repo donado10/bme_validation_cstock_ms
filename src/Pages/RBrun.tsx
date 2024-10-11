@@ -13,7 +13,7 @@ import {
 } from "../Store/features/bills";
 import { RiBillLine } from "react-icons/ri";
 import { TableContainer } from "../Components/Table/TableContainer";
-import { EFilterBills } from "../Hooks/UseFilterData";
+import { EFilterBills, useFilterData } from "../Hooks/UseFilterData";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../Store/store";
 import { useRouteLoaderData } from "react-router-dom";
@@ -36,14 +36,27 @@ const RBrun = () => {
     (state) => state.bills,
   ) as IBillState;
 
+  const billsNumber = billState.billLists.length;
+  const validBills = billState.billLists.filter(
+    (bill) => bill.status === true,
+  ).length;
+  const invalidBills = billState.billLists.filter(
+    (bill) => bill.status === false,
+  ).length;
+
+  useEffect(() => {
+    dispatch(addBills(data));
+  }, []);
+
   const memoizedBillData = useMemo(
     () => billState.billLists,
     [billState.billLists],
   );
 
-  useEffect(() => {
-    dispatch(addBills(data));
-  }, []);
+  const { data: filteredData } = useFilterData({
+    data: memoizedBillData,
+    filterType: billState.filter!,
+  });
 
   return (
     <div className="flex flex-col gap-6 p-8">
@@ -51,12 +64,12 @@ const RBrun = () => {
         <Title name="Robert Brun" />
       </div>
       <FilterLayout>
-        <div className="xs:flex-col xs:gap-8 flex justify-between xl:flex-row xl:items-center xl:gap-4">
-          <div className="xs:gap-8 xs:flex-col xs:items-start flex xl:flex-row xl:items-center xl:gap-8">
+        <div className="flex justify-between xs:flex-col xs:gap-8 xl:flex-row xl:items-center xl:gap-4">
+          <div className="flex xs:flex-col xs:items-start xs:gap-8 xl:flex-row xl:items-center xl:gap-8">
             <div className="xs:w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
-                name="Toutes les factures"
+                name={`Toutes les factures (${billsNumber})`}
                 selected={filter.buttons.all}
                 onClick={() => {
                   setFilter({
@@ -76,7 +89,7 @@ const RBrun = () => {
             <div className="w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
-                name="Factures validées"
+                name={`Factures validées (${validBills})`}
                 selected={filter.buttons.valid}
                 onClick={() => {
                   setFilter({
@@ -96,7 +109,7 @@ const RBrun = () => {
             <div className="w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
-                name="Factures non validées"
+                name={`Factures non validées (${invalidBills})`}
                 selected={filter.buttons.non_valid}
                 onClick={() => {
                   setFilter({
@@ -125,10 +138,7 @@ const RBrun = () => {
         </div>
       </FilterLayout>
       <div className="w-full">
-        <TableContainer
-          raw_data={memoizedBillData}
-          filter={billState.filter!}
-        />
+        <TableContainer data={filteredData} />
       </div>
     </div>
   );

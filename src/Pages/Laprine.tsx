@@ -36,6 +36,14 @@ const Laprine = () => {
     (state) => state.bills,
   ) as IBillState;
 
+  const billsNumber = billState.billLists.length;
+  const validBills = billState.billLists.filter(
+    (bill) => bill.status === true,
+  ).length;
+  const invalidBills = billState.billLists.filter(
+    (bill) => bill.status === false,
+  ).length;
+
   useEffect(() => {
     dispatch(addBills(data));
   }, []);
@@ -45,7 +53,7 @@ const Laprine = () => {
     [billState.billLists],
   );
 
-  const { data: filteredData, setData: setFilteredData } = useFilterData({
+  const { data: filteredData } = useFilterData({
     data: memoizedBillData,
     filterType: billState.filter!,
   });
@@ -61,7 +69,7 @@ const Laprine = () => {
             <div className="xs:w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
-                name="Toutes les factures"
+                name={`Toutes les factures (${billsNumber})`}
                 selected={filter.buttons.all}
                 onClick={() => {
                   setFilter({
@@ -81,7 +89,7 @@ const Laprine = () => {
             <div className="w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
-                name="Factures validées"
+                name={`Factures validées (${validBills})`}
                 selected={filter.buttons.valid}
                 onClick={() => {
                   setFilter({
@@ -101,7 +109,7 @@ const Laprine = () => {
             <div className="w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
-                name="Factures non validées"
+                name={`Factures non validées (${invalidBills})`}
                 selected={filter.buttons.non_valid}
                 onClick={() => {
                   setFilter({

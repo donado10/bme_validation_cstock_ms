@@ -14,7 +14,6 @@ const BillAlert: React.FC<{
   setEnableLoader: React.Dispatch<boolean>;
   setIsFactureValid: React.Dispatch<boolean>;
 }> = ({ billDetail, closeModal, setEnableLoader, setIsFactureValid }) => {
-  const dispatch = useDispatch();
   return (
     <>
       <div className="h-3 w-full bg-bme-bg"></div>
@@ -73,10 +72,14 @@ const BillAlert: React.FC<{
                 piece: billDetail.piece,
               }), // Convert the request payload to JSON string
             })
-              .then((response) => response.json()) // Parse the JSON response
+              .then((response) => {
+                if (response.status !== 200) {
+                  setEnableLoader(false);
+                  throw Error();
+                }
+                return response.json();
+              }) // Parse the JSON response
               .then(() => {
-                dispatch(validateBill(billDetail.piece));
-
                 setEnableLoader(false);
                 setIsFactureValid(true);
               }) // Handle the response
@@ -91,8 +94,7 @@ const BillAlert: React.FC<{
   );
 };
 
-const LoaderPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
-  useInterval(() => closeModal(), 1000);
+const LoaderPopup: React.FC<{ closeModal: () => void }> = () => {
   return (
     <div className="flex h-full w-full items-center justify-center">
       <PiSpinnerBold className="loader-custom h-[10rem] w-[10rem] text-bme-bg" />
@@ -100,11 +102,28 @@ const LoaderPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
   );
 };
 
-const ValidPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
-  useInterval(() => closeModal(), 1000);
+const ValidPopup: React.FC<{ closeModal: () => void; bill: string }> = ({
+  closeModal,
+  bill,
+}) => {
+  const dispatch = useDispatch();
+  useInterval(() => {
+    closeModal();
+    dispatch(validateBill(bill));
+  }, 1000);
   return (
     <div className="flex h-full w-full items-center justify-center">
       <FaCheckCircle className="h-[10rem] w-[10rem] text-green-600" />
+    </div>
+  );
+};
+const FailedPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
+  useInterval(() => {
+    closeModal();
+  }, 1000);
+  return (
+    <div className="flex h-full w-full items-center justify-center">
+      <GoAlertFill className="h-[10rem] w-[10rem] text-red-600" />
     </div>
   );
 };
@@ -155,7 +174,7 @@ export const ConfirmFactModal: React.FC<{
         )}
         {isFactureValid && (
           <>
-            <ValidPopup closeModal={closeModal} />
+            <ValidPopup closeModal={closeModal} bill={billDetail.piece} />
           </>
         )}
       </div>

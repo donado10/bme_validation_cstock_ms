@@ -13,7 +13,7 @@ import {
 } from "../Store/features/bills";
 import { RiBillLine } from "react-icons/ri";
 import { TableContainer } from "../Components/Table/TableContainer";
-import { EFilterBills } from "../Hooks/UseFilterData";
+import { EFilterBills, useFilterData } from "../Hooks/UseFilterData";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../Store/store";
 import { useRouteLoaderData } from "react-router-dom";
@@ -36,6 +36,14 @@ const Intendance = () => {
     (state) => state.bills,
   ) as IBillState;
 
+  const billsNumber = billState.billLists.length;
+  const validBills = billState.billLists.filter(
+    (bill) => bill.status === true,
+  ).length;
+  const invalidBills = billState.billLists.filter(
+    (bill) => bill.status === false,
+  ).length;
+
   useEffect(() => {
     dispatch(addBills(data));
   }, []);
@@ -44,6 +52,11 @@ const Intendance = () => {
     () => billState.billLists,
     [billState.billLists],
   );
+
+  const { data: filteredData } = useFilterData({
+    data: memoizedBillData,
+    filterType: billState.filter!,
+  });
 
   return (
     <div className="flex flex-col gap-6 p-8">
@@ -56,7 +69,7 @@ const Intendance = () => {
             <div className="xs:w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
-                name="Toutes les factures"
+                name={`Toutes les factures (${billsNumber})`}
                 selected={filter.buttons.all}
                 onClick={() => {
                   setFilter({
@@ -76,7 +89,7 @@ const Intendance = () => {
             <div className="w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
-                name="Factures validées"
+                name={`Factures validées (${validBills})`}
                 selected={filter.buttons.valid}
                 onClick={() => {
                   setFilter({
@@ -96,7 +109,7 @@ const Intendance = () => {
             <div className="w-full xl:w-auto">
               <FilterFirstLevel
                 logo={<RiBillLine />}
-                name="Factures non validées"
+                name={`Factures non validées (${invalidBills})`}
                 selected={filter.buttons.non_valid}
                 onClick={() => {
                   setFilter({
@@ -125,10 +138,7 @@ const Intendance = () => {
         </div>
       </FilterLayout>
       <div className="w-full">
-        <TableContainer
-          raw_data={memoizedBillData}
-          filter={billState.filter!}
-        />
+        <TableContainer data={filteredData} />
       </div>
     </div>
   );
@@ -137,10 +147,9 @@ const Intendance = () => {
 export async function intendanceLoader() {
   const date = getPreviousDay();
 
-  /* const response = await fetch(
+  const response = await fetch(
     `http://bme_api.test:8080/api/documents?date=${date}&souche=IFV`,
-  ); */
-  const response = await fetch(`/data/data.json`);
+  );
 
   const data: IBill[] = await response.json();
 
