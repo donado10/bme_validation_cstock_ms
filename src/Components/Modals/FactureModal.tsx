@@ -117,7 +117,7 @@ const ValidPopup: React.FC<{ closeModal: () => void; bill: string }> = ({
     </div>
   );
 };
-const FailedPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
+/* const FailedPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
   useInterval(() => {
     closeModal();
   }, 1000);
@@ -126,7 +126,7 @@ const FailedPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
       <GoAlertFill className="h-[10rem] w-[10rem] text-red-600" />
     </div>
   );
-};
+}; */
 
 export const ConfirmFactModal: React.FC<{
   billDetail: { piece: string; date: string };
