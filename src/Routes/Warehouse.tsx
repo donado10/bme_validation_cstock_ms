@@ -1,7 +1,8 @@
 import MainLayout from "../Components/MainLayout";
-import Intendance, { intendanceLoader } from "../Pages/Intendance";
-import Laprine, { laprineLoader } from "../Pages/Laprine";
-import RBrun, { rbrunLoader } from "../Pages/RBrun";
+import { intendanceLoader } from "../Pages/Intendance";
+import { laprineLoader } from "../Pages/Laprine";
+import { rbrunLoader } from "../Pages/RBrun";
+import Validation from "../Pages/Validation";
 
 const route_warehouse = [
   {
@@ -10,19 +11,29 @@ const route_warehouse = [
     children: [
       {
         path: "/intendance",
-        element: <Intendance />,
+        element: (
+          <Validation
+            title="Intendance"
+            souche="IFV"
+            loaderID="intendance-id"
+          />
+        ),
         id: "intendance-id",
         loader: intendanceLoader,
       },
       {
         path: "/laprine",
-        element: <Laprine />,
+        element: (
+          <Validation title="Laprine" souche="LGV" loaderID="laprine-id" />
+        ),
         id: "laprine-id",
         loader: laprineLoader,
       },
       {
         path: "/rbrun",
-        element: <RBrun />,
+        element: (
+          <Validation title="Robert Brun" souche="RFV" loaderID="rbrun-id" />
+        ),
         id: "rbrun-id",
         loader: rbrunLoader,
       },

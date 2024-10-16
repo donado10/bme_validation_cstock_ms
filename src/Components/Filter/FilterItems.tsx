@@ -5,6 +5,7 @@ import { IBillState, setFilters } from "../../Store/features/bills";
 import { IoSearch } from "react-icons/io5";
 import React from "react";
 import { getDay, getEarlierDate } from "../../Utils/Functions";
+import { useSearchParams } from "react-router-dom";
 
 interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
   name: string;
@@ -12,12 +13,16 @@ interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
   logo: ReactElement<any>;
 }
 
-export const FilterDate = () => {
+export const FilterDate: React.FC<{ defaultDate?: string }> = ({
+  defaultDate,
+}) => {
   const dispatch = useDispatch();
   const billState = useSelector<IRootState>(
     (state) => state.bills,
   ) as IBillState;
   const dateRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const [, setSearchParams] = useSearchParams();
+
   return (
     <div className="flex items-center gap-8 rounded-lg border-2 border-bme-700 px-2 py-1 font-bold text-bme-700 xs:w-full md:w-fit">
       <div className="flex w-full items-center xs:justify-between xs:py-2 xl:py-0">
@@ -25,16 +30,16 @@ export const FilterDate = () => {
           type="date"
           className="bg-transparent font-semibold outline-none"
           ref={dateRef}
-          defaultValue={getDay()}
+          defaultValue={defaultDate || getDay()}
           onChange={(e) => {
             const date = getEarlierDate(getDay(), e.currentTarget.value);
             e.currentTarget.value = date;
+            setSearchParams({ date: date });
           }}
         />
       </div>
       <button
         onClick={() => {
-          console.log(dateRef.current.value);
           dispatch(
             setFilters({ ...billState.filter!, date: dateRef.current.value }),
           );

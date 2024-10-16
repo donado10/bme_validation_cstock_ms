@@ -16,12 +16,15 @@ import { TableContainer } from "../Components/Table/TableContainer";
 import { EFilterBills, useFilterData } from "../Hooks/UseFilterData";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../Store/store";
-import { useRouteLoaderData } from "react-router-dom";
+import { useRouteLoaderData, useSearchParams } from "react-router-dom";
 import Title from "../Components/Title";
 import { getDay } from "../Utils/Functions";
+import { PiSpinnerBold } from "react-icons/pi";
+import { GrPowerReset } from "react-icons/gr";
 
 const Laprine = () => {
   const data = useRouteLoaderData("laprine-id") as IBill[];
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [filter, setFilter] = useState<{
     status: EFilterBills;
@@ -46,6 +49,7 @@ const Laprine = () => {
 
   useEffect(() => {
     dispatch(addBills(data));
+    setSearchParams({ date: getDay() });
   }, []);
 
   const memoizedBillData = useMemo(
@@ -53,15 +57,42 @@ const Laprine = () => {
     [billState.billLists],
   );
 
-  const { data: filteredData } = useFilterData({
-    data: memoizedBillData,
-    filterType: billState.filter!,
-  });
+  const [loader, setLoader] = useState<boolean>(false);
+
+  const { data: filteredData } = useFilterData(
+    {
+      data: memoizedBillData,
+      filterType: billState.filter!,
+    },
+    setLoader,
+  );
 
   return (
     <div className="flex flex-col gap-6 p-8">
-      <div>
-        <Title name="Laprine" />
+      <div className="flex items-center justify-between">
+        <div>
+          <Title name="Laprine" />
+        </div>
+        <button
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+          onClick={() => {
+            const date = searchParams.get("date");
+            setLoader(true);
+            fetch(
+              `http://bme_api.test:8080/api/newDocuments?date=${date}&souche=LGV`,
+            )
+              .then((res) => {
+                return res.json();
+              })
+              .then((data) => {
+                dispatch(addBills(data));
+                setLoader(false);
+              });
+          }}
+        >
+          <GrPowerReset className="h-[1rem] w-[1rem] text-bme-700" />
+          <span>Actualiser</span>
+        </button>
       </div>
       <FilterLayout>
         <div className="flex justify-between xs:flex-col xs:gap-8 xl:flex-row xl:items-center xl:gap-4">
@@ -138,7 +169,12 @@ const Laprine = () => {
         </div>
       </FilterLayout>
       <div className="w-full">
-        <TableContainer data={filteredData} />
+        {!loader && <TableContainer data={filteredData} />}
+        {loader && (
+          <div className="flex w-full items-center justify-center">
+            <PiSpinnerBold className="loader-custom h-[10rem] w-[10rem] text-bme-bg" />
+          </div>
+        )}
       </div>
     </div>
   );

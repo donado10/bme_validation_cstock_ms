@@ -16,15 +16,24 @@ import { TableContainer } from "../Components/Table/TableContainer";
 import { EFilterBills, useFilterData } from "../Hooks/UseFilterData";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../Store/store";
-import { useRouteLoaderData, useSearchParams } from "react-router-dom";
+import {
+  useLocation,
+  useRouteLoaderData,
+  useSearchParams,
+} from "react-router-dom";
 import Title from "../Components/Title";
-import { getDay } from "../Utils/Functions";
 import { PiSpinnerBold } from "react-icons/pi";
 import { GrPowerReset } from "react-icons/gr";
 
-const Rbrun = () => {
-  const data = useRouteLoaderData("rbrun-id") as IBill[];
-  const [searchParams, setSearchParams] = useSearchParams();
+interface IValidation {
+  title: string;
+  souche: string;
+  loaderID: string;
+}
+
+const Validation: React.FC<IValidation> = ({ title, souche, loaderID }) => {
+  const data = useRouteLoaderData(loaderID) as IBill[];
+  const [searchParams] = useSearchParams();
 
   const [filter, setFilter] = useState<{
     status: EFilterBills;
@@ -39,6 +48,10 @@ const Rbrun = () => {
     (state) => state.bills,
   ) as IBillState;
 
+  const location = useLocation();
+
+  console.log(location.search.split("=")[1]);
+
   const billsNumber = billState.billLists.length;
   const validBills = billState.billLists.filter(
     (bill) => bill.status === true,
@@ -49,8 +62,14 @@ const Rbrun = () => {
 
   useEffect(() => {
     dispatch(addBills(data));
-    setSearchParams({ date: getDay() });
+    //setSearchParams({ date: getDay() });
   }, []);
+
+  useEffect(() => {
+    dispatch(
+      setFilters({ ...billState.filter!, date: searchParams.get("date") }),
+    );
+  }, [location.search.split("=")[1]]);
 
   const memoizedBillData = useMemo(
     () => billState.billLists,
@@ -71,7 +90,7 @@ const Rbrun = () => {
     <div className="flex flex-col gap-6 p-8">
       <div className="flex items-center justify-between">
         <div>
-          <Title name="Robert Brun" />
+          <Title name={title} />
         </div>
         <button
           className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
@@ -79,7 +98,7 @@ const Rbrun = () => {
             const date = searchParams.get("date");
             setLoader(true);
             fetch(
-              `http://bme_api.test:8080/api/newDocuments?date=${date}&souche=RFV`,
+              `http://bme_api.test:8080/api/newDocuments?date=${date}&souche=${souche}`,
             )
               .then((res) => {
                 return res.json();
@@ -165,7 +184,7 @@ const Rbrun = () => {
           </div>
         </div>
         <div className="xs:mt-3 xl:mt-0">
-          <FilterDate />
+          <FilterDate defaultDate={searchParams.get("date")!} />
         </div>
       </FilterLayout>
       <div className="w-full">
@@ -180,16 +199,4 @@ const Rbrun = () => {
   );
 };
 
-export async function rbrunLoader() {
-  const date = getDay();
-
-  const response = await fetch(
-    `http://bme_api.test:8080/api/documents?date=${date}&souche=RFV`,
-  );
-
-  const data: IBill[] = await response.json();
-
-  return data;
-}
-
-export default Rbrun;
+export default Validation;

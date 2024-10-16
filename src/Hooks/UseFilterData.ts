@@ -50,7 +50,10 @@ const filterByDate = (data: IBill[], billDate: string) => {
   return data;
 };
 
-export const useFilterData = (filter: IFilterData) => {
+export const useFilterData = (
+  filter: IFilterData,
+  setLoader: React.Dispatch<any>,
+) => {
   const [data, setData] = useState<IBill[]>([]);
   const billFilter = filter.filterType;
   const dispatch = useDispatch();
@@ -96,6 +99,7 @@ export const useFilterData = (filter: IFilterData) => {
         souche = "LGV";
       }
 
+      setLoader(true);
       fetch(
         `http://bme_api.test:8080/api/documents?date=${formatDateToSend(billFilter.date)}&souche=${souche}`,
       )
@@ -103,6 +107,7 @@ export const useFilterData = (filter: IFilterData) => {
         .then((data) => {
           setData(data);
           dispatch(addBills(data));
+          setLoader(false);
           return;
         });
     }
