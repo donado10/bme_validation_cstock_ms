@@ -24,6 +24,7 @@ import {
 import Title from "../Components/Title";
 import { PiSpinnerBold } from "react-icons/pi";
 import { GrPowerReset } from "react-icons/gr";
+import { getDay } from "../Utils/Functions";
 
 interface IValidation {
   title: string;
@@ -50,8 +51,7 @@ const Validation: React.FC<IValidation> = ({ title, souche, loaderID }) => {
 
   const location = useLocation();
 
-  console.log(location.search.split("=")[1]);
-
+  //Calcul nombre de factures
   const billsNumber = billState.billLists.length;
   const validBills = billState.billLists.filter(
     (bill) => bill.status === true,
@@ -62,13 +62,15 @@ const Validation: React.FC<IValidation> = ({ title, souche, loaderID }) => {
 
   useEffect(() => {
     dispatch(addBills(data));
-    //setSearchParams({ date: getDay() });
   }, []);
 
   useEffect(() => {
-    dispatch(
-      setFilters({ ...billState.filter!, date: searchParams.get("date") }),
-    );
+    const date =
+      new Date(searchParams.get("date")!) < new Date(getDay())
+        ? searchParams.get("date")
+        : getDay();
+
+    dispatch(setFilters({ ...billState.filter!, date: date }));
   }, [location.search.split("=")[1]]);
 
   const memoizedBillData = useMemo(
