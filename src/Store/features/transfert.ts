@@ -57,7 +57,7 @@ const transfertSlice = createSlice({
       state.transfertLists.forEach((transfert) => {
         if (transfert.DO_Piece === action.payload) {
           transfert.status = true;
-          transfert.DO_Ligne.forEach((ligne) => ligne.status === true);
+          transfert.DO_Ligne.forEach((ligne) => (ligne.status = true));
         }
       });
     },

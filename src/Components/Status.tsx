@@ -13,7 +13,7 @@ const Status: React.FC<{ status: boolean }> = ({ status }) => {
   return (
     <div className="flex items-center gap-4 pl-3">
       <div className="h-3 w-3 rounded-full bg-green-600"></div>
-      <h2>Validée</h2>
+      <h2>A jour</h2>
     </div>
   );
 };

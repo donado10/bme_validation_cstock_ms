@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { getDay } from "../../Utils/Functions";
 
 export interface IBillLigne {
   AR_Ref: string;
@@ -37,7 +38,7 @@ export interface IBillState {
 
 const initialState: IBillState = {
   billLists: [],
-  filter: { status: EFilterBills.ALL_BILLS, date: null, search: null },
+  filter: { status: EFilterBills.ALL_BILLS, date: getDay(), search: null },
   sort: { column: "piece", order: true },
 };
 

@@ -8,6 +8,8 @@ import { IRootState } from "../../Store/store";
 import React from "react";
 import { HiCheckCircle } from "react-icons/hi";
 import { IoMdCloseCircle } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa6";
 
 export const TransfertDetails: React.FC<{
   onRemoveTransfertDetails: React.Dispatch<{ status: boolean; piece: string }>;
@@ -79,12 +81,12 @@ export const TransfertDetails: React.FC<{
                         <div className="flex items-center justify-center gap-6">
                           {ligne.status && (
                             <div>
-                              <HiCheckCircle className="h-7 w-7 text-green-600" />
+                              <FaCheck className="h-7 w-7 text-green-600" />
                             </div>
                           )}
                           {!ligne.status && (
                             <div>
-                              <IoMdCloseCircle className="h-7 w-7 text-red-600" />
+                              <IoClose className="h-7 w-7 text-red-600" />
                             </div>
                           )}
                         </div>

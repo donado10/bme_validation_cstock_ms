@@ -42,6 +42,8 @@ const Transfert = () => {
 
   useEffect(() => {
     const date = searchParams.get("date") || getDay();
+
+    dispatch(setTransfertFilters({ ...transfertState.filter!, date: date }));
     setLoader(true);
     fetch(`http://bme_api.test:8080/api/documentsMT?date=${date}`)
       .then((res) => res.json())
@@ -62,12 +64,14 @@ const Transfert = () => {
   }, []);
 
   useEffect(() => {
-    const date =
-      new Date(searchParams.get("date")!) < new Date(getDay())
-        ? searchParams.get("date")
-        : getDay();
+    if (searchParams.get("date")) {
+      const date =
+        new Date(searchParams.get("date")!) < new Date(getDay())
+          ? searchParams.get("date")
+          : getDay();
 
-    dispatch(setTransfertFilters({ ...transfertState.filter!, date: date }));
+      dispatch(setTransfertFilters({ ...transfertState.filter!, date: date }));
+    }
   }, [location.search.split("=")[1]]);
 
   const memoizedTransfertData = useMemo(
@@ -98,14 +102,15 @@ const Transfert = () => {
     <div className="flex flex-col gap-6 p-8">
       <div className="flex items-center justify-between">
         <div>
-          <Title name="Transfert de stock" />
+          <Title name="Transfert Stock" />
         </div>
         <button
           className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
           onClick={() => {
-            const date = searchParams.get("date");
+            const date =
+              searchParams.get("date") || transfertState.filter!.date;
             setLoader(true);
-            fetch(`http://bme_api.test:8080/api/documentsMT?date=${date}`)
+            fetch(`http://bme_api.test:8080/api/newDocumentsMT?date=${date}`)
               .then((res) => {
                 return res.json();
               })
@@ -128,6 +133,7 @@ const Transfert = () => {
           <span>Actualiser</span>
         </button>
       </div>
+
       <FilterLayout>
         <div className="flex justify-between xs:flex-col xs:gap-8 xl:flex-row xl:items-center xl:gap-4">
           <div className="flex xs:flex-col xs:items-start xs:gap-8 xl:flex-row xl:items-center xl:gap-8">
@@ -202,6 +208,7 @@ const Transfert = () => {
           <FilterDate defaultDate={location.search.split("=")[1]!} />
         </div>
       </FilterLayout>
+
       <div className="w-full">
         {!loader && <TableTransfertsContainer data={filteredData} />}
         {loader && (
