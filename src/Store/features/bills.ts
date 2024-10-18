@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EFilterBills } from "../../Hooks/UseFilterData";
 
 export interface IBillLigne {
   AR_Ref: string;
@@ -7,6 +6,12 @@ export interface IBillLigne {
   DL_PrixUnitaire: number;
   DL_Qte: number;
   DL_MontantHT: number;
+}
+
+export enum EFilterBills {
+  ALL_BILLS,
+  VALID_BILLS,
+  NO_VALID_BILLS,
 }
 
 export interface IBill {

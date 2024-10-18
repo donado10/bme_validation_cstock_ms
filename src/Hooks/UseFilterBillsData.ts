@@ -1,14 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
-import { IBill, IBillFilter, addBills } from "../Store/features/bills";
+import {
+  EFilterBills,
+  IBill,
+  IBillFilter,
+  addBills,
+} from "../Store/features/bills";
 import { formatDateToFull, formatDateToSend } from "../Utils/Functions";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-
-export enum EFilterBills {
-  ALL_BILLS,
-  VALID_BILLS,
-  NO_VALID_BILLS,
-}
 
 interface IFilterData {
   data: IBill[];
@@ -50,7 +49,7 @@ const filterByDate = (data: IBill[], billDate: string) => {
   return data;
 };
 
-export const useFilterData = (
+export const useFilterBillsData = (
   filter: IFilterData,
   setLoader: React.Dispatch<any>,
 ) => {
@@ -77,11 +76,6 @@ export const useFilterData = (
       setData(filteredData);
     }
   }, [billFilter.search, billFilter.status, memoizedData]);
-
-  /* useEffect(() => {
-    let filteredData = filterByStatus(filter);
-    setData(filteredData);
-  }, [billFilter.status, memoizedData]); */
 
   useEffect(() => {
     let filteredData = filterByStatus(filter);

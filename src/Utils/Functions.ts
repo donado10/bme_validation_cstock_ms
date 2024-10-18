@@ -63,3 +63,33 @@ export function getEarlierDate(date1: string, date2: string): string {
 
   return firstDate <= secondDate ? date1 : date2;
 }
+
+export function formatTransfertWareHouse(de_no: string): string {
+  if (de_no === "1") {
+    return "Laprine";
+  }
+  if (de_no === "71") {
+    return "Robert Brun";
+  }
+
+  if (de_no === "72") {
+    return "Intendance";
+  }
+
+  return de_no;
+}
+
+export function formatTransfertForBackend(warehouse: string): string {
+  if (warehouse === "Laprine") {
+    return "Laprine";
+  }
+  if (warehouse === "Robert Brun") {
+    return "RB";
+  }
+
+  if (warehouse === "Intendance") {
+    return "INT";
+  }
+
+  return warehouse;
+}

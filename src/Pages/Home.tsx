@@ -8,7 +8,7 @@ const Home = () => {
         <div className="w-96 rounded-lg border-2 border-bme-bg">
           <Link
             className="m-2 flex w-full items-center justify-between px-4"
-            to={"/laprine"}
+            to={"validation/laprine"}
           >
             <span>Laprine</span>
             <span>
@@ -19,7 +19,7 @@ const Home = () => {
         <div className="w-96 rounded-lg border-2 border-bme-bg">
           <Link
             className="m-2 flex w-full items-center justify-between px-4"
-            to={"/rbrun"}
+            to={"validation/rbrun"}
           >
             <span>Robert Brun</span>
             <span>
@@ -30,9 +30,20 @@ const Home = () => {
         <div className="w-96 rounded-lg border-2 border-bme-bg">
           <Link
             className="m-2 flex w-full items-center justify-between px-4"
-            to={"/intendance"}
+            to={"validation/intendance"}
           >
             <span>Intendance</span>
+            <span>
+              <RxExternalLink />
+            </span>
+          </Link>
+        </div>
+        <div className="w-96 rounded-lg border-2 border-bme-bg">
+          <Link
+            className="m-2 flex w-full items-center justify-between px-4"
+            to={"transfert"}
+          >
+            <span>Transfert</span>
             <span>
               <RxExternalLink />
             </span>

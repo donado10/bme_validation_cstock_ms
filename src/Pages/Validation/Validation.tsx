@@ -3,37 +3,31 @@ import {
   FilterDate,
   FilterFirstLevel,
   FilterLayout,
-  FilterSearch,
-} from "../Components/Filter/FilterItems";
+  FilterBillSearch,
+} from "../../Components/Filter/FilterItems";
 import {
   addBills,
-  IBill,
+  EFilterBills,
   IBillState,
   setFilters,
-} from "../Store/features/bills";
+} from "../../Store/features/bills";
 import { RiBillLine } from "react-icons/ri";
-import { TableContainer } from "../Components/Table/TableContainer";
-import { EFilterBills, useFilterData } from "../Hooks/UseFilterData";
+import { TableBillsContainer } from "../../Components/Table/TableBillsContainer";
+import { useFilterBillsData } from "../../Hooks/UseFilterBillsData";
 import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../Store/store";
-import {
-  useLocation,
-  useRouteLoaderData,
-  useSearchParams,
-} from "react-router-dom";
-import Title from "../Components/Title";
+import { IRootState } from "../../Store/store";
+import { useLocation, useSearchParams } from "react-router-dom";
+import Title from "../../Components/Title";
 import { PiSpinnerBold } from "react-icons/pi";
 import { GrPowerReset } from "react-icons/gr";
-import { getDay } from "../Utils/Functions";
+import { getDay } from "../../Utils/Functions";
 
 interface IValidation {
   title: string;
   souche: string;
-  loaderID: string;
 }
 
-const Validation: React.FC<IValidation> = ({ title, souche, loaderID }) => {
-  const data = useRouteLoaderData(loaderID) as IBill[];
+const Validation: React.FC<IValidation> = ({ title, souche }) => {
   const [searchParams] = useSearchParams();
 
   const [filter, setFilter] = useState<{
@@ -61,7 +55,16 @@ const Validation: React.FC<IValidation> = ({ title, souche, loaderID }) => {
   ).length;
 
   useEffect(() => {
-    dispatch(addBills(data));
+    const date = getDay();
+    setLoader(true);
+    fetch(
+      `http://bme_api.test:8080/api/documents?date=${date}&souche=${souche}`,
+    )
+      .then((res) => res.json())
+      .then((dataRes) => {
+        setLoader(false);
+        dispatch(addBills(dataRes));
+      });
   }, []);
 
   useEffect(() => {
@@ -80,7 +83,7 @@ const Validation: React.FC<IValidation> = ({ title, souche, loaderID }) => {
 
   const [loader, setLoader] = useState<boolean>(false);
 
-  const { data: filteredData } = useFilterData(
+  const { data: filteredData } = useFilterBillsData(
     {
       data: memoizedBillData,
       filterType: billState.filter!,
@@ -181,7 +184,7 @@ const Validation: React.FC<IValidation> = ({ title, souche, loaderID }) => {
           </div>
           <div className="flex items-center gap-4">
             <div className="w-full">
-              <FilterSearch />
+              <FilterBillSearch />
             </div>
           </div>
         </div>
@@ -190,7 +193,7 @@ const Validation: React.FC<IValidation> = ({ title, souche, loaderID }) => {
         </div>
       </FilterLayout>
       <div className="w-full">
-        {!loader && <TableContainer data={filteredData} />}
+        {!loader && <TableBillsContainer data={filteredData} />}
         {loader && (
           <div className="flex w-full items-center justify-center">
             <PiSpinnerBold className="loader-custom h-[10rem] w-[10rem] text-bme-bg" />

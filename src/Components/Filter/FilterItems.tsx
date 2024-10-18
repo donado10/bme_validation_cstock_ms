@@ -6,6 +6,10 @@ import { IoSearch } from "react-icons/io5";
 import React from "react";
 import { getDay, getEarlierDate } from "../../Utils/Functions";
 import { useSearchParams } from "react-router-dom";
+import {
+  ITransfertState,
+  setTransfertFilters,
+} from "../../Store/features/transfert";
 
 interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
   name: string;
@@ -68,7 +72,7 @@ export const FilterFirstLevel: React.FC<IFilterFirstLevel> = React.forwardRef(
     );
   },
 );
-export const FilterSearch = () => {
+export const FilterBillSearch = () => {
   const dispatch = useDispatch();
   const billState = useSelector<IRootState>(
     (state) => state.bills,
@@ -84,6 +88,29 @@ export const FilterSearch = () => {
         onChange={(e) => {
           const value = e.currentTarget.value;
           dispatch(setFilters({ ...billState.filter!, search: value }));
+        }}
+      />
+    </div>
+  );
+};
+export const FilterTransfertSearch = () => {
+  const dispatch = useDispatch();
+  const transfertState = useSelector<IRootState>(
+    (state) => state.transferts,
+  ) as ITransfertState;
+
+  return (
+    <div className="flex items-center gap-2 rounded-lg border-2 border-bme-700 px-2 xs:w-full xs:py-3 xl:w-fit xl:py-1">
+      <IoSearch className="text-bme-700" />
+      <input
+        type="text"
+        placeholder="Search..."
+        className="bg-transparent font-medium text-bme-700 outline-none"
+        onChange={(e) => {
+          const value = e.currentTarget.value;
+          dispatch(
+            setTransfertFilters({ ...transfertState.filter!, search: value }),
+          );
         }}
       />
     </div>

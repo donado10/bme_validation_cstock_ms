@@ -1,0 +1,26 @@
+[
+  {
+    "DO_Piece": "IFV425391",
+    "DO_Date": "2024-09-12 00:00:00.000",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "CONELA63-EL63CF",
+        "DL_Design": "CONGELATEUR ELACTRON HORIZONTAL 750L SILVER EL63CFS",
+        "DL_PrixUnitaire": 338983,
+        "DL_Qte": 1,
+        "DL_MontantHT": 338983,
+        "status": true
+      },
+      {
+        "AR_Ref": "TVFOX43-43SMART",
+        "DL_Design": "TELEVISEUR FOX 43 SMART ANDROID 43UHD",
+        "DL_PrixUnitaire": 135593,
+        "DL_Qte": 1,
+        "DL_MontantHT": 135593,
+        "status": true
+      }
+    ]
+  }
+]

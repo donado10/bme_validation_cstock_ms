@@ -2,44 +2,47 @@ import { useEffect, useState } from "react";
 import Table from "./Table";
 import { IoEye } from "react-icons/io5";
 import { HiCheckCircle } from "react-icons/hi";
-import { IBill, IBillState } from "../../Store/features/bills";
+import {
+  ITransfert,
+  ITransfertState,
+  setFilterSort,
+} from "../../Store/features/transfert";
 import MyPortal from "../Modals/Overlay";
-import { ConfirmFactModal } from "../Modals/FactureModal";
-import { formatDate, formatNumberWithSpace } from "../../Utils/Functions";
+import { formatDate } from "../../Utils/Functions";
 import Status from "../Status";
 import { FaSort } from "react-icons/fa";
-import { BillDetails } from "./TableBillDetails";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../Store/store";
-import { setSort } from "../../Store/features/bills";
+import { TransfertDetails } from "./TableTransfertDetails";
+import { ConfirmTransfertModal } from "../Modals/TransfertModal";
 
-export const TableContainer: React.FC<{
-  data: IBill[];
+export const TableTransfertsContainer: React.FC<{
+  data: ITransfert[];
 }> = ({ data }) => {
   const [enableModal, setEnableModal] = useState<{
     confirm: boolean;
     cancel: boolean;
-    bill: { piece: string; date: string };
-  }>({ confirm: false, cancel: false, bill: { piece: "", date: "" } });
+    transfert: ITransfert | null;
+  }>({ confirm: false, cancel: false, transfert: null });
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const [viewBillDetails, setViewBillDetails] = useState<{
+  const [viewtransfertDetails, setViewTransfertDetails] = useState<{
     status: boolean;
     piece: string;
   }>({ status: false, piece: "" });
 
-  const billState = useSelector<IRootState>(
-    (state) => state.bills,
-  ) as IBillState;
+  const transfertState = useSelector<IRootState>(
+    (state) => state.transferts,
+  ) as ITransfertState;
 
-  const [tableData, setTableData] = useState<IBill[]>([]);
+  const [tableData, setTableData] = useState<ITransfert[]>([]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const sort = billState.sort!;
+    const sort = transfertState.sort!;
 
     if (sort.column === "piece") {
       const sortedData = [...data];
@@ -54,26 +57,26 @@ export const TableContainer: React.FC<{
       return;
     }
 
-    if (sort.column === "ht") {
+    if (sort.column === "source") {
       const sortedData = [...data];
       sortedData.sort((a, b) => {
         if (sort.order) {
-          return a.DO_TotalHT - b.DO_TotalHT;
+          return a.DE_src.localeCompare(b.DE_src);
         }
-        return b.DO_TotalHT - a.DO_TotalHT;
+        return b.DE_src.localeCompare(a.DE_src);
       });
       setTableData(sortedData);
       setIsLoading(true);
       return;
     }
 
-    if (sort.column === "ttc") {
+    if (sort.column === "destination") {
       const sortedData = [...data];
       sortedData.sort((a, b) => {
         if (sort.order) {
-          return a.DO_TotalTTC - b.DO_TotalTTC;
+          return a.DE_dest.localeCompare(b.DE_dest);
         }
-        return b.DO_TotalTTC - a.DO_TotalTTC;
+        return b.DE_dest.localeCompare(a.DE_dest);
       });
       setTableData(sortedData);
       setIsLoading(true);
@@ -92,7 +95,7 @@ export const TableContainer: React.FC<{
       setIsLoading(true);
       return;
     }
-  }, [JSON.stringify(billState.sort), JSON.stringify(data)]);
+  }, [JSON.stringify(transfertState.sort), JSON.stringify(data)]);
 
   return (
     <div className="max-h-[40rem] w-full overflow-scroll overflow-x-scroll rounded-lg border-2 border-bme-bg">
@@ -105,9 +108,9 @@ export const TableContainer: React.FC<{
                   <span>Piece</span>
                   <button
                     onClick={() => {
-                      const sort = billState.sort!;
+                      const sort = transfertState.sort!;
                       dispatch(
-                        setSort({ column: "piece", order: !sort.order }),
+                        setFilterSort({ column: "piece", order: !sort.order }),
                       );
                     }}
                   >
@@ -129,11 +132,13 @@ export const TableContainer: React.FC<{
             <Table.HeaderValue
               element={
                 <div className="flex items-center justify-between">
-                  <span>Montant HT</span>
+                  <span>Source</span>
                   <button
                     onClick={() => {
-                      const sort = billState.sort!;
-                      dispatch(setSort({ column: "ht", order: !sort.order }));
+                      const sort = transfertState.sort!;
+                      dispatch(
+                        setFilterSort({ column: "source", order: !sort.order }),
+                      );
                     }}
                   >
                     <FaSort />
@@ -144,11 +149,16 @@ export const TableContainer: React.FC<{
             <Table.HeaderValue
               element={
                 <div className="flex items-center justify-between">
-                  <span>Montant TTC</span>
+                  <span>Destination</span>
                   <button
                     onClick={() => {
-                      const sort = billState.sort!;
-                      dispatch(setSort({ column: "ttc", order: !sort.order }));
+                      const sort = transfertState.sort!;
+                      dispatch(
+                        setFilterSort({
+                          column: "destination",
+                          order: !sort.order,
+                        }),
+                      );
                     }}
                   >
                     <FaSort />
@@ -162,9 +172,9 @@ export const TableContainer: React.FC<{
                   <span>Status</span>
                   <button
                     onClick={() => {
-                      const sort = billState.sort!;
+                      const sort = transfertState.sort!;
                       dispatch(
-                        setSort({ column: "status", order: !sort.order }),
+                        setFilterSort({ column: "status", order: !sort.order }),
                       );
                     }}
                   >
@@ -177,33 +187,30 @@ export const TableContainer: React.FC<{
           </Table.Header>
           <Table.Body>
             {tableData.length > 0 &&
-              tableData.map((bill, i) => {
+              tableData.map((transfert, i) => {
                 const MemoizedCta = React.memo(() => {
                   return (
                     <div
-                      key={bill.DO_Piece}
+                      key={transfert.DO_Piece}
                       className="flex items-center justify-end gap-6"
                     >
                       <button
                         onClick={() => {
-                          setViewBillDetails({
-                            piece: bill.DO_Piece,
+                          setViewTransfertDetails({
+                            piece: transfert.DO_Piece,
                             status: true,
                           });
                         }}
                       >
                         <IoEye className="h-7 w-7 text-bme-bg" />
                       </button>
-                      {!bill.status && (
+                      {!transfert.status && (
                         <button
                           onClick={() => {
                             setEnableModal({
                               cancel: false,
                               confirm: true,
-                              bill: {
-                                piece: bill.DO_Piece,
-                                date: bill.DO_Date,
-                              },
+                              transfert: transfert,
                             });
                           }}
                         >
@@ -216,16 +223,12 @@ export const TableContainer: React.FC<{
 
                 return (
                   <Table.BodyRow key={i} rowID={i}>
-                    <Table.BodyValue value={bill.DO_Piece} />
-                    <Table.BodyValue value={formatDate(bill.DO_Date)} />
+                    <Table.BodyValue value={transfert.DO_Piece} />
+                    <Table.BodyValue value={formatDate(transfert.DO_Date)} />
+                    <Table.BodyValue value={transfert.DE_src} />
+                    <Table.BodyValue value={transfert.DE_dest} />
                     <Table.BodyValue
-                      value={formatNumberWithSpace(bill.DO_TotalHT)}
-                    />
-                    <Table.BodyValue
-                      value={formatNumberWithSpace(bill.DO_TotalTTC)}
-                    />
-                    <Table.BodyValue
-                      element={<Status status={bill.status} />}
+                      element={<Status status={transfert.status} />}
                     />
                     <Table.BodyValue element={<MemoizedCta />} />
                   </Table.BodyRow>
@@ -234,10 +237,10 @@ export const TableContainer: React.FC<{
           </Table.Body>
         </Table>
       )}
-      {viewBillDetails.status && (
-        <BillDetails
-          onRemoveBillDetails={setViewBillDetails}
-          piece={viewBillDetails.piece}
+      {viewtransfertDetails.status && (
+        <TransfertDetails
+          onRemoveTransfertDetails={setViewTransfertDetails}
+          piece={viewtransfertDetails.piece}
         />
       )}
       {enableModal.confirm && (
@@ -246,21 +249,18 @@ export const TableContainer: React.FC<{
             setEnableModal({
               cancel: false,
               confirm: false,
-              bill: { date: "", piece: "" },
+              transfert: null,
             });
           }}
           isOpen={enableModal.confirm}
           modal={
-            <ConfirmFactModal
-              billDetail={{
-                piece: enableModal.bill.piece,
-                date: enableModal.bill.date,
-              }}
+            <ConfirmTransfertModal
+              transfertDetail={enableModal.transfert!}
               closeModal={() => {
                 setEnableModal({
                   cancel: false,
                   confirm: false,
-                  bill: { date: "", piece: "" },
+                  transfert: null,
                 });
               }}
             />

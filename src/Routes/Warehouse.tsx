@@ -1,8 +1,8 @@
-import MainLayout from "../Components/MainLayout";
-import { intendanceLoader } from "../Pages/Intendance";
-import { laprineLoader } from "../Pages/Laprine";
-import { rbrunLoader } from "../Pages/RBrun";
-import Validation from "../Pages/Validation";
+import MainLayout from "../Pages/MainLayout";
+import Transfert from "../Pages/Transfert/Transfert";
+import TransfertLayout from "../Pages/Transfert/TransfertLayout";
+import Validation from "../Pages/Validation/Validation";
+import ValidationLayout from "../Pages/Validation/ValidationLayout";
 
 const route_warehouse = [
   {
@@ -10,32 +10,30 @@ const route_warehouse = [
     element: <MainLayout />,
     children: [
       {
-        path: "/intendance",
-        element: (
-          <Validation
-            title="Intendance"
-            souche="IFV"
-            loaderID="intendance-id"
-          />
-        ),
-        id: "intendance-id",
-        loader: intendanceLoader,
+        path: "/validation",
+        element: <ValidationLayout />,
+        children: [
+          {
+            path: "intendance",
+            element: <Validation title="Intendance" souche="IFV" />,
+            id: "intendance-id",
+          },
+          {
+            path: "laprine",
+            element: <Validation title="Laprine" souche="LGV" />,
+            id: "laprine-id",
+          },
+          {
+            path: "rbrun",
+            element: <Validation title="Robert Brun" souche="RFV" />,
+            id: "rbrun-id",
+          },
+        ],
       },
       {
-        path: "/laprine",
-        element: (
-          <Validation title="Laprine" souche="LGV" loaderID="laprine-id" />
-        ),
-        id: "laprine-id",
-        loader: laprineLoader,
-      },
-      {
-        path: "/rbrun",
-        element: (
-          <Validation title="Robert Brun" souche="RFV" loaderID="rbrun-id" />
-        ),
-        id: "rbrun-id",
-        loader: rbrunLoader,
+        path: "/transfert",
+        element: <TransfertLayout />,
+        children: [{ path: "", element: <Transfert /> }],
       },
     ],
   },
