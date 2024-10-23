@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  FilterDate,
+  FilterDateTransfert,
   FilterFirstLevel,
   FilterLayout,
   FilterTransfertSearch,
+  FilterWarehouse,
 } from "../../Components/Filter/FilterItems";
 import { addTransferts, ITransfert } from "../../Store/features/transfert";
 import { RiBillLine } from "react-icons/ri";
@@ -21,9 +22,10 @@ import {
 } from "../../Store/features/transfert";
 import { useFilterTransfertsData } from "../../Hooks/UseFilterTransfertsData";
 import { TableTransfertsContainer } from "../../Components/Table/TableTransfertsContainer";
+import useGetTransfertsNumber from "../../Hooks/useGetTransfertsNumber";
 
 const Transfert = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [filter, setFilter] = useState<{
     status: EFilterTransferts;
@@ -41,7 +43,7 @@ const Transfert = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const date = searchParams.get("date") || getDay();
+    /* const date = searchParams.get("date") || getDay();
 
     dispatch(setTransfertFilters({ ...transfertState.filter!, date: date }));
     setLoader(true);
@@ -60,7 +62,12 @@ const Transfert = () => {
 
         setLoader(false);
         dispatch(addTransferts(dataRes));
-      });
+      }); */
+
+    if (!searchParams.get("date")) {
+      setSearchParams({ date: getDay() });
+    }
+    setLoader(true);
   }, []);
 
   useEffect(() => {
@@ -72,7 +79,7 @@ const Transfert = () => {
 
       dispatch(setTransfertFilters({ ...transfertState.filter!, date: date }));
     }
-  }, [location.search.split("=")[1]]);
+  }, [searchParams.get("date")]);
 
   const memoizedTransfertData = useMemo(
     () => transfertState.transfertLists,
@@ -81,6 +88,7 @@ const Transfert = () => {
 
   const [loader, setLoader] = useState<boolean>(false);
 
+  const [dataNumber] = useGetTransfertsNumber();
   const { data: filteredData } = useFilterTransfertsData(
     {
       data: memoizedTransfertData,
@@ -90,13 +98,9 @@ const Transfert = () => {
   );
 
   //Calcul nombre de factures
-  const transfertsNumber = transfertState.transfertLists.length;
-  const validTransferts = transfertState.transfertLists.filter(
-    (transfert) => transfert.status === true,
-  ).length;
-  const invalidTransferts = transfertState.transfertLists.filter(
-    (transfert) => transfert.status === false,
-  ).length;
+  let transfertsNumber = dataNumber.all;
+  let validTransferts = dataNumber.valid;
+  let invalidTransferts = dataNumber.non_valid;
 
   return (
     <div className="flex flex-col gap-6 p-8">
@@ -204,8 +208,61 @@ const Transfert = () => {
             </div>
           </div>
         </div>
-        <div className="xs:mt-3 xl:mt-0">
-          <FilterDate defaultDate={location.search.split("=")[1]!} />
+
+        <div className="flex items-center justify-between gap-4 xs:mt-3 xl:mt-0">
+          <div>
+            <FilterDateTransfert defaultDate={location.search.split("=")[1]!} />
+          </div>
+
+          <div className="flex items-center gap-8">
+            <div className="flex items-center gap-2 font-bold text-bme-700">
+              <span>Source</span>
+              <FilterWarehouse
+                defaultOption="--- Source ---"
+                onChange={(e) => {
+                  let warehouse: string | null = e.currentTarget.value;
+
+                  if (warehouse === "--- Source ---") {
+                    warehouse = null;
+                  }
+
+                  dispatch(
+                    setTransfertFilters({
+                      ...transfertState.filter!,
+                      warehouse: {
+                        ...transfertState.filter!.warehouse,
+                        src: warehouse,
+                      },
+                    }),
+                  );
+                }}
+              />
+            </div>
+            <div className="flex items-center gap-2 font-bold text-bme-700">
+              <span>Destination</span>
+              <FilterWarehouse
+                defaultOption="--- Destination ---"
+                onChange={(e) => {
+                  let warehouse: string | null = e.currentTarget.value;
+                  console.log(warehouse);
+                  if (warehouse === "--- Destination ---") {
+                    console.log("hey");
+                    warehouse = null;
+                  }
+
+                  dispatch(
+                    setTransfertFilters({
+                      ...transfertState.filter!,
+                      warehouse: {
+                        ...transfertState.filter!.warehouse,
+                        dest: warehouse,
+                      },
+                    }),
+                  );
+                }}
+              />
+            </div>
+          </div>
         </div>
       </FilterLayout>
 

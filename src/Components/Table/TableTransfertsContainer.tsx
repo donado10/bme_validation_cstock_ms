@@ -9,7 +9,7 @@ import {
 } from "../../Store/features/transfert";
 import MyPortal from "../Modals/Overlay";
 import { formatDate } from "../../Utils/Functions";
-import Status from "../Status";
+import { StatusTransfert } from "../Status";
 import { FaSort } from "react-icons/fa";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -228,7 +228,7 @@ export const TableTransfertsContainer: React.FC<{
                     <Table.BodyValue value={transfert.DE_src} />
                     <Table.BodyValue value={transfert.DE_dest} />
                     <Table.BodyValue
-                      element={<Status status={transfert.status} />}
+                      element={<StatusTransfert status={transfert.status} />}
                     />
                     <Table.BodyValue element={<MemoizedCta />} />
                   </Table.BodyRow>

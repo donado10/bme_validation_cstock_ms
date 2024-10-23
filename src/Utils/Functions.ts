@@ -75,6 +75,13 @@ export function formatTransfertWareHouse(de_no: string): string {
   if (de_no === "72") {
     return "Intendance";
   }
+  if (de_no === "78") {
+    return "SAV";
+  }
+
+  if (de_no === "2") {
+    return "Lamine Gueye";
+  }
 
   return de_no;
 }
@@ -89,6 +96,12 @@ export function formatTransfertForBackend(warehouse: string): string {
 
   if (warehouse === "Intendance") {
     return "INT";
+  }
+  if (warehouse === "Lamine Gueye") {
+    return "LG";
+  }
+  if (warehouse === "SAV") {
+    return "SAV";
   }
 
   return warehouse;

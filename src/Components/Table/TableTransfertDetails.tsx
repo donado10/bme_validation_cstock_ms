@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 import { ITransfert } from "../../Store/features/transfert";
 import { IRootState } from "../../Store/store";
 import React from "react";
-import { HiCheckCircle } from "react-icons/hi";
-import { IoMdCloseCircle } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa6";
 

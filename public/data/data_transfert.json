@@ -1,26 +1,2441 @@
 [
   {
-    "DO_Piece": "IFV425391",
-    "DO_Date": "2024-09-12 00:00:00.000",
+    "DO_Piece": "LMT401496",
     "DE_src": "1",
-    "DE_dest": "72",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
     "DO_Ligne": [
       {
-        "AR_Ref": "CONELA63-EL63CF",
-        "DL_Design": "CONGELATEUR ELACTRON HORIZONTAL 750L SILVER EL63CFS",
-        "DL_PrixUnitaire": 338983,
-        "DL_Qte": 1,
-        "DL_MontantHT": 338983,
+        "AR_Ref": "CUISMA5F-STC906",
+        "DL_Design": "CUISINIERE SMART TECHNOLOGY 5 FEUX 90X60 INOX ROTISSEUR STC-9060C",
+        "DL_PrixUnitaire": "215000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "215000",
         "status": true
       },
       {
-        "AR_Ref": "TVFOX43-43SMART",
-        "DL_Design": "TELEVISEUR FOX 43 SMART ANDROID 43UHD",
-        "DL_PrixUnitaire": 135593,
-        "DL_Qte": 1,
-        "DL_MontantHT": 135593,
+        "AR_Ref": "CUISMA5F-STC906",
+        "DL_Design": "CUISINIERE SMART TECHNOLOGY 5 FEUX 90X60 INOX ROTISSEUR STC-9060C",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": -1,
+        "DL_MontantHT": 0,
+        "status": false
+      },
+      {
+        "AR_Ref": "CUISMA5F-STC906",
+        "DL_Design": "CUISINIERE SMART TECHNOLOGY 5 FEUX 90X60 INOX ROTISSEUR STC-9060C",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": -1,
+        "DL_MontantHT": 0,
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053172 ",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053172 ",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401497",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "CONSOL30-FR305S",
+        "DL_Design": "CONGELATEUR SOLSTAR VERTICAL 08 TIROIRS PLAQUE ALUMI SSLVSS \u00a0FR-305 \u00a0",
+        "DL_PrixUnitaire": "240973",
+        "DL_Qte": -1,
+        "DL_MontantHT": -240973,
+        "status": false
+      },
+      {
+        "AR_Ref": "CONSOL30-FR305S",
+        "DL_Design": "CONGELATEUR SOLSTAR VERTICAL 08 TIROIRS PLAQUE ALUMI SSLVSS \u00a0FR-305 \u00a0",
+        "DL_PrixUnitaire": "240973",
+        "DL_Qte": "1",
+        "DL_MontantHT": "240973",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053173",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053173",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401504",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSMA09-9000BT",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 9000BTU GAZ 410",
+        "DL_PrixUnitaire": "114773",
+        "DL_Qte": -1,
+        "DL_MontantHT": -114773,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSMA09-9000BT",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 9000BTU GAZ 410",
+        "DL_PrixUnitaire": "115000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "115000",
+        "status": true
+      },
+      {
+        "AR_Ref": "SUPSPL00-091218",
+        "DL_Design": "SUPPORT SPLIT \u00a0TCL 09/12/18/24",
+        "DL_PrixUnitaire": "4005",
+        "DL_Qte": -1,
+        "DL_MontantHT": -4005,
+        "status": true
+      },
+      {
+        "AR_Ref": "SUPSPL00-091218",
+        "DL_Design": "SUPPORT SPLIT \u00a0TCL 09/12/18/24",
+        "DL_PrixUnitaire": "4005",
+        "DL_Qte": "1",
+        "DL_MontantHT": "4005",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053967",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401505",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLAST09-9000BT",
+        "DL_Design": "SPLIT ASTECH 9000 BTU 1.25 CV ASW 09 AU",
+        "DL_PrixUnitaire": "135000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -135000,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLAST09-9000BT",
+        "DL_Design": "SPLIT ASTECH 9000 BTU 1.25 CV ASW 09 AU",
+        "DL_PrixUnitaire": "135000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "135000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053972",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401507",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REFSMA13-STR135",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY BAR 2 PORTES SILVER STR-135H",
+        "DL_PrixUnitaire": "92743",
+        "DL_Qte": -1,
+        "DL_MontantHT": -92743,
+        "status": true
+      },
+      {
+        "AR_Ref": "REFSMA13-STR135",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY BAR 2 PORTES SILVER STR-135H",
+        "DL_PrixUnitaire": "92743",
+        "DL_Qte": "1",
+        "DL_MontantHT": "92743",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053986",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401508",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "TVLG65-65UR7300",
+        "DL_Design": "TELEVISEUR LG 65 UR 73006LA",
+        "DL_PrixUnitaire": "425000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -425000,
+        "status": true
+      },
+      {
+        "AR_Ref": "TVLG65-65UR7300",
+        "DL_Design": "TELEVISEUR LG 65 UR 73006LA",
+        "DL_PrixUnitaire": "425000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "425000",
+        "status": true
+      },
+      {
+        "AR_Ref": "IMPHP17-HP179FN",
+        "DL_Design": "IMPRIMANTE HP LASER COLOR MFP179FNW",
+        "DL_PrixUnitaire": "275000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -275000,
+        "status": true
+      },
+      {
+        "AR_Ref": "IMPHP17-HP179FN",
+        "DL_Design": "IMPRIMANTE HP LASER COLOR MFP179FNW",
+        "DL_PrixUnitaire": "275000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "275000",
+        "status": true
+      },
+      {
+        "AR_Ref": "SUPTV00-17VSTAR",
+        "DL_Design": "TABLE SUPPORT TELEVISEUR 32-75 POUCES VSTAR 1700",
+        "DL_PrixUnitaire": "60000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -60000,
+        "status": true
+      },
+      {
+        "AR_Ref": "SUPTV00-17VSTAR",
+        "DL_Design": "TABLE SUPPORT TELEVISEUR 32-75 POUCES VSTAR 1700",
+        "DL_PrixUnitaire": "60000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "60000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053987",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401562",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "125000",
+        "status": true
+      },
+      {
+        "AR_Ref": "BOUSMA24-STPE24",
+        "DL_Design": "BOULLOIRE SMART TECHNOLOGIE ELECTRICS 1.8L GOLD STPE-249G",
+        "DL_PrixUnitaire": "68",
+        "DL_Qte": -1,
+        "DL_MontantHT": -68,
+        "status": true
+      },
+      {
+        "AR_Ref": "BOUSMA24-STPE24",
+        "DL_Design": "BOULLOIRE SMART TECHNOLOGIE ELECTRICS 1.8L GOLD STPE-249G",
+        "DL_PrixUnitaire": "4500",
+        "DL_Qte": "1",
+        "DL_MontantHT": "4500",
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": -1,
+        "DL_MontantHT": 0,
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN34253",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401564",
+    "DE_src": "72",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": null,
+        "DL_Design": "CABD34224",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": true
+      },
+      {
+        "AR_Ref": "VENQUA45-FW4581",
+        "DL_Design": "VENTILATEUR QUALIA 18''  MURAL AVEC COMMANDE FW45-812R",
+        "DL_PrixUnitaire": "10500",
+        "DL_Qte": -1,
+        "DL_MontantHT": -10500,
+        "status": true
+      },
+      {
+        "AR_Ref": "VENQUA45-FW4581",
+        "DL_Design": "VENTILATEUR QUALIA 18''  MURAL AVEC COMMANDE FW45-812R",
+        "DL_PrixUnitaire": "21000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "21000",
         "status": true
       }
-    ]
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401565",
+    "DE_src": "72",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": null,
+        "DL_Design": "CABD34221",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": true
+      },
+      {
+        "AR_Ref": "FONAST27-FNT278",
+        "DL_Design": "FONTAINE ASTECH AVEC FRIGO FNT278FT",
+        "DL_PrixUnitaire": "60000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -60000,
+        "status": true
+      },
+      {
+        "AR_Ref": "FONAST27-FNT278",
+        "DL_Design": "FONTAINE ASTECH AVEC FRIGO FNT278FT",
+        "DL_PrixUnitaire": "60000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "60000",
+        "status": true
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401566",
+    "DE_src": "2",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 476",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": "REFBEK43-DSA43S",
+        "DL_Design": "REFRIGERATEUR BEKO 306L 2PORTES GRIS DSA43S",
+        "DL_PrixUnitaire": "692500",
+        "DL_Qte": "1",
+        "DL_MontantHT": "692500",
+        "status": false
+      },
+      {
+        "AR_Ref": "FONSMA12-STF121",
+        "DL_Design": "FONTAINE SMART TECHNOLOGY AVEC RANGEMENT FROID/CHAUD STF1217",
+        "DL_PrixUnitaire": "35000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "35000",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 474",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": "FONSMA12-STF121",
+        "DL_Design": "FONTAINE SMART TECHNOLOGY AVEC RANGEMENT FROID/CHAUD STF1217",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": -1,
+        "DL_MontantHT": 0,
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 475",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": "HOTROC60-RBH60P",
+        "DL_Design": "HOTTE DE CUISINE ROCH 60X60 INOX RCH60PIRA",
+        "DL_PrixUnitaire": "60000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "60000",
+        "status": false
+      },
+      {
+        "AR_Ref": "HOTROC60-RBH60P",
+        "DL_Design": "HOTTE DE CUISINE ROCH 60X60 INOX RCH60PIRA",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": -1,
+        "DL_MontantHT": 0,
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 478",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": "REFSMA3T-STCB30",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY COMBINE 5TIR STCB308",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": -1,
+        "DL_MontantHT": 0,
+        "status": false
+      },
+      {
+        "AR_Ref": "REFSMA3T-STCB30",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY COMBINE 5TIR STCB308",
+        "DL_PrixUnitaire": "190000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "190000",
+        "status": false
+      },
+      {
+        "AR_Ref": "REFBEK43-DSA43S",
+        "DL_Design": "REFRIGERATEUR BEKO 306L 2PORTES GRIS DSA43S",
+        "DL_PrixUnitaire": "692500",
+        "DL_Qte": -1,
+        "DL_MontantHT": -692500,
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401495",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MACNES36-HCCM36",
+        "DL_Design": "MACHINE A CAFE HAIER EXPRESSO HCCM-36S",
+        "DL_PrixUnitaire": "40032",
+        "DL_Qte": -1,
+        "DL_MontantHT": -40032,
+        "status": false
+      },
+      {
+        "AR_Ref": "MACNES36-HCCM36",
+        "DL_Design": "MACHINE A CAFE HAIER EXPRESSO HCCM-36S",
+        "DL_PrixUnitaire": "45000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "45000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053171",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053171",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401533",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLLG09-9000IND",
+        "DL_Design": "SPLIT LG 9000 BTU INVERTER S4-Q09WA5QA DUEL",
+        "DL_PrixUnitaire": "265000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -265000,
+        "status": false
+      },
+      {
+        "AR_Ref": "SPLLG09-9000IND",
+        "DL_Design": "SPLIT LG 9000 BTU INVERTER S4-Q09WA5QA DUEL",
+        "DL_PrixUnitaire": "265000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "265000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053188",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053188",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401534",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REFBEK30-300K30",
+        "DL_Design": "REFRIGERATEUR BEKO COMBINE 4TIROIRS GRIS RCSE300K30SN",
+        "DL_PrixUnitaire": "282000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -282000,
+        "status": false
+      },
+      {
+        "AR_Ref": "REFBEK30-300K30",
+        "DL_Design": "REFRIGERATEUR BEKO COMBINE 4TIROIRS GRIS RCSE300K30SN",
+        "DL_PrixUnitaire": "282000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "282000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053190",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053190",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401535",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MACNES36-HCCM36",
+        "DL_Design": "MACHINE A CAFE HAIER EXPRESSO HCCM-36S",
+        "DL_PrixUnitaire": "40032",
+        "DL_Qte": -8,
+        "DL_MontantHT": -320254,
+        "status": false
+      },
+      {
+        "AR_Ref": "MACNES36-HCCM36",
+        "DL_Design": "MACHINE A CAFE HAIER EXPRESSO HCCM-36S",
+        "DL_PrixUnitaire": "45000",
+        "DL_Qte": "8",
+        "DL_MontantHT": "360000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053189",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053189",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401536",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "CONSMA7T-STC598",
+        "DL_Design": "CONGELATEUR SMART TECHNOLY VERTICAL 7TIROIRS SILVER PLAQ ALU STCD-598",
+        "DL_PrixUnitaire": "525000",
+        "DL_Qte": -2,
+        "DL_MontantHT": -1050000,
+        "status": false
+      },
+      {
+        "AR_Ref": "CONSMA7T-STC598",
+        "DL_Design": "CONGELATEUR SMART TECHNOLY VERTICAL 7TIROIRS SILVER PLAQ ALU STCD-598",
+        "DL_PrixUnitaire": "525000",
+        "DL_Qte": "2",
+        "DL_MontantHT": "1050000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053187",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401537",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REGROC10-1000VA",
+        "DL_Design": "REGULATEUR ROCH RSB 1000 VA",
+        "DL_PrixUnitaire": "15657",
+        "DL_Qte": -1,
+        "DL_MontantHT": -15657,
+        "status": false
+      },
+      {
+        "AR_Ref": "REGROC10-1000VA",
+        "DL_Design": "REGULATEUR ROCH RSB 1000 VA",
+        "DL_PrixUnitaire": "15657",
+        "DL_Qte": "1",
+        "DL_MontantHT": "15657",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053185",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401538",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "TVSOL32-32AA720",
+        "DL_Design": "TELEVISEUR SOLSTAR 32 SMART HD ANDROID 32HS6200SS",
+        "DL_PrixUnitaire": "74802",
+        "DL_Qte": -1,
+        "DL_MontantHT": -74802,
+        "status": false
+      },
+      {
+        "AR_Ref": "TVSOL32-32AA720",
+        "DL_Design": "TELEVISEUR SOLSTAR 32 SMART HD ANDROID 32HS6200SS",
+        "DL_PrixUnitaire": "75000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "75000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053186",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401539",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "VENBME00-AC110V",
+        "DL_Design": "VENTILATEUR BME RECHARGEABLE ELECTRIC AC110-240V/DC12V/50/60HZ 300-18",
+        "DL_PrixUnitaire": "32880",
+        "DL_Qte": -1,
+        "DL_MontantHT": -32880,
+        "status": false
+      },
+      {
+        "AR_Ref": "VENBME00-AC110V",
+        "DL_Design": "VENTILATEUR BME RECHARGEABLE ELECTRIC AC110-240V/DC12V/50/60HZ 300-18",
+        "DL_PrixUnitaire": "32880",
+        "DL_Qte": "1",
+        "DL_MontantHT": "32880",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053182",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401540",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "TVWEST40-40ZBD2",
+        "DL_Design": "TELEVISEUR WEST 40 ANDROID SMART 40ZBD20W",
+        "DL_PrixUnitaire": "84953",
+        "DL_Qte": -1,
+        "DL_MontantHT": -84953,
+        "status": false
+      },
+      {
+        "AR_Ref": "TVWEST40-40ZBD2",
+        "DL_Design": "TELEVISEUR WEST 40 ANDROID SMART 40ZBD20W",
+        "DL_PrixUnitaire": "85000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "85000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053191",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401541",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "CONFIN7T-GT332F",
+        "DL_Design": "CONGELATEUR FINIX VERTICAL 7TIROIRS PLAQUE ALUMINIUM SILVER  GT/N332",
+        "DL_PrixUnitaire": "303333",
+        "DL_Qte": -1,
+        "DL_MontantHT": -303333,
+        "status": false
+      },
+      {
+        "AR_Ref": "CONFIN7T-GT332F",
+        "DL_Design": "CONGELATEUR FINIX VERTICAL 7TIROIRS PLAQUE ALUMINIUM SILVER  GT/N332",
+        "DL_PrixUnitaire": "303333",
+        "DL_Qte": "1",
+        "DL_MontantHT": "303333",
+        "status": true
+      },
+      {
+        "AR_Ref": "TVWIL55-55QBQ6W",
+        "DL_Design": "TELEVISEUR WIWLIL 55 SMART 55QBQ6W",
+        "DL_PrixUnitaire": "175607",
+        "DL_Qte": -1,
+        "DL_MontantHT": -175607,
+        "status": false
+      },
+      {
+        "AR_Ref": "TVWIL55-55QBQ6W",
+        "DL_Design": "TELEVISEUR WIWLIL 55 SMART 55QBQ6W",
+        "DL_PrixUnitaire": "175607",
+        "DL_Qte": "1",
+        "DL_MontantHT": "175607",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053181",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": true
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401542",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "FOUTEC60-QMG603",
+        "DL_Design": "FOUR TECNOLUX ENCASTRABLE A GAZ NOIR QMG60-3M00",
+        "DL_PrixUnitaire": "130000",
+        "DL_Qte": "5",
+        "DL_MontantHT": "650000",
+        "status": true
+      },
+      {
+        "AR_Ref": "MIOTEC25-MOB25T",
+        "DL_Design": "MICRO ONDE ENCASTRABLE TECHNOLUX 25 LITRES NOIR MOB 25TEC",
+        "DL_PrixUnitaire": "115000",
+        "DL_Qte": -6,
+        "DL_MontantHT": -690000,
+        "status": false
+      },
+      {
+        "AR_Ref": "MIOTEC25-MOB25T",
+        "DL_Design": "MICRO ONDE ENCASTRABLE TECHNOLUX 25 LITRES NOIR MOB 25TEC",
+        "DL_PrixUnitaire": "115000",
+        "DL_Qte": "6",
+        "DL_MontantHT": "690000",
+        "status": true
+      },
+      {
+        "AR_Ref": "FOUTEC60-QMG603",
+        "DL_Design": "FOUR TECNOLUX ENCASTRABLE A GAZ NOIR QMG60-3M00",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": -5,
+        "DL_MontantHT": 0,
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053180",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401543",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125627",
+        "DL_Qte": -1,
+        "DL_MontantHT": -125627,
+        "status": false
+      },
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125627",
+        "DL_Qte": "1",
+        "DL_MontantHT": "125627",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053169",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401544",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REFDES22-TM229D",
+        "DL_Design": "REFRIGERATEUR DESKA 2PORTES TM-229DK",
+        "DL_PrixUnitaire": "149825",
+        "DL_Qte": -1,
+        "DL_MontantHT": -149825,
+        "status": false
+      },
+      {
+        "AR_Ref": "REFDES22-TM229D",
+        "DL_Design": "REFRIGERATEUR DESKA 2PORTES TM-229DK",
+        "DL_PrixUnitaire": "150000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "150000",
+        "status": true
+      },
+      {
+        "AR_Ref": "TVWEST43-43ZBM1",
+        "DL_Design": "TELEVISEUR WEST 43 ANDROID SMART 43ZBD20W",
+        "DL_PrixUnitaire": "101409",
+        "DL_Qte": -1,
+        "DL_MontantHT": -101409,
+        "status": false
+      },
+      {
+        "AR_Ref": "TVWEST43-43ZBM1",
+        "DL_Design": "TELEVISEUR WEST 43 ANDROID SMART 43ZBD20W",
+        "DL_PrixUnitaire": "101409",
+        "DL_Qte": "1",
+        "DL_MontantHT": "101409",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053176",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401545",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MIOFIN20-MG720S",
+        "DL_Design": "MICRO ONDE FINIX 20 LITRES AVEC GRILLE GRIS MG 720CPU",
+        "DL_PrixUnitaire": "38398",
+        "DL_Qte": -1,
+        "DL_MontantHT": -38398,
+        "status": false
+      },
+      {
+        "AR_Ref": "MIOFIN20-MG720S",
+        "DL_Design": "MICRO ONDE FINIX 20 LITRES AVEC GRILLE GRIS MG 720CPU",
+        "DL_PrixUnitaire": "38398",
+        "DL_Qte": "1",
+        "DL_MontantHT": "38398",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053175",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401546",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REFSMA32-TCB322",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY COMBINE 3TIROIRS STCB-322H",
+        "DL_PrixUnitaire": "150000",
+        "DL_Qte": -3,
+        "DL_MontantHT": -450000,
+        "status": false
+      },
+      {
+        "AR_Ref": "REFSMA32-TCB322",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY COMBINE 3TIROIRS STCB-322H",
+        "DL_PrixUnitaire": "150000",
+        "DL_Qte": "3",
+        "DL_MontantHT": "450000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053174",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401547",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLHIS18-18000B",
+        "DL_Design": "SPLIT HISENSE 18000 BTU 2CV R410A ",
+        "DL_PrixUnitaire": "251429",
+        "DL_Qte": -1,
+        "DL_MontantHT": -251429,
+        "status": false
+      },
+      {
+        "AR_Ref": "SPLHIS18-18000B",
+        "DL_Design": "SPLIT HISENSE 18000 BTU 2CV R410A ",
+        "DL_PrixUnitaire": "251429",
+        "DL_Qte": "1",
+        "DL_MontantHT": "251429",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053177",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053177",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401548",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MATSTA18-180X19",
+        "DL_Design": "MATELAS OTHOPEDIQUESTARFLEX 180/190",
+        "DL_PrixUnitaire": "107448",
+        "DL_Qte": -1,
+        "DL_MontantHT": -107448,
+        "status": false
+      },
+      {
+        "AR_Ref": "MATSTA18-180X19",
+        "DL_Design": "MATELAS OTHOPEDIQUESTARFLEX 180/190",
+        "DL_PrixUnitaire": "107448",
+        "DL_Qte": "1",
+        "DL_MontantHT": "107448",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053178",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053178",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401549",
+    "DE_src": "1",
+    "DE_dest": "71",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLDES18-18FV3D",
+        "DL_Design": "SPLIT DESKA 18000BTU 2CV DES-18FV3-DE",
+        "DL_PrixUnitaire": "200000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -200000,
+        "status": false
+      },
+      {
+        "AR_Ref": "SPLDES18-18FV3D",
+        "DL_Design": "SPLIT DESKA 18000BTU 2CV DES-18FV3-DE",
+        "DL_PrixUnitaire": "200000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "200000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053179",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "RBC053179",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401509",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REFAST28-FC280V",
+        "DL_Design": "REFRIGERATEUR ASTECH COMBINE 4TIROIRS GRIS FC-280DT",
+        "DL_PrixUnitaire": "205010",
+        "DL_Qte": -1,
+        "DL_MontantHT": -205010,
+        "status": true
+      },
+      {
+        "AR_Ref": "REFAST28-FC280V",
+        "DL_Design": "REFRIGERATEUR ASTECH COMBINE 4TIROIRS GRIS FC-280DT",
+        "DL_PrixUnitaire": "205010",
+        "DL_Qte": "1",
+        "DL_MontantHT": "205010",
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLMID12-12000B",
+        "DL_Design": "SPLIT MIDEA 12000 BTU 1,5 CV/GAZ 410",
+        "DL_PrixUnitaire": "184900",
+        "DL_Qte": -1,
+        "DL_MontantHT": -184900,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLMID12-12000B",
+        "DL_Design": "SPLIT MIDEA 12000 BTU 1,5 CV/GAZ 410",
+        "DL_PrixUnitaire": "185000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "185000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053985",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401510",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLROC12-12000B",
+        "DL_Design": "SPLIT ROCH 12000 BTU GAZ 410 ",
+        "DL_PrixUnitaire": "150000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -150000,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLROC12-12000B",
+        "DL_Design": "SPLIT ROCH 12000 BTU GAZ 410 ",
+        "DL_PrixUnitaire": "150000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "150000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053984",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401511",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125627",
+        "DL_Qte": -1,
+        "DL_MontantHT": -125627,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125627",
+        "DL_Qte": "1",
+        "DL_MontantHT": "125627",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053980",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401512",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125627",
+        "DL_Qte": -1,
+        "DL_MontantHT": -125627,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125627",
+        "DL_Qte": "1",
+        "DL_MontantHT": "125627",
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSMA09-9000BT",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 9000BTU GAZ 410",
+        "DL_PrixUnitaire": "114773",
+        "DL_Qte": -1,
+        "DL_MontantHT": -114773,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSMA09-9000BT",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 9000BTU GAZ 410",
+        "DL_PrixUnitaire": "115000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "115000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053978",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401513",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLTCL24-24000I",
+        "DL_Design": "SPLIT TCL 24000 BTU INVERTER",
+        "DL_PrixUnitaire": "310000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -310000,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLTCL24-24000I",
+        "DL_Design": "SPLIT TCL 24000 BTU INVERTER",
+        "DL_PrixUnitaire": "310000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "310000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053988",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401514",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MALAST10KG-MLV1",
+        "DL_Design": "MACHINE A LAVER ASTECH 10KG MLV10F-N1003-LC INVERTER",
+        "DL_PrixUnitaire": "255000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -255000,
+        "status": true
+      },
+      {
+        "AR_Ref": "MALAST10KG-MLV1",
+        "DL_Design": "MACHINE A LAVER ASTECH 10KG MLV10F-N1003-LC INVERTER",
+        "DL_PrixUnitaire": "255000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "255000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053977",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401515",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MACNES40-D40NOI",
+        "DL_Design": "MACHINE A CAFE NESPRESSO INISSIA NOIR EUBKNE4GMD40 ",
+        "DL_PrixUnitaire": "76372",
+        "DL_Qte": -1,
+        "DL_MontantHT": -76372,
+        "status": true
+      },
+      {
+        "AR_Ref": "MACNES40-D40NOI",
+        "DL_Design": "MACHINE A CAFE NESPRESSO INISSIA NOIR EUBKNE4GMD40 ",
+        "DL_PrixUnitaire": "80000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "80000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053979",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401516",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REFCAC45-CAC450",
+        "DL_Design": "REFRIGERATEUR CAC SIDE BY SIDE 399 LITRES SILVER CAC410SY",
+        "DL_PrixUnitaire": "350000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "350000",
+        "status": true
+      },
+      {
+        "AR_Ref": "REFCAC45-CAC450",
+        "DL_Design": "REFRIGERATEUR CAC SIDE BY SIDE 399 LITRES SILVER CAC410SY",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": -1,
+        "DL_MontantHT": 0,
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053993",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401517",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REFSMA32-TCB322",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY COMBINE 3TIROIRS STCB-322H",
+        "DL_PrixUnitaire": "150000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -150000,
+        "status": true
+      },
+      {
+        "AR_Ref": "REFSMA32-TCB322",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY COMBINE 3TIROIRS STCB-322H",
+        "DL_PrixUnitaire": "150000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "150000",
+        "status": true
+      },
+      {
+        "AR_Ref": "REGSMA10-1000VA",
+        "DL_Design": "REGULATEUR SMART TECHNOLOGY AVR 1000VA",
+        "DL_PrixUnitaire": "11542",
+        "DL_Qte": -1,
+        "DL_MontantHT": -11542,
+        "status": true
+      },
+      {
+        "AR_Ref": "REGSMA10-1000VA",
+        "DL_Design": "REGULATEUR SMART TECHNOLOGY AVR 1000VA",
+        "DL_PrixUnitaire": "12000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "12000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053976",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401518",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLMID18-18000G",
+        "DL_Design": "SPLIT MIDEA 18000 BTU 2.5CV GAZ 410",
+        "DL_PrixUnitaire": "280354",
+        "DL_Qte": -1,
+        "DL_MontantHT": -280354,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLMID18-18000G",
+        "DL_Design": "SPLIT MIDEA 18000 BTU 2.5CV GAZ 410",
+        "DL_PrixUnitaire": "280354",
+        "DL_Qte": "1",
+        "DL_MontantHT": "280354",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053969",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401519",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "VENELA18-L9600N",
+        "DL_Design": "VENTILATEUR ELACTRON 18'' SUR PIED AVEC TELECOMMANDE NOIR L-96",
+        "DL_PrixUnitaire": "21975",
+        "DL_Qte": -1,
+        "DL_MontantHT": -21975,
+        "status": true
+      },
+      {
+        "AR_Ref": "VENELA18-L9600N",
+        "DL_Design": "VENTILATEUR ELACTRON 18'' SUR PIED AVEC TELECOMMANDE NOIR L-96",
+        "DL_PrixUnitaire": "22000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "22000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053974",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401520",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLLG09-9000IND",
+        "DL_Design": "SPLIT LG 9000 BTU INVERTER S4-Q09WA5QA DUEL",
+        "DL_PrixUnitaire": "265000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -265000,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLLG09-9000IND",
+        "DL_Design": "SPLIT LG 9000 BTU INVERTER S4-Q09WA5QA DUEL",
+        "DL_PrixUnitaire": "265000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "265000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053965",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401521",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REGSMA10-1000VA",
+        "DL_Design": "REGULATEUR SMART TECHNOLOGY AVR 1000VA",
+        "DL_PrixUnitaire": "11542",
+        "DL_Qte": -1,
+        "DL_MontantHT": -11542,
+        "status": true
+      },
+      {
+        "AR_Ref": "REGSMA10-1000VA",
+        "DL_Design": "REGULATEUR SMART TECHNOLOGY AVR 1000VA",
+        "DL_PrixUnitaire": "12000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "12000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053961",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401522",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLROC12-12000I",
+        "DL_Design": "SPLIT ROCH 12000 BTU INVERTER",
+        "DL_PrixUnitaire": "185000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -185000,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLROC12-12000I",
+        "DL_Design": "SPLIT ROCH 12000 BTU INVERTER",
+        "DL_PrixUnitaire": "185000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "185000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053958",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401523",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSMA09-9000BT",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 9000BTU GAZ 410",
+        "DL_PrixUnitaire": "114773",
+        "DL_Qte": -1,
+        "DL_MontantHT": -114773,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSMA09-9000BT",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 9000BTU GAZ 410",
+        "DL_PrixUnitaire": "115000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "115000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053975",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401524",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLMID12-12000B",
+        "DL_Design": "SPLIT MIDEA 12000 BTU 1,5 CV/GAZ 410",
+        "DL_PrixUnitaire": "184900",
+        "DL_Qte": -2,
+        "DL_MontantHT": -369799,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLMID12-12000B",
+        "DL_Design": "SPLIT MIDEA 12000 BTU 1,5 CV/GAZ 410",
+        "DL_PrixUnitaire": "185000",
+        "DL_Qte": "2",
+        "DL_MontantHT": "370000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053971",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401525",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "TVHIS43-434GS00",
+        "DL_Design": "TELEVISEUR HISENSE 43 LED SMART TV VIDAA 43A 4K",
+        "DL_PrixUnitaire": "130101",
+        "DL_Qte": -1,
+        "DL_MontantHT": -130101,
+        "status": true
+      },
+      {
+        "AR_Ref": "TVHIS43-434GS00",
+        "DL_Design": "TELEVISEUR HISENSE 43 LED SMART TV VIDAA 43A 4K",
+        "DL_PrixUnitaire": "130101",
+        "DL_Qte": "1",
+        "DL_MontantHT": "130101",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053959",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401527",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REFSMA32-TCB322",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY COMBINE 3TIROIRS STCB-322H",
+        "DL_PrixUnitaire": "150000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -150000,
+        "status": true
+      },
+      {
+        "AR_Ref": "REFSMA32-TCB322",
+        "DL_Design": "REFRIGERATEUR SMART TECHNOLOGY COMBINE 3TIROIRS STCB-322H",
+        "DL_PrixUnitaire": "150000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "150000",
+        "status": true
+      },
+      {
+        "AR_Ref": "VENELA18-B08000",
+        "DL_Design": "VENTILATEUR ELACTRON 18''  MURAL AVEC TELECOMMANDE BLANC L-B08",
+        "DL_PrixUnitaire": "18947",
+        "DL_Qte": -1,
+        "DL_MontantHT": -18947,
+        "status": true
+      },
+      {
+        "AR_Ref": "VENELA18-B08000",
+        "DL_Design": "VENTILATEUR ELACTRON 18''  MURAL AVEC TELECOMMANDE BLANC L-B08",
+        "DL_PrixUnitaire": "18947",
+        "DL_Qte": "1",
+        "DL_MontantHT": "18947",
+        "status": true
+      },
+      {
+        "AR_Ref": "MATSTA18-180X19",
+        "DL_Design": "MATELAS OTHOPEDIQUESTARFLEX 180/190",
+        "DL_PrixUnitaire": "107448",
+        "DL_Qte": -1,
+        "DL_MontantHT": -107448,
+        "status": true
+      },
+      {
+        "AR_Ref": "MATSTA18-180X19",
+        "DL_Design": "MATELAS OTHOPEDIQUESTARFLEX 180/190",
+        "DL_PrixUnitaire": "107448",
+        "DL_Qte": "1",
+        "DL_MontantHT": "107448",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053973",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401528",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLELA12-12000I",
+        "DL_Design": "SPLIT ELACTRON 12000BTU INVERTER 12KR1",
+        "DL_PrixUnitaire": "252273",
+        "DL_Qte": -1,
+        "DL_MontantHT": -252273,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLELA12-12000I",
+        "DL_Design": "SPLIT ELACTRON 12000BTU INVERTER 12KR1",
+        "DL_PrixUnitaire": "252273",
+        "DL_Qte": "1",
+        "DL_MontantHT": "252273",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053994",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401530",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MIOSHA20-R20MRS",
+        "DL_Design": "MICRO ONDE SHARP 20LITRES GRIS  R-20 MT(S)",
+        "DL_PrixUnitaire": "47500",
+        "DL_Qte": -1,
+        "DL_MontantHT": -47500,
+        "status": true
+      },
+      {
+        "AR_Ref": "MIOSHA20-R20MRS",
+        "DL_Design": "MICRO ONDE SHARP 20LITRES GRIS  R-20 MT(S)",
+        "DL_PrixUnitaire": "47500",
+        "DL_Qte": "1",
+        "DL_MontantHT": "47500",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053999",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401531",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MATSTA90-90X190",
+        "DL_Design": "MATELAS OTHOPEDIQUE STARFLEX \u00a090/190",
+        "DL_PrixUnitaire": "53163",
+        "DL_Qte": -1,
+        "DL_MontantHT": -53163,
+        "status": true
+      },
+      {
+        "AR_Ref": "MATSTA90-90X190",
+        "DL_Design": "MATELAS OTHOPEDIQUE STARFLEX \u00a090/190",
+        "DL_PrixUnitaire": "53163",
+        "DL_Qte": "1",
+        "DL_MontantHT": "53163",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC053995",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401532",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MIOFIN20-MG720S",
+        "DL_Design": "MICRO ONDE FINIX 20 LITRES AVEC GRILLE GRIS MG 720CPU",
+        "DL_PrixUnitaire": "38399",
+        "DL_Qte": -1,
+        "DL_MontantHT": -38399,
+        "status": true
+      },
+      {
+        "AR_Ref": "MIOFIN20-MG720S",
+        "DL_Design": "MICRO ONDE FINIX 20 LITRES AVEC GRILLE GRIS MG 720CPU",
+        "DL_PrixUnitaire": "38399",
+        "DL_Qte": "1",
+        "DL_MontantHT": "38399",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC054002",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401550",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "FONDES17-WD17BL",
+        "DL_Design": "FONTAINE DESKA AVEC FRIGO NOIR WD-17BL-E",
+        "DL_PrixUnitaire": "65048",
+        "DL_Qte": -1,
+        "DL_MontantHT": -65048,
+        "status": true
+      },
+      {
+        "AR_Ref": "FONDES17-WD17BL",
+        "DL_Design": "FONTAINE DESKA AVEC FRIGO NOIR WD-17BL-E",
+        "DL_PrixUnitaire": "65048",
+        "DL_Qte": "1",
+        "DL_MontantHT": "65048",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC054004",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401551",
+    "DE_src": "1",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REGSMA10-1000VA",
+        "DL_Design": "REGULATEUR SMART TECHNOLOGY AVR 1000VA",
+        "DL_PrixUnitaire": "11542",
+        "DL_Qte": -1,
+        "DL_MontantHT": -11542,
+        "status": true
+      },
+      {
+        "AR_Ref": "REGSMA10-1000VA",
+        "DL_Design": "REGULATEUR SMART TECHNOLOGY AVR 1000VA",
+        "DL_PrixUnitaire": "12000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "12000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "IBC054003",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401526",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "REFDES10-TM103D",
+        "DL_Design": "REFRIGERATEUR DESKA BAR 2PORTE PM TM-103DK",
+        "DL_PrixUnitaire": "65000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -65000,
+        "status": true
+      },
+      {
+        "AR_Ref": "REFDES10-TM103D",
+        "DL_Design": "REFRIGERATEUR DESKA BAR 2PORTE PM TM-103DK",
+        "DL_PrixUnitaire": "65000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "65000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 34220",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401552",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSKY12-12000B",
+        "DL_Design": "SPLIT SKYLINE 12000BTU GAZ 410",
+        "DL_PrixUnitaire": "115000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -115000,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSKY12-12000B",
+        "DL_Design": "SPLIT SKYLINE 12000BTU GAZ 410",
+        "DL_PrixUnitaire": "115000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "115000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 34227",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401553",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MALROC7KG-Q715E",
+        "DL_Design": "MACHINE A LAVER ROCH 7KG 1200TOUR/MIN A+++ SILVER RWM-70S-H",
+        "DL_PrixUnitaire": "165000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -165000,
+        "status": true
+      },
+      {
+        "AR_Ref": "MALROC7KG-Q715E",
+        "DL_Design": "MACHINE A LAVER ROCH 7KG 1200TOUR/MIN A+++ SILVER RWM-70S-H",
+        "DL_PrixUnitaire": "165000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "165000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 34197",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401554",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSKY12-12000B",
+        "DL_Design": "SPLIT SKYLINE 12000BTU GAZ 410",
+        "DL_PrixUnitaire": "115000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -115000,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSKY12-12000B",
+        "DL_Design": "SPLIT SKYLINE 12000BTU GAZ 410",
+        "DL_PrixUnitaire": "115000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "115000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 34201",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401555",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "MALROC7KG-Q715E",
+        "DL_Design": "MACHINE A LAVER ROCH 7KG 1200TOUR/MIN A+++ SILVER RWM-70S-H",
+        "DL_PrixUnitaire": "165000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -165000,
+        "status": true
+      },
+      {
+        "AR_Ref": "MALROC7KG-Q715E",
+        "DL_Design": "MACHINE A LAVER ROCH 7KG 1200TOUR/MIN A+++ SILVER RWM-70S-H",
+        "DL_PrixUnitaire": "165000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "165000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 34203",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401556",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "VENTIG16-16002G",
+        "DL_Design": "VENTILATEUR TIGERBROTHER 16' SUR PIED AVEC COMMANDE GRIS 16002R",
+        "DL_PrixUnitaire": "17000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -17000,
+        "status": true
+      },
+      {
+        "AR_Ref": "VENTIG16-16002G",
+        "DL_Design": "VENTILATEUR TIGERBROTHER 16' SUR PIED AVEC COMMANDE GRIS 16002R",
+        "DL_PrixUnitaire": "17000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "17000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 34215",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401557",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "CUICAC4F-CAC60G",
+        "DL_Design": "CUISINIERE CAC 4 FEUX FULL OPTION 60X60 INOX CAC60F",
+        "DL_PrixUnitaire": "95000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -95000,
+        "status": true
+      },
+      {
+        "AR_Ref": "CUICAC4F-CAC60G",
+        "DL_Design": "CUISINIERE CAC 4 FEUX FULL OPTION 60X60 INOX CAC60F",
+        "DL_PrixUnitaire": "95000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "95000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 34225",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401558",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125627",
+        "DL_Qte": -1,
+        "DL_MontantHT": -125627,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125627",
+        "DL_Qte": "1",
+        "DL_MontantHT": "125627",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN 34244",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401559",
+    "DE_src": "71",
+    "DE_dest": "1",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": -1,
+        "DL_MontantHT": 0,
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN34246",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": "SPLSMA12-12000B",
+        "DL_Design": "SPLIT SMART TECHNOLOGY 12000BTU GAZ 410 STS12",
+        "DL_PrixUnitaire": "125000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "125000",
+        "status": true
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401560",
+    "DE_src": "71",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "SPLSKY09-9000BT",
+        "DL_Design": "SPLIT SKYLINE 9000BTU GAZ 410",
+        "DL_PrixUnitaire": "105000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -105000,
+        "status": true
+      },
+      {
+        "AR_Ref": "SPLSKY09-9000BT",
+        "DL_Design": "SPLIT SKYLINE 9000BTU GAZ 410",
+        "DL_PrixUnitaire": "105000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "105000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN053981",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN053981",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
+  },
+  {
+    "DO_Piece": "LMT401561",
+    "DE_src": "71",
+    "DE_dest": "72",
+    "DO_Date": "2024-10-22 00:00:00.000",
+    "DO_Ligne": [
+      {
+        "AR_Ref": "VENTIG40-0FS40O",
+        "DL_Design": "VENTILATEUR TIGERBROTHER 16' SUR PIED AVEC COMMANDE NOIR DORE FS 40",
+        "DL_PrixUnitaire": "17000",
+        "DL_Qte": -1,
+        "DL_MontantHT": -17000,
+        "status": true
+      },
+      {
+        "AR_Ref": "VENTIG40-0FS40O",
+        "DL_Design": "VENTILATEUR TIGERBROTHER 16' SUR PIED AVEC COMMANDE NOIR DORE FS 40",
+        "DL_PrixUnitaire": "17000",
+        "DL_Qte": "1",
+        "DL_MontantHT": "17000",
+        "status": true
+      },
+      {
+        "AR_Ref": null,
+        "DL_Design": "VDN053992",
+        "DL_PrixUnitaire": "0",
+        "DL_Qte": "0",
+        "DL_MontantHT": "0",
+        "status": false
+      }
+    ],
+    "status": false
   }
 ]

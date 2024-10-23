@@ -145,33 +145,34 @@ export const ConfirmTransfertModal: React.FC<{
     setEnableAlert(true);
   }, [transfertDetail.DO_Piece]);
 
+  const className =
+    "flex h-[15rem] w-[45rem] flex-col gap-4 overflow-hidden rounded-lg bg-white";
+
   return (
     <>
-      <div className="flex h-[15rem] w-[45rem] flex-col gap-4 overflow-hidden rounded-lg bg-white">
-        {!enableLoader && !isFactureValid && enableAlert && (
-          <>
-            <TranfertAlert
-              transfertDetail={transfertDetail}
-              closeModal={closeModal}
-              setEnableLoader={setEnableLoader}
-              setIsFactureValid={setIsFactureValid}
-            />
-          </>
-        )}
-        {enableLoader && (
-          <>
-            <LoaderPopup closeModal={closeModal} />
-          </>
-        )}
-        {isFactureValid && (
-          <>
-            <ValidPopup
-              closeModal={closeModal}
-              transfert={transfertDetail.DO_Piece}
-            />
-          </>
-        )}
-      </div>
+      {!enableLoader && !isFactureValid && enableAlert && (
+        <div className={className}>
+          <TranfertAlert
+            transfertDetail={transfertDetail}
+            closeModal={closeModal}
+            setEnableLoader={setEnableLoader}
+            setIsFactureValid={setIsFactureValid}
+          />
+        </div>
+      )}
+      {enableLoader && (
+        <div className={className}>
+          <LoaderPopup closeModal={closeModal} />
+        </div>
+      )}
+      {isFactureValid && (
+        <div className={className}>
+          <ValidPopup
+            closeModal={closeModal}
+            transfert={transfertDetail.DO_Piece}
+          />
+        </div>
+      )}
     </>
   );
 };

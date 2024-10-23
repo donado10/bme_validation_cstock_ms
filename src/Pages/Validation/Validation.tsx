@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  FilterDate,
+  FilterDateBill,
   FilterFirstLevel,
   FilterLayout,
   FilterBillSearch,
@@ -16,11 +16,12 @@ import { TableBillsContainer } from "../../Components/Table/TableBillsContainer"
 import { useFilterBillsData } from "../../Hooks/UseFilterBillsData";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../Store/store";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import Title from "../../Components/Title";
 import { PiSpinnerBold } from "react-icons/pi";
 import { GrPowerReset } from "react-icons/gr";
 import { getDay } from "../../Utils/Functions";
+import useGetBillsNumber from "../../Hooks/useGetBillsNumber";
 
 interface IValidation {
   title: string;
@@ -28,7 +29,7 @@ interface IValidation {
 }
 
 const Validation: React.FC<IValidation> = ({ title, souche }) => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [filter, setFilter] = useState<{
     status: EFilterBills;
@@ -43,19 +44,9 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
     (state) => state.bills,
   ) as IBillState;
 
-  const location = useLocation();
-
-  //Calcul nombre de factures
-  const billsNumber = billState.billLists.length;
-  const validBills = billState.billLists.filter(
-    (bill) => bill.status === true,
-  ).length;
-  const invalidBills = billState.billLists.filter(
-    (bill) => bill.status === false,
-  ).length;
-
   useEffect(() => {
-    const date = getDay();
+    /* const date = searchParams.get("date") || getDay();
+    dispatch(setFilters({ ...billState.filter!, date: date }));
     setLoader(true);
     fetch(
       `http://bme_api.test:8080/api/documents?date=${date}&souche=${souche}`,
@@ -64,7 +55,11 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
       .then((dataRes) => {
         setLoader(false);
         dispatch(addBills(dataRes));
-      });
+      }); */
+    if (!searchParams.get("date")) {
+      setSearchParams({ date: getDay() });
+    }
+    setLoader(true);
   }, []);
 
   useEffect(() => {
@@ -74,7 +69,7 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
         : getDay();
 
     dispatch(setFilters({ ...billState.filter!, date: date }));
-  }, [location.search.split("=")[1]]);
+  }, [searchParams.get("date")]);
 
   const memoizedBillData = useMemo(
     () => billState.billLists,
@@ -83,13 +78,20 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
 
   const [loader, setLoader] = useState<boolean>(false);
 
+  const [dataNumber] = useGetBillsNumber();
   const { data: filteredData } = useFilterBillsData(
     {
       data: memoizedBillData,
       filterType: billState.filter!,
     },
     setLoader,
+    souche,
   );
+
+  //Calcul nombre de factures
+  let billsNumber = dataNumber.all;
+  let validBills = dataNumber.valid;
+  let invalidBills = dataNumber.non_valid;
 
   return (
     <div className="flex flex-col gap-6 p-8">
@@ -100,7 +102,7 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
         <button
           className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
           onClick={() => {
-            const date = searchParams.get("date");
+            const date = searchParams.get("date") || getDay();
             setLoader(true);
             fetch(
               `http://bme_api.test:8080/api/newDocuments?date=${date}&souche=${souche}`,
@@ -189,7 +191,7 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
           </div>
         </div>
         <div className="xs:mt-3 xl:mt-0">
-          <FilterDate defaultDate={searchParams.get("date")!} />
+          <FilterDateBill defaultDate={searchParams.get("date")!} />
         </div>
       </FilterLayout>
       <div className="w-full">

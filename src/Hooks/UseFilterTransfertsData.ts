@@ -5,13 +5,8 @@ import {
   ITransfertFilter,
   addTransferts,
 } from "../Store/features/transfert";
-import {
-  formatDateToFull,
-  formatDateToSend,
-  formatTransfertWareHouse,
-} from "../Utils/Functions";
+import { formatDateToSend, formatTransfertWareHouse } from "../Utils/Functions";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
 
 interface IFilterData {
   data: ITransfert[];
@@ -49,7 +44,30 @@ const filterBySearch = (data: ITransfert[], transfertSearch: string) => {
   return data;
 };
 
-const filterByDate = (data: ITransfert[], transfertDate: string) => {
+const filterByWarehouseSrc = (data: ITransfert[], warehouse: string) => {
+  if (data.length > 0) {
+    return data.filter((transfert) =>
+      transfert.DE_src.toLocaleLowerCase().includes(
+        warehouse.toLocaleLowerCase(),
+      ),
+    );
+  }
+
+  return data;
+};
+const filterByWarehouseDest = (data: ITransfert[], warehouse: string) => {
+  if (data.length > 0) {
+    return data.filter((transfert) =>
+      transfert.DE_dest.toLocaleLowerCase().includes(
+        warehouse.toLocaleLowerCase(),
+      ),
+    );
+  }
+
+  return data;
+};
+
+/* const filterByDate = (data: ITransfert[], transfertDate: string) => {
   const dateFormatted = formatDateToFull(transfertDate);
   if (data.length > 0) {
     return data.filter((transfert) =>
@@ -58,7 +76,7 @@ const filterByDate = (data: ITransfert[], transfertDate: string) => {
   }
   return data;
 };
-
+ */
 export const useFilterTransfertsData = (
   filter: IFilterData,
   setLoader: React.Dispatch<any>,
@@ -66,12 +84,14 @@ export const useFilterTransfertsData = (
   const [data, setData] = useState<ITransfert[]>([]);
   const transfertFilter = filter.filterType;
   const dispatch = useDispatch();
-  const location = useLocation();
+  //const location = useLocation();
 
   const memoizedData = useMemo(() => filter.data, [filter.data]);
 
   useEffect(() => {
     let filteredData = filterByStatus(filter);
+
+    
 
     if (transfertFilter.search) {
       filteredData = filterBySearch(
@@ -80,15 +100,56 @@ export const useFilterTransfertsData = (
       );
       const interval = setTimeout(() => {
         setData(filteredData);
+
+        if (transfertFilter.warehouse.src) {
+          filteredData = filterByWarehouseSrc(
+            filteredData,
+            transfertFilter.warehouse.src,
+          );
+          setData(filteredData);
+        }
+    
+        if (transfertFilter.warehouse.dest) {
+          filteredData = filterByWarehouseDest(
+            filteredData,
+            transfertFilter.warehouse.dest,
+          );
+          setData(filteredData);
+        }
       }, 1000);
+
       return () => {
         clearTimeout(interval);
       };
     }
+
     if (!transfertFilter.search) {
+      if (transfertFilter.warehouse.src) {
+        filteredData = filterByWarehouseSrc(
+          filteredData,
+          transfertFilter.warehouse.src,
+        );
+        setData(filteredData);
+      }
+  
+      if (transfertFilter.warehouse.dest) {
+        filteredData = filterByWarehouseDest(
+          filteredData,
+          transfertFilter.warehouse.dest,
+        );
+        setData(filteredData);
+      }
+
       setData(filteredData);
+
+
     }
-  }, [transfertFilter.search, transfertFilter.status, memoizedData]);
+  }, [
+    JSON.stringify(transfertFilter.warehouse),
+    transfertFilter.search,
+    transfertFilter.status,
+    memoizedData,
+  ]);
 
   useEffect(() => {
     if (transfertFilter.date) {

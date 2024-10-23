@@ -28,6 +28,10 @@ export interface ITransfertFilter {
   status: EFilterTransferts;
   date: string | null;
   search: string | number | null;
+  warehouse: {
+    src: string | null;
+    dest: string | null;
+  };
 }
 
 export interface ITransfertState {
@@ -42,6 +46,10 @@ const initialState: ITransfertState = {
     status: EFilterTransferts.ALL_TRANSFERTS,
     date: null,
     search: null,
+    warehouse: {
+      src: null,
+      dest: null,
+    },
   },
   sort: { column: "piece", order: true },
 };

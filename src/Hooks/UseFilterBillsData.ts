@@ -7,7 +7,6 @@ import {
 } from "../Store/features/bills";
 import { formatDateToFull, formatDateToSend } from "../Utils/Functions";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
 
 interface IFilterData {
   data: IBill[];
@@ -52,11 +51,11 @@ const filterByDate = (data: IBill[], billDate: string) => {
 export const useFilterBillsData = (
   filter: IFilterData,
   setLoader: React.Dispatch<any>,
+  souche: string,
 ) => {
   const [data, setData] = useState<IBill[]>([]);
   const billFilter = filter.filterType;
   const dispatch = useDispatch();
-  const location = useLocation();
 
   const memoizedData = useMemo(() => filter.data, [filter.data]);
 
@@ -81,17 +80,6 @@ export const useFilterBillsData = (
     let filteredData = filterByStatus(filter);
     if (billFilter.date) {
       filteredData = filterByDate(filteredData, billFilter.date);
-      let souche = location.pathname.split("/")[1].toLowerCase();
-
-      if (souche === "intendance") {
-        souche = "IFV";
-      }
-      if (souche === "rbrun") {
-        souche = "RFV";
-      }
-      if (souche === "laprine") {
-        souche = "LGV";
-      }
 
       setLoader(true);
       fetch(

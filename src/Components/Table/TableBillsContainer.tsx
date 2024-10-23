@@ -6,7 +6,7 @@ import { IBill, IBillState } from "../../Store/features/bills";
 import MyPortal from "../Modals/Overlay";
 import { ConfirmFactModal } from "../Modals/FactureModal";
 import { formatDate, formatNumberWithSpace } from "../../Utils/Functions";
-import Status from "../Status";
+import { StatusBill } from "../Status";
 import { FaSort } from "react-icons/fa";
 import { BillDetails } from "./TableBillDetails";
 import React from "react";
@@ -225,7 +225,7 @@ export const TableBillsContainer: React.FC<{
                       value={formatNumberWithSpace(bill.DO_TotalTTC)}
                     />
                     <Table.BodyValue
-                      element={<Status status={bill.status} />}
+                      element={<StatusBill status={bill.status} />}
                     />
                     <Table.BodyValue element={<MemoizedCta />} />
                   </Table.BodyRow>

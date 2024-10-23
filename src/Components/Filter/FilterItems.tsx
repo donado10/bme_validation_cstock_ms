@@ -17,7 +17,11 @@ interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
   logo: ReactElement<any>;
 }
 
-export const FilterDate: React.FC<{ defaultDate?: string }> = ({
+interface IFilterWarehouse extends React.HTMLAttributes<HTMLSelectElement> {
+  defaultOption: string;
+}
+
+export const FilterDateBill: React.FC<{ defaultDate?: string }> = ({
   defaultDate,
 }) => {
   const dispatch = useDispatch();
@@ -39,6 +43,9 @@ export const FilterDate: React.FC<{ defaultDate?: string }> = ({
             const date = getEarlierDate(getDay(), e.currentTarget.value);
             e.currentTarget.value = date;
             setSearchParams({ date: date });
+            dispatch(
+              setFilters({ ...billState.filter!, date: dateRef.current.value }),
+            );
           }}
         />
       </div>
@@ -46,6 +53,53 @@ export const FilterDate: React.FC<{ defaultDate?: string }> = ({
         onClick={() => {
           dispatch(
             setFilters({ ...billState.filter!, date: dateRef.current.value }),
+          );
+        }}
+      >
+        <IoSearch className="h-6 w-6 text-bme-700" />
+      </button>
+    </div>
+  );
+};
+
+export const FilterDateTransfert: React.FC<{ defaultDate?: string }> = ({
+  defaultDate,
+}) => {
+  const dispatch = useDispatch();
+  const transfertState = useSelector<IRootState>(
+    (state) => state.transferts,
+  ) as ITransfertState;
+  const dateRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const [, setSearchParams] = useSearchParams();
+
+  return (
+    <div className="flex items-center gap-8 rounded-lg border-2 border-bme-700 px-2 py-1 font-bold text-bme-700 xs:w-full md:w-fit">
+      <div className="flex w-full items-center xs:justify-between xs:py-2 xl:py-0">
+        <input
+          type="date"
+          className="bg-transparent font-semibold outline-none"
+          ref={dateRef}
+          defaultValue={defaultDate || getDay()}
+          onChange={(e) => {
+            const date = getEarlierDate(getDay(), e.currentTarget.value);
+            e.currentTarget.value = date;
+            setSearchParams({ date: date });
+            dispatch(
+              setTransfertFilters({
+                ...transfertState.filter!,
+                date: dateRef.current.value,
+              }),
+            );
+          }}
+        />
+      </div>
+      <button
+        onClick={() => {
+          dispatch(
+            setTransfertFilters({
+              ...transfertState.filter!,
+              date: dateRef.current.value,
+            }),
           );
         }}
       >
@@ -127,11 +181,60 @@ export const FilterLayoutRow: React.FC<{ children: ReactNode }> = ({
   );
 };
 
+export const FilterWarehouse: React.FC<IFilterWarehouse> = React.forwardRef(
+  ({ defaultOption, ...props }) => {
+    return (
+      <select
+        className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        {...props}
+      >
+        <option
+          value={defaultOption}
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          {defaultOption}
+        </option>
+        <option
+          value="Laprine"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Laprine
+        </option>
+        <option
+          value="Intendance"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Intendance
+        </option>
+        <option
+          value="Robert Brun"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Robert Brun
+        </option>
+        <option
+          value="Lamine Gueye"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Lamine Gueye
+        </option>
+
+        <option
+          value="SAV"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          SAV
+        </option>
+      </select>
+    );
+  },
+);
+
 export const FilterLayout: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   return (
-    <div className="shadow-filter flex flex-col justify-center gap-4 rounded-lg p-8">
+    <div className="shadow-filter flex flex-col justify-center gap-16 rounded-lg p-8">
       {children}
     </div>
   );
