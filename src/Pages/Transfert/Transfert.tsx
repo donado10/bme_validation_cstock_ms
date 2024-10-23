@@ -128,6 +128,10 @@ const Transfert = () => {
 
                   trans.status = transfertStatus;
                 });
+
+                data.sort((a, b) => {
+                  return Number(a.status) - Number(b.status);
+                });
                 dispatch(addTransferts(data));
                 setLoader(false);
               });

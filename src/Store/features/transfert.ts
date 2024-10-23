@@ -14,6 +14,7 @@ export interface ITransfert {
   DO_Date: string;
   DE_src: string;
   DE_dest: string;
+  DL_Ligne: string;
   DO_Ligne: ITransfertLigne[] | [];
   status: boolean;
 }
