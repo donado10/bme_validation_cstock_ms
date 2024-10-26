@@ -91,8 +91,6 @@ export const useFilterTransfertsData = (
   useEffect(() => {
     let filteredData = filterByStatus(filter);
 
-    
-
     if (transfertFilter.search) {
       filteredData = filterBySearch(
         filteredData,
@@ -108,7 +106,7 @@ export const useFilterTransfertsData = (
           );
           setData(filteredData);
         }
-    
+
         if (transfertFilter.warehouse.dest) {
           filteredData = filterByWarehouseDest(
             filteredData,
@@ -131,7 +129,7 @@ export const useFilterTransfertsData = (
         );
         setData(filteredData);
       }
-  
+
       if (transfertFilter.warehouse.dest) {
         filteredData = filterByWarehouseDest(
           filteredData,
@@ -141,8 +139,6 @@ export const useFilterTransfertsData = (
       }
 
       setData(filteredData);
-
-
     }
   }, [
     JSON.stringify(transfertFilter.warehouse),
@@ -168,6 +164,12 @@ export const useFilterTransfertsData = (
 
             trans.status = transfertStatus;
           });
+          data.forEach((trans) =>
+            trans.DO_Ligne.sort(
+              (a, b) => Number(a.DL_Ligne) - Number(b.DL_Ligne),
+            ),
+          );
+          console.log(data);
           setData(data);
           dispatch(addTransferts(data));
           setLoader(false);

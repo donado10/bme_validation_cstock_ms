@@ -43,27 +43,6 @@ const Transfert = () => {
   const location = useLocation();
 
   useEffect(() => {
-    /* const date = searchParams.get("date") || getDay();
-
-    dispatch(setTransfertFilters({ ...transfertState.filter!, date: date }));
-    setLoader(true);
-    fetch(`http://bme_api.test:8080/api/documentsMT?date=${date}`)
-      .then((res) => res.json())
-      .then((dataRes: ITransfert[]) => {
-        dataRes.forEach((trans) => {
-          trans.DE_src = formatTransfertWareHouse(trans.DE_src);
-          trans.DE_dest = formatTransfertWareHouse(trans.DE_dest);
-          const transfertStatus = trans.DO_Ligne.every(
-            (trans) => trans.status === true,
-          );
-
-          trans.status = transfertStatus;
-        });
-
-        setLoader(false);
-        dispatch(addTransferts(dataRes));
-      }); */
-
     if (!searchParams.get("date")) {
       setSearchParams({ date: getDay() });
     }
@@ -129,9 +108,11 @@ const Transfert = () => {
                   trans.status = transfertStatus;
                 });
 
-                data.sort((a, b) => {
-                  return Number(a.status) - Number(b.status);
-                });
+                data.forEach((trans) =>
+                  trans.DO_Ligne.sort(
+                    (a, b) => Number(a.DL_Ligne) - Number(b.DL_Ligne),
+                  ),
+                );
                 dispatch(addTransferts(data));
                 setLoader(false);
               });
@@ -250,7 +231,6 @@ const Transfert = () => {
                   let warehouse: string | null = e.currentTarget.value;
                   console.log(warehouse);
                   if (warehouse === "--- Destination ---") {
-                    console.log("hey");
                     warehouse = null;
                   }
 

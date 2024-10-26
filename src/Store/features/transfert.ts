@@ -6,6 +6,7 @@ export interface ITransfertLigne {
   DL_PrixUnitaire: number;
   DL_Qte: number;
   DL_MontantHT: number;
+  DL_Ligne: string;
   status: boolean;
 }
 
@@ -14,7 +15,6 @@ export interface ITransfert {
   DO_Date: string;
   DE_src: string;
   DE_dest: string;
-  DL_Ligne: string;
   DO_Ligne: ITransfertLigne[] | [];
   status: boolean;
 }

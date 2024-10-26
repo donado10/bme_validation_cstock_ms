@@ -213,10 +213,10 @@ export const FilterWarehouse: React.FC<IFilterWarehouse> = React.forwardRef(
           Robert Brun
         </option>
         <option
-          value="Lamine Gueye"
+          value="Expo LG"
           className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
         >
-          Lamine Gueye
+          Expo LG
         </option>
 
         <option
@@ -224,6 +224,12 @@ export const FilterWarehouse: React.FC<IFilterWarehouse> = React.forwardRef(
           className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
         >
           SAV
+        </option>
+        <option
+          value="Retour"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Retour
         </option>
       </select>
     );
