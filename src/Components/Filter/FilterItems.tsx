@@ -10,6 +10,7 @@ import {
   ITransfertState,
   setTransfertFilters,
 } from "../../Store/features/transfert";
+import { IRetourState, setRetourFilters } from "../../Store/features/retour";
 
 interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
   name: string;
@@ -53,6 +54,52 @@ export const FilterDateBill: React.FC<{ defaultDate?: string }> = ({
         onClick={() => {
           dispatch(
             setFilters({ ...billState.filter!, date: dateRef.current.value }),
+          );
+        }}
+      >
+        <IoSearch className="h-6 w-6 text-bme-700" />
+      </button>
+    </div>
+  );
+};
+export const FilterDateRetour: React.FC<{ defaultDate?: string }> = ({
+  defaultDate,
+}) => {
+  const dispatch = useDispatch();
+  const retourState = useSelector<IRootState>(
+    (state) => state.retours,
+  ) as IRetourState;
+  const dateRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const [, setSearchParams] = useSearchParams();
+
+  return (
+    <div className="flex items-center gap-8 rounded-lg border-2 border-bme-700 px-2 py-1 font-bold text-bme-700 xs:w-full md:w-fit">
+      <div className="flex w-full items-center xs:justify-between xs:py-2 xl:py-0">
+        <input
+          type="date"
+          className="bg-transparent font-semibold outline-none"
+          ref={dateRef}
+          defaultValue={defaultDate || getDay()}
+          onChange={(e) => {
+            const date = getEarlierDate(getDay(), e.currentTarget.value);
+            e.currentTarget.value = date;
+            setSearchParams({ date: date });
+            dispatch(
+              setRetourFilters({
+                ...retourState.filter!,
+                date: dateRef.current.value,
+              }),
+            );
+          }}
+        />
+      </div>
+      <button
+        onClick={() => {
+          dispatch(
+            setRetourFilters({
+              ...retourState.filter!,
+              date: dateRef.current.value,
+            }),
           );
         }}
       >
@@ -147,6 +194,29 @@ export const FilterBillSearch = () => {
     </div>
   );
 };
+
+export const FilterRetourSearch = () => {
+  const dispatch = useDispatch();
+  const retourState = useSelector<IRootState>(
+    (state) => state.retours,
+  ) as IBillState;
+
+  return (
+    <div className="flex items-center gap-2 rounded-lg border-2 border-bme-700 px-2 xs:w-full xs:py-3 xl:w-fit xl:py-1">
+      <IoSearch className="text-bme-700" />
+      <input
+        type="text"
+        placeholder="Search..."
+        className="bg-transparent font-medium text-bme-700 outline-none"
+        onChange={(e) => {
+          const value = e.currentTarget.value;
+          dispatch(setFilters({ ...retourState.filter!, search: value }));
+        }}
+      />
+    </div>
+  );
+};
+
 export const FilterTransfertSearch = () => {
   const dispatch = useDispatch();
   const transfertState = useSelector<IRootState>(

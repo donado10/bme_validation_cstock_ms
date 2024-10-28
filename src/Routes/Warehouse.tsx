@@ -1,4 +1,6 @@
 import MainLayout from "../Pages/MainLayout";
+import Retour from "../Pages/Retour/Retour";
+import RetourLayout from "../Pages/Retour/RetourLayout";
 import Transfert from "../Pages/Transfert/Transfert";
 import TransfertLayout from "../Pages/Transfert/TransfertLayout";
 import Validation from "../Pages/Validation/Validation";
@@ -34,6 +36,11 @@ const route_warehouse = [
         path: "/transfert",
         element: <TransfertLayout />,
         children: [{ path: "", element: <Transfert /> }],
+      },
+      {
+        path: "/retour",
+        element: <RetourLayout />,
+        children: [{ path: "", element: <Retour /> }],
       },
     ],
   },
