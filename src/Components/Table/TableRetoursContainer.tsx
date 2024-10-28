@@ -219,10 +219,12 @@ export const TableRetoursContainer: React.FC<{
                     <Table.BodyValue value={retour.DO_Piece} />
                     <Table.BodyValue value={formatDate(retour.DO_Date)} />
                     <Table.BodyValue
-                      value={formatNumberWithSpace(retour.DO_TotalHT)}
+                      value={formatNumberWithSpace(Math.abs(retour.DO_TotalHT))}
                     />
                     <Table.BodyValue
-                      value={formatNumberWithSpace(retour.DO_TotalTTC)}
+                      value={formatNumberWithSpace(
+                        Math.abs(retour.DO_TotalTTC),
+                      )}
                     />
                     <Table.BodyValue
                       element={<StatusRetour status={retour.status} />}

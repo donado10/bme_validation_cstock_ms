@@ -76,15 +76,19 @@ export const RetourDetails: React.FC<{
                           customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-normal tracking-wider first:text-left last:text-right text-bme-800 "
                         />
                         <Table.BodyValue
-                          value={formatNumberWithSpace(ligne.DL_PrixUnitaire)}
+                          value={formatNumberWithSpace(
+                            Math.abs(ligne.DL_PrixUnitaire),
+                          )}
                           customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-normal tracking-wider first:text-left last:text-right text-bme-800 "
                         />
                         <Table.BodyValue
-                          value={ligne.DL_Qte}
+                          value={Math.abs(ligne.DL_Qte)}
                           customClass="border-r-2 border-gray-300 px-4 py-2 text-center text-xs font-normal tracking-wider first:text-left last:text-right text-bme-800 "
                         />
                         <Table.BodyValue
-                          value={formatNumberWithSpace(ligne.DL_MontantHT)}
+                          value={formatNumberWithSpace(
+                            Math.abs(ligne.DL_MontantHT),
+                          )}
                           customClass=" border-gray-300 px-4 py-2 text-center text-xs font-normal tracking-wider first:text-left last:text-right text-bme-800  "
                         />
                       </Table.BodyRow>

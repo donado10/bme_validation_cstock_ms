@@ -48,26 +48,13 @@ const RetourAlert: React.FC<{
 
         <button
           onClick={() => {
-            let ref = "";
-
-            if (retourDetail.piece.includes("LGV")) {
-              ref = "VENTES LP";
-            }
-            if (retourDetail.piece.includes("RFV")) {
-              ref = "VENTES RB";
-            }
-            if (retourDetail.piece.includes("IFV")) {
-              ref = "VENTES INTENDANCE";
-            }
-
             setEnableLoader(true);
-            fetch("http://bme_api.test:8080/api/execute-stock-procedure", {
+            fetch("http://bme_api.test:8080/api/execute-ME-procedure", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                ref: ref,
                 date: retourDetail.date,
                 piece: retourDetail.piece,
               }), // Convert the request payload to JSON string

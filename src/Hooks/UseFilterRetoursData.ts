@@ -89,7 +89,7 @@ export const useFilterRetoursData = (
 
       setLoader(true);
       fetch(
-        `http://bme_api.test:8080/api/documents?date=${formatDateToSend(retourFilter.date)}&souche=${""}`,
+        `http://bme_api.test:8080/api/documentsME?date=${formatDateToSend(retourFilter.date)}`,
       )
         .then((res) => res.json())
         .then((data) => {
