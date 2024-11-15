@@ -48,6 +48,20 @@ const RetourAlert: React.FC<{
 
         <button
           onClick={() => {
+            let ref = "";
+
+            if (retourDetail.piece.includes("LGFR")) {
+              ref = "RETOURS LP";
+            }
+
+            if (retourDetail.piece.includes("IFR")) {
+              ref = "RETOURS INT";
+            }
+
+            if (retourDetail.piece.includes("RFR")) {
+              ref = "RETOURS RB";
+            }
+
             setEnableLoader(true);
             fetch("http://bme_api.test:8080/api/execute-ME-procedure", {
               method: "POST",
@@ -57,6 +71,7 @@ const RetourAlert: React.FC<{
               body: JSON.stringify({
                 date: retourDetail.date,
                 piece: retourDetail.piece,
+                ref: ref,
               }), // Convert the request payload to JSON string
             })
               .then((response) => {
@@ -132,7 +147,7 @@ export const ConfirmRetourModal: React.FC<{
   }, [retourDetail.piece]);
 
   const className =
-    "flex h-[15rem] w-[45rem] flex-col gap-4 overflow-hidden rounded-lg bg-white";
+    "flex h-[17rem] w-[45rem] flex-col gap-4 overflow-hidden rounded-lg bg-white";
 
   return (
     <>

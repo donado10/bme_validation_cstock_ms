@@ -87,9 +87,7 @@ const Validation = () => {
           onClick={() => {
             const date = searchParams.get("date") || getDay();
             setLoader(true);
-            fetch(
-              `http://bme_api.test:8080/api/newDocuments?date=${date}&souche=${""}`,
-            )
+            fetch(`http://bme_api.test:8080/api/newDocumentsME?date=${date}`)
               .then((res) => {
                 return res.json();
               })

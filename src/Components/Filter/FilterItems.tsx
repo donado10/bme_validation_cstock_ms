@@ -199,7 +199,7 @@ export const FilterRetourSearch = () => {
   const dispatch = useDispatch();
   const retourState = useSelector<IRootState>(
     (state) => state.retours,
-  ) as IBillState;
+  ) as IRetourState;
 
   return (
     <div className="flex items-center gap-2 rounded-lg border-2 border-bme-700 px-2 xs:w-full xs:py-3 xl:w-fit xl:py-1">
@@ -210,7 +210,7 @@ export const FilterRetourSearch = () => {
         className="bg-transparent font-medium text-bme-700 outline-none"
         onChange={(e) => {
           const value = e.currentTarget.value;
-          dispatch(setFilters({ ...retourState.filter!, search: value }));
+          dispatch(setRetourFilters({ ...retourState.filter!, search: value }));
         }}
       />
     </div>
