@@ -70,7 +70,7 @@ const BillAlert: React.FC<{
                 ref: ref,
                 date: billDetail.date,
                 piece: billDetail.piece,
-              }), // Convert the request payload to JSON string
+              }),
             })
               .then((response) => {
                 if (response.status !== 200) {
@@ -117,16 +117,6 @@ const ValidPopup: React.FC<{ closeModal: () => void; bill: string }> = ({
     </div>
   );
 };
-/* const FailedPopup: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
-  useInterval(() => {
-    closeModal();
-  }, 1000);
-  return (
-    <div className="flex h-full w-full items-center justify-center">
-      <GoAlertFill className="h-[10rem] w-[10rem] text-red-600" />
-    </div>
-  );
-}; */
 
 export const ConfirmFactModal: React.FC<{
   billDetail: { piece: string; date: string };

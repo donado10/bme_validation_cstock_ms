@@ -12,6 +12,7 @@ export enum EFilterBills {
   ALL_BILLS,
   VALID_BILLS,
   NO_VALID_BILLS,
+  MODIFIED_BILLS,
 }
 
 export interface IBill {
@@ -21,6 +22,7 @@ export interface IBill {
   DO_TotalTTC: number;
   DO_Ligne: IBillLigne[] | [];
   status: boolean;
+  modified: boolean;
 }
 
 export interface IBillFilter {

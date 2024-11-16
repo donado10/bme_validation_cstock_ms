@@ -27,6 +27,11 @@ const filterByStatus = (dataInfo: IFilterData) => {
 
     return filtereddata;
   }
+  if (dataInfo.filterType.status === EFilterBills.MODIFIED_BILLS) {
+    const filtereddata = dataInfo.data.filter((bill) => bill.modified === true);
+
+    return filtereddata;
+  }
 
   return dataInfo.data;
 };

@@ -33,10 +33,8 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
 
   const [filter, setFilter] = useState<{
     status: EFilterBills;
-    buttons: { all: boolean; valid: boolean; non_valid: boolean };
   }>({
     status: EFilterBills.ALL_BILLS,
-    buttons: { all: true, valid: false, non_valid: false },
   });
 
   const dispatch = useDispatch();
@@ -81,6 +79,7 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
   let billsNumber = dataNumber.all;
   let validBills = dataNumber.valid;
   let invalidBills = dataNumber.non_valid;
+  let modifiedBills = dataNumber.modified;
 
   return (
     <div className="flex flex-col gap-6 p-8">
@@ -116,11 +115,10 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
               <FilterFirstLevel
                 logo={<RiBillLine />}
                 name={`Toutes les factures (${billsNumber})`}
-                selected={filter.buttons.all}
+                selected={filter.status === EFilterBills.ALL_BILLS}
                 onClick={() => {
                   setFilter({
                     status: EFilterBills.ALL_BILLS,
-                    buttons: { all: true, valid: false, non_valid: false },
                   });
 
                   dispatch(
@@ -136,11 +134,10 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
               <FilterFirstLevel
                 logo={<RiBillLine />}
                 name={`Factures validées (${validBills})`}
-                selected={filter.buttons.valid}
+                selected={filter.status === EFilterBills.VALID_BILLS}
                 onClick={() => {
                   setFilter({
                     status: EFilterBills.VALID_BILLS,
-                    buttons: { all: false, valid: true, non_valid: false },
                   });
 
                   dispatch(
@@ -156,17 +153,35 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
               <FilterFirstLevel
                 logo={<RiBillLine />}
                 name={`Factures non validées (${invalidBills})`}
-                selected={filter.buttons.non_valid}
+                selected={filter.status === EFilterBills.NO_VALID_BILLS}
                 onClick={() => {
                   setFilter({
                     status: EFilterBills.NO_VALID_BILLS,
-                    buttons: { all: false, valid: false, non_valid: true },
                   });
 
                   dispatch(
                     setFilters({
                       ...billState.filter!,
                       status: EFilterBills.NO_VALID_BILLS,
+                    }),
+                  );
+                }}
+              />
+            </div>
+            <div className="w-full xl:w-auto">
+              <FilterFirstLevel
+                logo={<RiBillLine />}
+                name={`Factures Modifiées (${modifiedBills})`}
+                selected={filter.status === EFilterBills.MODIFIED_BILLS}
+                onClick={() => {
+                  setFilter({
+                    status: EFilterBills.MODIFIED_BILLS,
+                  });
+
+                  dispatch(
+                    setFilters({
+                      ...billState.filter!,
+                      status: EFilterBills.MODIFIED_BILLS,
                     }),
                   );
                 }}
@@ -184,12 +199,12 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
         </div>
       </FilterLayout>
       <div className="w-full">
-        {!loader && <TableBillsContainer data={filteredData} />}
         {loader && (
           <div className="flex w-full items-center justify-center">
             <PiSpinnerBold className="loader-custom h-[10rem] w-[10rem] text-bme-bg" />
           </div>
         )}
+        {!loader && <TableBillsContainer data={filteredData} />}
       </div>
     </div>
   );

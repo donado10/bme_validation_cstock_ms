@@ -12,10 +12,13 @@ const useGetBillsNumber = () => {
     all: number;
     valid: number;
     non_valid: number;
+    modified: number;
   }>({
     all: billState.billLists.length,
     valid: billState.billLists.filter((bill) => bill.status === true).length,
     non_valid: billState.billLists.filter((bill) => bill.status === false)
+      .length,
+    modified: billState.billLists.filter((bill) => bill.modified === true)
       .length,
   });
 
@@ -26,6 +29,8 @@ const useGetBillsNumber = () => {
       all: dataChange.length,
       valid: dataChange.filter((bill) => bill.status === true).length,
       non_valid: dataChange.filter((bill) => bill.status === false).length,
+      modified: billState.billLists.filter((bill) => bill.modified === true)
+        .length,
     });
 
     if (billState.filter!.search) {
@@ -36,6 +41,8 @@ const useGetBillsNumber = () => {
         all: dataChange.length,
         valid: dataChange.filter((bill) => bill.status === true).length,
         non_valid: dataChange.filter((bill) => bill.status === false).length,
+        modified: billState.billLists.filter((bill) => bill.modified === true)
+          .length,
       });
     }
 
