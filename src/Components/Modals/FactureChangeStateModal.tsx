@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IBillState, validateBill } from "../../Store/features/bills";
+import {
+  IBillState,
+  invalidBill,
+  setModifiedBill,
+  validateBill,
+} from "../../Store/features/bills";
 import { GoAlertFill } from "react-icons/go";
 import { PiSpinnerBold } from "react-icons/pi";
 import { FaCheckCircle } from "react-icons/fa";
@@ -37,11 +42,6 @@ const BillAlert: React.FC<{
             sera {billDetail.set ? "valide" : "invalide"}. Vouler vous confirmer
             ?
           </h1>
-          <h2 className="text-xs">
-            La validation est définitive au niveau de cette application. Si vous
-            revenez en arrière, cette action devra être effectuée dans
-            l'application de gestion commerciale.
-          </h2>
         </div>
       </div>
       <div className="flex items-center justify-end gap-4 p-2">
@@ -98,14 +98,21 @@ const LoaderPopup: React.FC<{ closeModal: () => void }> = () => {
   );
 };
 
-const ValidPopup: React.FC<{ closeModal: () => void; bill: string }> = ({
-  closeModal,
-  bill,
-}) => {
+const ValidPopup: React.FC<{
+  closeModal: () => void;
+  bill: { piece: string; set: boolean };
+}> = ({ closeModal, bill }) => {
   const dispatch = useDispatch();
   useInterval(() => {
     closeModal();
-    dispatch(validateBill(bill));
+
+    if (bill.set) {
+      dispatch(validateBill(bill.piece));
+      dispatch(setModifiedBill({ piece: bill.piece, value: false }));
+    } else {
+      dispatch(invalidBill(bill.piece));
+      dispatch(setModifiedBill({ piece: bill.piece, value: false }));
+    }
   }, 1000);
   return (
     <div className="flex h-full w-full items-center justify-center">
@@ -145,7 +152,7 @@ export const ConfirmFactNewStateModal: React.FC<{
       )}
       {isFactureValid && (
         <div className={className}>
-          <ValidPopup closeModal={closeModal} bill={billDetail.piece} />
+          <ValidPopup closeModal={closeModal} bill={billDetail} />
         </div>
       )}
     </>

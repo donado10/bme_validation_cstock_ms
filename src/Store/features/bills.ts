@@ -57,8 +57,25 @@ const billSlice = createSlice({
         }
       });
     },
+    invalidBill: (state, action: PayloadAction<string>) => {
+      state.billLists.forEach((bill) => {
+        if (bill.DO_Piece === action.payload) {
+          bill.status = false;
+        }
+      });
+    },
     setFilters: (state, action: PayloadAction<IBillFilter>) => {
       state.filter = { ...action.payload };
+    },
+    setModifiedBill: (
+      state,
+      action: PayloadAction<{ piece: string; value: boolean }>,
+    ) => {
+      state.billLists.forEach((bill) => {
+        if (bill.DO_Piece === action.payload.piece) {
+          bill.modified = action.payload.value;
+        }
+      });
     },
     setSort: (
       state,
@@ -70,5 +87,11 @@ const billSlice = createSlice({
 });
 
 export default billSlice;
-export const { addBills, setFilters, validateBill, setSort } =
-  billSlice.actions;
+export const {
+  addBills,
+  setFilters,
+  setModifiedBill,
+  validateBill,
+  invalidBill,
+  setSort,
+} = billSlice.actions;
