@@ -35,11 +35,11 @@ const Transfert = () => {
     buttons: { all: true, valid: false, non_valid: false },
   });
 
-  const dispatch = useDispatch();
   const transfertState = useSelector<IRootState>(
     (state) => state.transferts,
   ) as ITransfertState;
 
+  const dispatch = useDispatch();
   const location = useLocation();
 
   useEffect(() => {

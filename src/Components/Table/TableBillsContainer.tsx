@@ -15,6 +15,7 @@ import { setSort } from "../../Store/features/bills";
 import useSortBillsTable from "../../Hooks/UseSortBillsTable";
 import { IRootState } from "../../Store/store";
 import { IoMdCloseCircle } from "react-icons/io";
+import { ConfirmFactNewStateModal } from "../Modals/FactureChangeStateModal";
 
 export const TableBillsContainer: React.FC<{
   data: IBill[];
@@ -22,8 +23,15 @@ export const TableBillsContainer: React.FC<{
   const [enableModal, setEnableModal] = useState<{
     confirm: boolean;
     cancel: boolean;
-    bill: { piece: string; date: string };
-  }>({ confirm: false, cancel: false, bill: { piece: "", date: "" } });
+    editStatus: boolean;
+
+    bill: any;
+  }>({
+    confirm: false,
+    cancel: false,
+    editStatus: false,
+    bill: { piece: "", date: "" },
+  });
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -149,6 +157,8 @@ export const TableBillsContainer: React.FC<{
                             setEnableModal({
                               cancel: false,
                               confirm: true,
+                              editStatus: false,
+
                               bill: {
                                 piece: bill.DO_Piece,
                                 date: bill.DO_Date,
@@ -174,10 +184,12 @@ export const TableBillsContainer: React.FC<{
                             onClick={() => {
                               setEnableModal({
                                 cancel: false,
-                                confirm: true,
+                                confirm: false,
+                                editStatus: true,
+
                                 bill: {
                                   piece: bill.DO_Piece,
-                                  date: bill.DO_Date,
+                                  set: false,
                                 },
                               });
                             }}
@@ -189,10 +201,12 @@ export const TableBillsContainer: React.FC<{
                             onClick={() => {
                               setEnableModal({
                                 cancel: false,
-                                confirm: true,
+                                confirm: false,
+                                editStatus: true,
+
                                 bill: {
                                   piece: bill.DO_Piece,
-                                  date: bill.DO_Date,
+                                  set: true,
                                 },
                               });
                             }}
@@ -259,6 +273,8 @@ export const TableBillsContainer: React.FC<{
             setEnableModal({
               cancel: false,
               confirm: false,
+              editStatus: false,
+
               bill: { date: "", piece: "" },
             });
           }}
@@ -273,7 +289,38 @@ export const TableBillsContainer: React.FC<{
                 setEnableModal({
                   cancel: false,
                   confirm: false,
+                  editStatus: false,
                   bill: { date: "", piece: "" },
+                });
+              }}
+            />
+          }
+        />
+      )}
+      {enableModal.editStatus && (
+        <MyPortal
+          onClose={() => {
+            setEnableModal({
+              cancel: false,
+              confirm: false,
+              editStatus: false,
+
+              bill: { date: "", piece: "" },
+            });
+          }}
+          isOpen={enableModal.editStatus}
+          modal={
+            <ConfirmFactNewStateModal
+              billDetail={{
+                piece: enableModal.bill.piece,
+                set: enableModal.bill.set,
+              }}
+              closeModal={() => {
+                setEnableModal({
+                  cancel: false,
+                  confirm: false,
+                  editStatus: false,
+                  bill: { piece: "", set: null },
                 });
               }}
             />

@@ -37,10 +37,11 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
     status: EFilterBills.ALL_BILLS,
   });
 
-  const dispatch = useDispatch();
   const billState = useSelector<IRootState>(
     (state) => state.bills,
   ) as IBillState;
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!searchParams.get("date")) {
@@ -75,6 +76,9 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
     souche,
   );
 
+  useEffect(() => {
+    setLoader(false);
+  }, [JSON.stringify(filteredData)]);
   //Calcul nombre de factures
   let billsNumber = dataNumber.all;
   let validBills = dataNumber.valid;
@@ -184,6 +188,8 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
                       status: EFilterBills.MODIFIED_BILLS,
                     }),
                   );
+
+                  setLoader(true);
                 }}
               />
             </div>

@@ -10,9 +10,10 @@ const MyPortal: React.FC<{
   el.id = "overlay";
   el.classList.value =
     "fixed inset-0 w-screen h-100% bg-black/75 flex items-center justify-center";
-  el.addEventListener("click", (e: Event) => {
-    const target = e.currentTarget as HTMLElement;
+  el.addEventListener("click", (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
     if (target.classList.contains("overlay")) {
+      console.log("heyy");
       onClose();
     }
     return;
