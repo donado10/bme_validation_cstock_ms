@@ -194,14 +194,14 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
               />
             </div>
           </div>
+        </div>
+        <div className="flex items-center justify-between xs:mt-3 xl:mt-0">
+          <FilterDateBill defaultDate={searchParams.get("date")!} />
           <div className="flex items-center gap-4">
             <div className="w-full">
               <FilterBillSearch />
             </div>
           </div>
-        </div>
-        <div className="xs:mt-3 xl:mt-0">
-          <FilterDateBill defaultDate={searchParams.get("date")!} />
         </div>
       </FilterLayout>
       <div className="w-full">

@@ -301,6 +301,36 @@ export const FilterWarehouse: React.FC<IFilterWarehouse> = React.forwardRef(
         >
           Retour
         </option>
+        <option
+          value="Camberene 1"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Camberene 1
+        </option>
+        <option
+          value="Camberene 2"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Camberene 2
+        </option>
+        <option
+          value="Camberene 3"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Camberene 3
+        </option>
+        <option
+          value="Camberene 4"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Camberene 4
+        </option>
+        <option
+          value="Camberene 5"
+          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+        >
+          Camberene 5
+        </option>
       </select>
     );
   },

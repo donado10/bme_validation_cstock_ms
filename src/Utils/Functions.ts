@@ -86,6 +86,22 @@ export function formatTransfertWareHouse(de_no: string): string {
     return "Retour";
   }
 
+  if (de_no === "209") {
+    return "Camberene 1";
+  }
+  if (de_no === "210") {
+    return "Camberene 2";
+  }
+  if (de_no === "211") {
+    return "Camberene 3";
+  }
+  if (de_no === "212") {
+    return "Camberene 4";
+  }
+  if (de_no === "213") {
+    return "Camberene 5";
+  }
+
   return de_no;
 }
 
@@ -108,6 +124,21 @@ export function formatTransfertForBackend(warehouse: string): string {
   }
   if (warehouse === "Retour") {
     return "Retour";
+  }
+  if (warehouse === "Camberene 1") {
+    return "CAMB1";
+  }
+  if (warehouse === "Camberene 2") {
+    return "CAMB2";
+  }
+  if (warehouse === "Camberene 3") {
+    return "CAMB3";
+  }
+  if (warehouse === "Camberene 4") {
+    return "CAMB4";
+  }
+  if (warehouse === "Camberene 5") {
+    return "CAMB5";
   }
 
   return warehouse;
