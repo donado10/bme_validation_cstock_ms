@@ -13,7 +13,6 @@ const MyPortal: React.FC<{
   el.addEventListener("click", (e: MouseEvent) => {
     const target = e.target as HTMLElement;
     if (target.classList.contains("overlay")) {
-      console.log("heyy");
       onClose();
     }
     return;

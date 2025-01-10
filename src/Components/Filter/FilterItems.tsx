@@ -253,6 +253,50 @@ export const FilterLayoutRow: React.FC<{ children: ReactNode }> = ({
 
 export const FilterWarehouse: React.FC<IFilterWarehouse> = React.forwardRef(
   ({ defaultOption, ...props }) => {
+    const depotMap = new Map<string, string>([
+      ["1", "Laprine"],
+      ["2", "Expo LG"],
+      ["71", "Robert Brun"],
+      ["72", "Intendance"],
+      ["78", "SAV"],
+      ["182", "Retour"],
+      ["209", "Camberene 1"],
+      ["210", "Camberene 2"],
+      ["211", "Camberene 3"],
+      ["212", "Camberene 4"],
+      ["213", "Camberene 5"],
+      ["81", "E ZONE (fict)"],
+      ["82", "SENEGALAISE SXMTC (fict)"],
+      ["83", "AL Bilal (fict)"],
+      ["84", "CCBM Electronics (fict)"],
+      ["85", "ELECTRONIC CORP (fict)"],
+      ["87", "HOMETECH (fict)"],
+      ["90", "ELECTROPLUS (fict)"],
+      ["93", "ATLAS COMMERCIAL CENTER (fict)"],
+      ["105", "MASSATA EQUIPEMENT (fict)"],
+      ["110", "OFFICE CHOICE (fict)"],
+      ["121", "ABDOULAHAD MBAYE (fict)"],
+      ["126", "SKD DISTRIBUTION (fict)"],
+      ["127", "ROYAL GIANT (fict)"],
+      ["131", "DIA ELECTRONICS (fict)"],
+      ["150", "DEPOT CAC (fict)"],
+      ["156", "BIBLOS SENEGAL (fict)"],
+      ["167", "SECKENE EQUIPEMENT ET SERVICES (fict)"],
+      ["179", "GUANGZHOU ELECTRICAL (fict)"],
+      ["191", "SNCIS SARL (fict)"],
+      ["214", "EBS REFUS DE PRENDRE (fict)"],
+      ["215", "AL RACHID SUARL (fict)"],
+      ["216", "TRI STAR ELECTRONICS (fict)"],
+      ["217", "ATLAS CONCEPT (fict)"],
+      ["218", "CONSTRUCTION ET EQUIPEMENT (fict)"],
+    ]);
+
+    let arrDepot: string[] = [];
+
+    depotMap.forEach((value) => {
+      arrDepot = [...arrDepot, value];
+    });
+
     return (
       <select
         className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
@@ -264,73 +308,16 @@ export const FilterWarehouse: React.FC<IFilterWarehouse> = React.forwardRef(
         >
           {defaultOption}
         </option>
-        <option
-          value="Laprine"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Laprine
-        </option>
-        <option
-          value="Intendance"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Intendance
-        </option>
-        <option
-          value="Robert Brun"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Robert Brun
-        </option>
-        <option
-          value="Expo LG"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Expo LG
-        </option>
-
-        <option
-          value="SAV"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          SAV
-        </option>
-        <option
-          value="Retour"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Retour
-        </option>
-        <option
-          value="Camberene 1"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Camberene 1
-        </option>
-        <option
-          value="Camberene 2"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Camberene 2
-        </option>
-        <option
-          value="Camberene 3"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Camberene 3
-        </option>
-        <option
-          value="Camberene 4"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Camberene 4
-        </option>
-        <option
-          value="Camberene 5"
-          className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
-        >
-          Camberene 5
-        </option>
+        {arrDepot.map((d) => {
+          return (
+            <option
+              value={d}
+              className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
+            >
+              {d}
+            </option>
+          );
+        })}
       </select>
     );
   },

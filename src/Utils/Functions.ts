@@ -64,82 +64,88 @@ export function getEarlierDate(date1: string, date2: string): string {
   return firstDate <= secondDate ? date1 : date2;
 }
 
+
 export function formatTransfertWareHouse(de_no: string): string {
-  if (de_no === "1") {
-    return "Laprine";
-  }
-  if (de_no === "71") {
-    return "Robert Brun";
-  }
+  const depotMap = new Map<string, string>([
+    ["1", "Laprine"],
+    ["2", "Expo LG"],
+    ["71", "Robert Brun"],
+    ["72", "Intendance"],
+    ["78", "SAV"],
+    ["182", "Retour"],
+    ["209", "Camberene 1"],
+    ["210", "Camberene 2"],
+    ["211", "Camberene 3"],
+    ["212", "Camberene 4"],
+    ["213", "Camberene 5"],
+    ["81", "E ZONE (fict)"],
+    ["82", "SENEGALAISE SXMTC (fict)"],
+    ["83", "AL Bilal (fict)"],
+    ["84", "CCBM Electronics (fict)"],
+    ["85", "ELECTRONIC CORP (fict)"],
+    ["87", "HOMETECH (fict)"],
+    ["90", "ELECTROPLUS (fict)"],
+    ["93", "ATLAS COMMERCIAL CENTER (fict)"],
+    ["105", "MASSATA EQUIPEMENT (fict)"],
+    ["110", "OFFICE CHOICE (fict)"],
+    ["121", "ABDOULAHAD MBAYE (fict)"],
+    ["126", "SKD DISTRIBUTION (fict)"],
+    ["127", "ROYAL GIANT (fict)"],
+    ["131", "DIA ELECTRONICS (fict)"],
+    ["150", "DEPOT CAC (fict)"],
+    ["156", "BIBLOS SENEGAL (fict)"],
+    ["167", "SECKENE EQUIPEMENT ET SERVICES (fict)"],
+    ["179", "GUANGZHOU ELECTRICAL (fict)"],
+    ["191", "SNCIS SARL (fict)"],
+    ["214", "EBS REFUS DE PRENDRE (fict)"],
+    ["215", "AL RACHID SUARL (fict)"],
+    ["216", "TRI STAR ELECTRONICS (fict)"],
+    ["217", "ATLAS CONCEPT (fict)"],
+    ["218", "CONSTRUCTION ET EQUIPEMENT (fict)"],
+  ]);
 
-  if (de_no === "72") {
-    return "Intendance";
-  }
-  if (de_no === "78") {
-    return "SAV";
-  }
-
-  if (de_no === "2") {
-    return "Expo LG";
-  }
-  if (de_no === "182") {
-    return "Retour";
-  }
-
-  if (de_no === "209") {
-    return "Camberene 1";
-  }
-  if (de_no === "210") {
-    return "Camberene 2";
-  }
-  if (de_no === "211") {
-    return "Camberene 3";
-  }
-  if (de_no === "212") {
-    return "Camberene 4";
-  }
-  if (de_no === "213") {
-    return "Camberene 5";
-  }
-
-  return de_no;
+  return depotMap.get(de_no) || "";
 }
 
 export function formatTransfertForBackend(warehouse: string): string {
-  if (warehouse === "Laprine") {
-    return "Laprine";
-  }
-  if (warehouse === "Robert Brun") {
-    return "RB";
-  }
+  const depotMap = new Map<string, string>([
+    ["Laprine", "Laprine"],
+    ["Robert Brun", "RB"],
+    ["Intendance", "INT"],
+    ["Expo LG", "EXP-LG"],
+    ["SAV", "SAV"],
+    ["Retour", "Retour"],
+    ["Camberene 1", "CAMB1"],
+    ["Camberene 2", "CAMB2"],
+    ["Camberene 3", "CAMB3"],
+    ["Camberene 4", "CAMB4"],
+    ["Camberene 5", "CAMB5"],
+    [ "E ZONE","EZO"],
+    [ "SENEGALAISE SXMTC","SXMTC"],
+    [ "AL Bilal","GETCO"],
+    [ "CCBM Electronics","CCBM"],
+    [ "ELECTRONIC CORP","EC"],
+    [ "HOMETECH","HOM"],
+    [ "ELECTROPLUS","ELEC"],
+    [ "ATLAS COMMERCIAL CENTER","ATLAS"],
+    [ "MASSATA EQUIPEMENT","MASSATA"],
+    [ "OFFICE CHOICE","OFFICE"],
+    [ "ABDOULAHAD MBAYE","LATE"],
+    [ "SKD DISTRIBUTION","SKD"],
+    [ "ROYAL GIANT","ROYAL"],
+    [ "DIA ELECTRONICS","DIAELEC"],
+    [ "DEPOT CAC","CAC"],
+    [ "BIBLOS SENEGAL","BIBLOS"],
+    [ "SECKENE EQUIPEMENT ET SERVICES","SECKENE"],
+    [ "GUANGZHOU ELECTRICAL","GUANG"],
+    [ "SNCIS SARL","SNCIS"],
+    [ "EBS REFUS DE PRENDRE","EBS"],
+    [ "AL RACHID SUARL","ALRACHI"],
+    [ "TRI STAR ELECTRONICS","TRISTAR"],
+    [ "ATLAS CONCEPT","ATLAS"],
+    [ "CONSTRUCTION ET EQUIPEMENT","CONST"],
 
-  if (warehouse === "Intendance") {
-    return "INT";
-  }
-  if (warehouse === "Expo LG") {
-    return "EXP-LG";
-  }
-  if (warehouse === "SAV") {
-    return "SAV";
-  }
-  if (warehouse === "Retour") {
-    return "Retour";
-  }
-  if (warehouse === "Camberene 1") {
-    return "CAMB1";
-  }
-  if (warehouse === "Camberene 2") {
-    return "CAMB2";
-  }
-  if (warehouse === "Camberene 3") {
-    return "CAMB3";
-  }
-  if (warehouse === "Camberene 4") {
-    return "CAMB4";
-  }
-  if (warehouse === "Camberene 5") {
-    return "CAMB5";
-  }
+  ]);
 
-  return warehouse;
+  return depotMap.get(warehouse) || "";
 }

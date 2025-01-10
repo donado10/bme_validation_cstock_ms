@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
-  IBillState,
   invalidBill,
   setModifiedBill,
   validateBill,
@@ -10,7 +9,6 @@ import { GoAlertFill } from "react-icons/go";
 import { PiSpinnerBold } from "react-icons/pi";
 import { FaCheckCircle } from "react-icons/fa";
 import React from "react";
-import { IRootState } from "../../Store/store";
 import { useInterval } from "../../Hooks/use-interval";
 
 const BillAlert: React.FC<{
