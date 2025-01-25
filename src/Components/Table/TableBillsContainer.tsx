@@ -16,6 +16,8 @@ import useSortBillsTable from "../../Hooks/UseSortBillsTable";
 import { IRootState } from "../../Store/store";
 import { IoMdCloseCircle } from "react-icons/io";
 import { ConfirmFactNewStateModal } from "../Modals/FactureChangeStateModal";
+import { useLocation } from "react-router-dom";
+import { ConfirmFactAchatModal } from "../Modals/FactureAchatModal";
 
 export const TableBillsContainer: React.FC<{
   data: IBill[];
@@ -47,6 +49,10 @@ export const TableBillsContainer: React.FC<{
   const dispatch = useDispatch();
 
   const tableData: IBill[] = useSortBillsTable(setIsLoading, data);
+
+  const location = useLocation();
+
+  console.log(location.pathname.split("/")[1]);
 
   return (
     <div className="max-h-[40rem] w-full overflow-scroll overflow-x-scroll rounded-lg border-2 border-bme-bg">
@@ -281,6 +287,36 @@ export const TableBillsContainer: React.FC<{
           isOpen={enableModal.confirm}
           modal={
             <ConfirmFactModal
+              billDetail={{
+                piece: enableModal.bill.piece,
+                date: enableModal.bill.date,
+              }}
+              closeModal={() => {
+                setEnableModal({
+                  cancel: false,
+                  confirm: false,
+                  editStatus: false,
+                  bill: { date: "", piece: "" },
+                });
+              }}
+            />
+          }
+        />
+      )}
+      {location.pathname.split("/")[1] === "achat" && enableModal.confirm && (
+        <MyPortal
+          onClose={() => {
+            setEnableModal({
+              cancel: false,
+              confirm: false,
+              editStatus: false,
+
+              bill: { date: "", piece: "" },
+            });
+          }}
+          isOpen={enableModal.confirm}
+          modal={
+            <ConfirmFactAchatModal
               billDetail={{
                 piece: enableModal.bill.piece,
                 date: enableModal.bill.date,

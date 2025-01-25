@@ -22,6 +22,7 @@ import { PiSpinnerBold } from "react-icons/pi";
 import { GrPowerReset } from "react-icons/gr";
 import { getDay } from "../../Utils/Functions";
 import useGetBillsNumber from "../../Hooks/useGetBillsNumber";
+import { useFilterBillsAchatData } from "../../Hooks/UseFilterBillsAchatData";
 import useCleanupBillStore from "../../Hooks/UseCleanupBillStore";
 
 interface IValidation {
@@ -42,9 +43,9 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
     (state) => state.bills,
   ) as IBillState;
 
-  useCleanupBillStore();
-
   const dispatch = useDispatch();
+
+  useCleanupBillStore();
 
   useEffect(() => {
     if (!searchParams.get("date")) {
@@ -70,7 +71,7 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
   const [loader, setLoader] = useState<boolean>(false);
 
   const [dataNumber] = useGetBillsNumber();
-  const { data: filteredData } = useFilterBillsData(
+  const { data: filteredData } = useFilterBillsAchatData(
     {
       data: memoizedBillData,
       filterType: billState.filter!,
@@ -98,9 +99,7 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
           onClick={() => {
             const date = searchParams.get("date") || getDay();
             setLoader(true);
-            fetch(
-              `http://bme_api.test:8080/api/newDocuments?date=${date}&souche=${souche}`,
-            )
+            fetch(`http://bme_api.test:8082/api/getDocumentsAC?date=${date}`)
               .then((res) => {
                 return res.json();
               })

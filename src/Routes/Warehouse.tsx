@@ -1,3 +1,5 @@
+import Achat from "../Pages/Achat/Achat";
+import AchatLayout from "../Pages/Achat/AchatLayout";
 import MainLayout from "../Pages/MainLayout";
 import Retour from "../Pages/Retour/Retour";
 import RetourLayout from "../Pages/Retour/RetourLayout";
@@ -41,6 +43,11 @@ const route_warehouse = [
         path: "/retour",
         element: <RetourLayout />,
         children: [{ path: "", element: <Retour /> }],
+      },
+      {
+        path: "/achat",
+        element: <AchatLayout />,
+        children: [{ path: "", element: <Achat title="Achat" souche="" /> }],
       },
     ],
   },
