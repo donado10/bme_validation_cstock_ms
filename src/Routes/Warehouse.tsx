@@ -47,7 +47,7 @@ const route_warehouse = [
       {
         path: "/achat",
         element: <AchatLayout />,
-        children: [{ path: "", element: <Achat title="Achat" souche="" /> }],
+        children: [{ path: "", element: <Achat title="Achat" /> }],
       },
     ],
   },

@@ -56,7 +56,6 @@ const filterByDate = (data: IBill[], billDate: string) => {
 export const useFilterBillsAchatData = (
   filter: IFilterData,
   setLoader: React.Dispatch<any>,
-  souche: string,
 ) => {
   const [data, setData] = useState<IBill[]>([]);
   const billFilter = filter.filterType;
@@ -88,7 +87,7 @@ export const useFilterBillsAchatData = (
 
       setLoader(true);
       fetch(
-        `http://bme_api.test:8082/api/getDocumentsAC?date=${formatDateToSend(billFilter.date)}`,
+        `http://bme_api.test:8080/api/getDocumentsAC?date=${formatDateToSend(billFilter.date)}`,
       )
         .then((res) => res.json())
         .then((data) => {

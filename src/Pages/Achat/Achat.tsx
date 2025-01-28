@@ -13,7 +13,6 @@ import {
 } from "../../Store/features/bills";
 import { RiBillLine } from "react-icons/ri";
 import { TableBillsContainer } from "../../Components/Table/TableBillsContainer";
-import { useFilterBillsData } from "../../Hooks/UseFilterBillsData";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../Store/store";
 import { useSearchParams } from "react-router-dom";
@@ -27,10 +26,9 @@ import useCleanupBillStore from "../../Hooks/UseCleanupBillStore";
 
 interface IValidation {
   title: string;
-  souche: string;
 }
 
-const Validation: React.FC<IValidation> = ({ title, souche }) => {
+const Validation: React.FC<IValidation> = ({ title }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [filter, setFilter] = useState<{
@@ -77,7 +75,6 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
       filterType: billState.filter!,
     },
     setLoader,
-    souche,
   );
 
   useEffect(() => {
@@ -99,7 +96,7 @@ const Validation: React.FC<IValidation> = ({ title, souche }) => {
           onClick={() => {
             const date = searchParams.get("date") || getDay();
             setLoader(true);
-            fetch(`http://bme_api.test:8082/api/getDocumentsAC?date=${date}`)
+            fetch(`http://bme_api.test:8080/api/getDocumentsAC?date=${date}`)
               .then((res) => {
                 return res.json();
               })

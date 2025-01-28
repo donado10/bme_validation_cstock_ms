@@ -49,7 +49,7 @@ const BillAlert: React.FC<{
         <button
           onClick={() => {
             setEnableLoader(true);
-            fetch("http://bme_api.test:8082/api/executeACProcedure", {
+            fetch("http://bme_api.test:8080/api/executeACProcedure", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

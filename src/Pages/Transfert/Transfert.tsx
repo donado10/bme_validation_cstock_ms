@@ -229,7 +229,6 @@ const Transfert = () => {
                 defaultOption="--- Destination ---"
                 onChange={(e) => {
                   let warehouse: string | null = e.currentTarget.value;
-                  console.log(warehouse);
                   if (warehouse === "--- Destination ---") {
                     warehouse = null;
                   }
