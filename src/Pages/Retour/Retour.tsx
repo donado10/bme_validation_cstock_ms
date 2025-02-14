@@ -23,7 +23,15 @@ import { GrPowerReset } from "react-icons/gr";
 import { getDay } from "../../Utils/Functions";
 import useGetRetoursNumber from "../../Hooks/useGetRetoursNumber";
 
-const Validation = () => {
+const Validation = ({ type }: { type: "RV" | "RAC" }) => {
+  let url = "";
+  if (type === "RV") {
+    url = "http://bme_api.test:8080/api/newDocumentsME?date";
+  }
+  if (type === "RAC") {
+    url = "http://bme_api.test:8082/api/getDocumentsRAC?date";
+  }
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [filter, setFilter] = useState<{
@@ -69,6 +77,7 @@ const Validation = () => {
       filterType: retourState.filter!,
     },
     setLoader,
+    type,
   );
 
   //Calcul nombre de factures
@@ -87,7 +96,7 @@ const Validation = () => {
           onClick={() => {
             const date = searchParams.get("date") || getDay();
             setLoader(true);
-            fetch(`http://bme_api.test:8080/api/newDocumentsME?date=${date}`)
+            fetch(`${url}=${date}`)
               .then((res) => {
                 return res.json();
               })

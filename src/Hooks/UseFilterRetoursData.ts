@@ -55,7 +55,16 @@ const filterByDate = (data: IRetour[], retourDate: string) => {
 export const useFilterRetoursData = (
   filter: IFilterData,
   setLoader: React.Dispatch<any>,
+  type: "RV" | "RAC",
 ) => {
+  let url = "";
+  if (type === "RV") {
+    url = "http://bme_api.test:8080/api/documentsME?date";
+  }
+  if (type === "RAC") {
+    url = "http://bme_api.test:8082/api/getDocumentsRAC?date";
+  }
+
   const [data, setData] = useState<IRetour[]>([]);
   const retourFilter = filter.filterType;
   const dispatch = useDispatch();
@@ -88,9 +97,7 @@ export const useFilterRetoursData = (
       filteredData = filterByDate(filteredData, retourFilter.date);
 
       setLoader(true);
-      fetch(
-        `http://bme_api.test:8080/api/documentsME?date=${formatDateToSend(retourFilter.date)}`,
-      )
+      fetch(`${url}=${formatDateToSend(retourFilter.date)}`)
         .then((res) => res.json())
         .then((data) => {
           setData(data);

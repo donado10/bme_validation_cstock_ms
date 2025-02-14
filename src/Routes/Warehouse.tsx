@@ -42,7 +42,12 @@ const route_warehouse = [
       {
         path: "/retour",
         element: <RetourLayout />,
-        children: [{ path: "", element: <Retour /> }],
+        children: [{ path: "", element: <Retour type="RV" /> }],
+      },
+      {
+        path: "/retourAC",
+        element: <RetourLayout />,
+        children: [{ path: "", element: <Retour type="RAC" /> }],
       },
       {
         path: "/achat",

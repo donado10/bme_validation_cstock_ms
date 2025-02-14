@@ -63,6 +63,17 @@ const Home = () => {
         <div className="w-96 rounded-lg border-2 border-bme-bg">
           <Link
             className="m-2 flex w-full items-center justify-between px-4"
+            to={"retourAC"}
+          >
+            <span>Retour Achat</span>
+            <span>
+              <RxExternalLink />
+            </span>
+          </Link>
+        </div>
+        <div className="w-96 rounded-lg border-2 border-bme-bg">
+          <Link
+            className="m-2 flex w-full items-center justify-between px-4"
             to={"achat"}
           >
             <span>Achat</span>
