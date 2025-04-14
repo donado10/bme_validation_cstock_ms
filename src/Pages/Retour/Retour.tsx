@@ -29,7 +29,7 @@ const Validation = ({ type }: { type: "RV" | "RAC" }) => {
     url = "http://bme_api.test:8080/api/newDocumentsME?date";
   }
   if (type === "RAC") {
-    url = "http://bme_api.test:8082/api/getDocumentsRAC?date";
+    url = "http://bme_api.test:8080/api/getDocumentsRAC?date";
   }
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -185,7 +185,7 @@ const Validation = ({ type }: { type: "RV" | "RAC" }) => {
         </div>
       </FilterLayout>
       <div className="w-full">
-        {!loader && <TableRetoursContainer data={filteredData} />}
+        {!loader && <TableRetoursContainer type={type} data={filteredData} />}
         {loader && (
           <div className="flex w-full items-center justify-center">
             <PiSpinnerBold className="loader-custom h-[10rem] w-[10rem] text-bme-bg" />

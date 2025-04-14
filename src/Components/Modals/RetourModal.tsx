@@ -9,11 +9,26 @@ import { IRootState } from "../../Store/store";
 import { useInterval } from "../../Hooks/use-interval";
 
 const RetourAlert: React.FC<{
+  type: "RAC" | "RV";
   retourDetail: { piece: string; date: string };
   closeModal: () => void;
   setEnableLoader: React.Dispatch<boolean>;
   setIsFactureValid: React.Dispatch<boolean>;
-}> = ({ retourDetail, closeModal, setEnableLoader, setIsFactureValid }) => {
+}> = ({
+  retourDetail,
+  closeModal,
+  setEnableLoader,
+  setIsFactureValid,
+  type,
+}) => {
+  let url = "";
+  if (type === "RV") {
+    url = "http://bme_api.test:8080/api/execute-ME-procedure";
+  }
+  if (type === "RAC") {
+    url = "http://bme_api.test:8080/api/executeRACProcedure";
+  }
+
   return (
     <>
       <div className="h-3 w-full bg-bme-bg"></div>
@@ -62,8 +77,12 @@ const RetourAlert: React.FC<{
               ref = "RETOURS RB";
             }
 
+            if (retourDetail.piece.includes("CAFR")) {
+              ref = "RETOURS Achat";
+            }
+
             setEnableLoader(true);
-            fetch("http://bme_api.test:8080/api/execute-ME-procedure", {
+            fetch(url, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -123,7 +142,8 @@ const ValidPopup: React.FC<{ closeModal: () => void; retour: string }> = ({
 export const ConfirmRetourModal: React.FC<{
   retourDetail: { piece: string; date: string };
   closeModal: () => void;
-}> = ({ retourDetail, closeModal }) => {
+  type: "RAC" | "RV";
+}> = ({ retourDetail, closeModal, type }) => {
   const [enableLoader, setEnableLoader] = useState<boolean>(false);
   const [isFactureValid, setIsFactureValid] = useState<boolean>(false);
   const [enableAlert, setEnableAlert] = useState<boolean>(false);
@@ -158,6 +178,7 @@ export const ConfirmRetourModal: React.FC<{
             closeModal={closeModal}
             setEnableLoader={setEnableLoader}
             setIsFactureValid={setIsFactureValid}
+            type={type}
           />
         </div>
       )}

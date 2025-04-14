@@ -84,6 +84,7 @@ export const useFilterTransfertsData = (
   const [data, setData] = useState<ITransfert[]>([]);
   const transfertFilter = filter.filterType;
   const dispatch = useDispatch();
+
   //const location = useLocation();
 
   const memoizedData = useMemo(() => filter.data, [filter.data]);
@@ -151,7 +152,7 @@ export const useFilterTransfertsData = (
     if (transfertFilter.date) {
       setLoader(true);
       fetch(
-        `http://bme_api.test:8080/api/documentsMT?date=${formatDateToSend(transfertFilter.date)}`,
+        `http://bme_api.test:8082/api/documentsMT?date=${formatDateToSend(transfertFilter.date)}`,
       )
         .then((res) => res.json())
         .then((data: ITransfert[]) => {

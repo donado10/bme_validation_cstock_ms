@@ -39,7 +39,23 @@ export interface ITransfertState {
   transfertLists: ITransfert[] | [];
   filter?: ITransfertFilter;
   sort?: { column: string; order: boolean };
+  depots:
+    | {
+        Compta21_ID: string;
+        CSTOCK21_ID: string;
+        Depot: string;
+        acronym: string;
+      }[]
+    | [];
 }
+
+const check = {
+  Compta21_ID: "212",
+  CSTOCK21_ID: "10",
+  Depot: "Camberene 4",
+  acronym: "CAMB4",
+  Type: "0",
+};
 
 const initialState: ITransfertState = {
   transfertLists: [],
@@ -53,6 +69,7 @@ const initialState: ITransfertState = {
     },
   },
   sort: { column: "piece", order: true },
+  depots: [],
 };
 
 const transfertSlice = createSlice({
@@ -79,6 +96,19 @@ const transfertSlice = createSlice({
     ) => {
       state.sort = action.payload;
     },
+    setDepots: (
+      state,
+      action: PayloadAction<{
+        depots: {
+          Compta21_ID: string;
+          CSTOCK21_ID: string;
+          Depot: string;
+          acronym: string;
+        }[];
+      }>,
+    ) => {
+      state.depots = [...action.payload.depots];
+    },
   },
 });
 
@@ -88,4 +118,5 @@ export const {
   setTransfertFilters,
   validateTransfert,
   setFilterSort,
+  setDepots,
 } = transfertSlice.actions;

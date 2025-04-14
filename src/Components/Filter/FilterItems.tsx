@@ -1,16 +1,18 @@
-import { ReactElement, ReactNode, useRef } from "react";
+import { ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../Store/store";
 import { IBillState, setFilters } from "../../Store/features/bills";
 import { IoSearch } from "react-icons/io5";
 import React from "react";
-import { getDay, getEarlierDate } from "../../Utils/Functions";
+import { fetcher, getDay, getEarlierDate } from "../../Utils/Functions";
 import { useSearchParams } from "react-router-dom";
 import {
   ITransfertState,
+  setDepots,
   setTransfertFilters,
 } from "../../Store/features/transfert";
 import { IRetourState, setRetourFilters } from "../../Store/features/retour";
+import useSWR from "swr";
 
 interface IFilterFirstLevel extends React.HTMLAttributes<HTMLButtonElement> {
   name: string;
@@ -253,6 +255,7 @@ export const FilterLayoutRow: React.FC<{ children: ReactNode }> = ({
 
 export const FilterWarehouse: React.FC<IFilterWarehouse> = React.forwardRef(
   ({ defaultOption, ...props }) => {
+    /*
     const depotMap = new Map<string, string>([
       ["1", "Laprine"],
       ["2", "Expo LG"],
@@ -294,13 +297,13 @@ export const FilterWarehouse: React.FC<IFilterWarehouse> = React.forwardRef(
       ["216", "TRI STAR ELECTRONICS (fict)"],
       ["217", "ATLAS CONCEPT (fict)"],
       ["218", "CONSTRUCTION ET EQUIPEMENT (fict)"],
-    ]);
+    ]);*/
 
-    let arrDepot: string[] = [];
+    let depotList = useSelector<IRootState>(
+      (state) => state.transferts.depots,
+    ) as any[];
 
-    depotMap.forEach((value) => {
-      arrDepot = [...arrDepot, value];
-    });
+    depotList = depotList.map((depot) => depot.Depot);
 
     return (
       <select
@@ -313,9 +316,10 @@ export const FilterWarehouse: React.FC<IFilterWarehouse> = React.forwardRef(
         >
           {defaultOption}
         </option>
-        {arrDepot.map((d) => {
+        {depotList.map((d) => {
           return (
             <option
+              key={d}
               value={d}
               className="flex items-center gap-4 rounded-lg border-2 border-bme-700 px-4 font-semibold text-bme-700 xs:w-full xs:py-3 xl:w-fit xl:py-1"
             >

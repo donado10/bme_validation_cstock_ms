@@ -19,6 +19,14 @@ const TranfertAlert: React.FC<{
   setEnableLoader: React.Dispatch<boolean>;
   setIsFactureValid: React.Dispatch<boolean>;
 }> = ({ transfertDetail, closeModal, setEnableLoader, setIsFactureValid }) => {
+  const depots = useSelector<IRootState>(
+    (state) => state.transferts.depots,
+  ) as {
+    Compta21_ID: string;
+    CSTOCK21_ID: string;
+    Depot: string;
+    acronym: string;
+  }[];
   return (
     <>
       <div className="h-3 w-full bg-bme-bg"></div>
@@ -55,8 +63,12 @@ const TranfertAlert: React.FC<{
           onClick={() => {
             setEnableLoader(true);
 
-            const src = formatTransfertForBackend(transfertDetail.DE_src);
-            const dest = formatTransfertForBackend(transfertDetail.DE_dest);
+            const src = depots.filter(
+              (depot) => depot.Depot == transfertDetail.DE_src,
+            )[0].acronym;
+            const dest = depots.filter(
+              (depot) => depot.Depot == transfertDetail.DE_dest,
+            )[0].acronym;
 
             fetch("http://bme_api.test:8080/api/execute-MT-procedure", {
               method: "POST",

@@ -16,7 +16,8 @@ import { setSort } from "../../Store/features/retour";
 
 export const TableRetoursContainer: React.FC<{
   data: IRetour[];
-}> = ({ data }) => {
+  type: "RAC" | "RV";
+}> = ({ data, type }) => {
   const [enableModal, setEnableModal] = useState<{
     confirm: boolean;
     cancel: boolean;
@@ -265,6 +266,7 @@ export const TableRetoursContainer: React.FC<{
                   retour: { date: "", piece: "" },
                 });
               }}
+              type={type}
             />
           }
         />

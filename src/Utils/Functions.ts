@@ -154,3 +154,5 @@ export function formatTransfertForBackend(warehouse: string): string {
 
   return depotMap.get(warehouse) || "";
 }
+
+export const fetcher = (url: string) => fetch(url).then((res) => res.json());

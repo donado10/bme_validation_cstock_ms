@@ -62,7 +62,7 @@ export const useFilterRetoursData = (
     url = "http://bme_api.test:8080/api/documentsME?date";
   }
   if (type === "RAC") {
-    url = "http://bme_api.test:8082/api/getDocumentsRAC?date";
+    url = "http://bme_api.test:8080/api/getDocumentsRAC?date";
   }
 
   const [data, setData] = useState<IRetour[]>([]);

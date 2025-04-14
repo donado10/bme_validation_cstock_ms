@@ -23,6 +23,7 @@ import {
 import { useFilterTransfertsData } from "../../Hooks/UseFilterTransfertsData";
 import { TableTransfertsContainer } from "../../Components/Table/TableTransfertsContainer";
 import useGetTransfertsNumber from "../../Hooks/useGetTransfertsNumber";
+import useGetDepotTransfert from "../../Hooks/UseGetDepotTransfert";
 
 const Transfert = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -38,6 +39,8 @@ const Transfert = () => {
   const transfertState = useSelector<IRootState>(
     (state) => state.transferts,
   ) as ITransfertState;
+
+  const depots = useGetDepotTransfert();
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -93,14 +96,18 @@ const Transfert = () => {
             const date =
               searchParams.get("date") || transfertState.filter!.date;
             setLoader(true);
-            fetch(`http://bme_api.test:8080/api/newDocumentsMT?date=${date}`)
+            fetch(`http://bme_api.test:8082/api/newDocumentsMT?date=${date}`)
               .then((res) => {
                 return res.json();
               })
               .then((data: ITransfert[]) => {
                 data.forEach((trans) => {
-                  trans.DE_src = formatTransfertWareHouse(trans.DE_src);
-                  trans.DE_dest = formatTransfertWareHouse(trans.DE_dest);
+                  trans.DE_src = depots.filter(
+                    (depot) => depot.Compta21_ID == trans.DE_src,
+                  )[0].Depot;
+                  trans.DE_dest = depots.filter(
+                    (depot) => depot.Compta21_ID == trans.DE_dest,
+                  )[0].Depot;
                   const transfertStatus = trans.DO_Ligne.every(
                     (trans) => trans.status === true,
                   );
